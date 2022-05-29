@@ -1,0 +1,14 @@
+@startuml
+
+package Model {
+         class Juego {   	
+        		
+        		- Puntajes[] : ints
+        		
+                + iniciarPartida() : void
+                
+        }
+
+}
+
+@enduml

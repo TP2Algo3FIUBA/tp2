@@ -1,0 +1,32 @@
+@startuml
+
+package Model {
+        abstract  class Obstaculo {
+                
+                + {abstract} aplicarEfecto(Jugador): void
+        }
+}
+
+package Model {
+        class Pozos {
+               + aplicarEfecto(Jugador): void
+        }
+}
+
+package Model {
+        class Piquete {
+               + aplicarEfecto(Jugador): void
+        }
+}
+
+package Model {
+        class ControlPolicial {
+             + aplicarEfecto(Jugador): void
+        }
+}
+
+Obstaculo <|-- Pozos
+Obstaculo <|-- Piquete
+Obstaculo <|-- ControlPolicial
+
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+
+!include ../variables.txt
+!include clase_vehiculo.plantuml
+!include clase_jugador.plantuml
+!include clase_sorpresa.plantuml
+!include clase_obstaculo.plantuml
+!include clase_juego.plantuml
+!include clase_tablero.plantuml
+!include clase_casillero.plantuml
+
+title Programa
+
+Jugador --> Vehiculo
+Sorpresa ..> Jugador
+Obstaculo ..> Jugador
+Juego --> "2" Jugador
+Juego --> Tablero
+Tablero --> "*" Casillero
+Casillero --> "0...1" Jugador
+Casillero --> "0...1" Sorpresa
+Casillero --> "0...1" Obstaculo
+
+@enduml
+

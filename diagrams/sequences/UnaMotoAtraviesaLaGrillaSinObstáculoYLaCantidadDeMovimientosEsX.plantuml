@@ -1,0 +1,16 @@
+@startuml
+Actor Jugador
+Jugador -> Juego : moverse(jugador)
+Juego -> Casilla: moverJugador(jugador)
+Casillero -> Casillero: aplicarEfectoActual(Jugador) 
+
+Casillero -> Casillero: colocarJugador(Jugador) 
+Casillero -> Jugador: aumentarMovimientos(1)
+
+note over Juego: "colocarJugador" llama al metodo "aumentarMovimientos()"
+note right #red 
+En el modelo actual 
+no importa que vehiculo tiene el jugador a lo hora de moverse 
+si el casillero esta vacio
+end note
+@enduml
