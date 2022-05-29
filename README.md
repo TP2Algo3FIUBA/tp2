@@ -8,7 +8,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 * **Integrante 1** - [LucasWaisten](https://github.com/LucasWaisten)
 * **Integrante 2** - [Juan518munoz](https://github.com/juan518munoz)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
+* **Integrante 3** - [iregazzoli](https://github.com/iregazzoli)
 * **Integrante 4** - [integrante4](https://github.com/integrante4)
 
 Corrector: **{Corrector}**
