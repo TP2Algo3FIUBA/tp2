@@ -10,7 +10,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 2** - [Juan518munoz](https://github.com/juan518munoz)
 * **Integrante 3** - [iregazzoli](https://github.com/iregazzoli)
 * **Integrante 4** - [CamiFio](https://github.com/CamiFio)
-* **Integrante 5** - [integrante5]([https://github.com/Danikim01](https://github.com/Danikim01))
+* **Integrante 5** - [Danikim01](https://github.com/Danikim01)
 
 Corrector: **{Corrector}**
 
