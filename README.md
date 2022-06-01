@@ -1,10 +1,10 @@
-![tp2](https://github.com/fiuba/algo3_proyecto_base_tp2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
+![tp2](https://github.com/TP2Algo3FIUBA/tp2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/TP2Algo3FIUBA/tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/TP2Algo3FIUBA/tp2)
 
 # TP2 Algoritmos 3: GPS Challenge 
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo 7
 
 * **Integrante 1** - [LucasWaisten](https://github.com/LucasWaisten)
 * **Integrante 2** - [Juan518munoz](https://github.com/juan518munoz)
@@ -12,11 +12,11 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 4** - [CamiFio](https://github.com/CamiFio)
 * **Integrante 5** - [Danikim01](https://github.com/Danikim01)
 
-Corrector: **{Corrector}**
+Corrector: **Jose Pablo Suarez**
 
 ## Aplicación
 
-La versión más reciente de la aplicación puede encontrarse en la pestaña [releases](https://github.com/fiuba/algo3_proyecto_base_tp2/releases/latest) y ejecutarse en Linux, Windows o Mac de esta forma:
+La versión más reciente de la aplicación puede encontrarse en la pestaña [releases](https://github.com/TP2Algo3FIUBA/tp2/releases/latest) y ejecutarse en Linux, Windows o Mac de esta forma:
 
 ```bash
 $ java -jar <archivo.jar>
