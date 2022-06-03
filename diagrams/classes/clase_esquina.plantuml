@@ -1,0 +1,14 @@
+@startuml
+
+
+         class Esquina {
+           - aristaNorte : Interseccion
+           - aristaSur : Interseccion
+           - aristaOeste : Interseccion
+           - aristaEste : Interseccion
+
+        }
+
+
+
+@enduml

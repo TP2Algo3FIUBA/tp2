@@ -1,40 +1,25 @@
 @startuml
 
-package Model {
-        abstract  class Vehiculo {
-                
-                + {abstract} penalizacionPozo(): void
-                + {abstract} penalizacionPiquete() : void
-                + {abstract} penalizacionControl() : void
-        }
+
+interface Vehiculo {
+
+        + {abstract} mover(unJugador: Jugador): void
 }
 
-package Model {
-        class Moto {
-              + penalizacionPozo(): void
-              + penalizacionPiquete() : void
-              + penalizacionControl() : void
-        }
+class Moto {
+    + mover(): void
 }
 
-package Model {
-        class Auto {
-              + penalizacionPozo(): void
-              + penalizacionPiquete() : void
-              + penalizacionControl() : void
-        }
+class Auto {
+      + mover(): void
 }
 
-package Model {
-        class 4x4 {
-              + penalizacionPozo(): void
-              + penalizacionPiquete() : void
-              + penalizacionControl() : void
-        }
+class 4x4 {
+      + mover(): void
 }
 
-Vehiculo <|-- Moto
-Vehiculo <|-- Auto
-Vehiculo <|-- 4x4
+Vehiculo <|.. Moto
+Vehiculo <|.. Auto
+Vehiculo <|.. 4x4
 
 @enduml

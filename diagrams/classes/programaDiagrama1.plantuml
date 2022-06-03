@@ -1,0 +1,27 @@
+@startuml
+
+!include ../variables.txt
+!include clase_jugador.plantuml
+!include clase_esquina.plantuml
+
+title Programa
+
+abstract  class Obstaculo {
+
+                + {abstract} penalizar(Jugador): void
+        }
+interface Vehiculo {
+
+        + {abstract} mover(unJugador: Jugador): void
+}
+class Interseccion {
+
+}
+
+Jugador --> Vehiculo
+Esquina o--  Interseccion
+Interseccion --> "0...1" Obstaculo
+Interseccion --> "0...1" Jugador
+
+@enduml
+

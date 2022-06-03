@@ -1,32 +1,32 @@
 @startuml
 
 package Model {
-        abstract  class Obstaculo {
+        abstract  class Sorpresa {
                 
                 + {abstract} aplicarEfecto(Jugador): void
         }
 }
 
 package Model {
-        class Pozos {
+        class Favorable {
                + aplicarEfecto(Jugador): void
         }
 }
 
 package Model {
-        class Piquete {
+        class Desfavorable {
                + aplicarEfecto(Jugador): void
         }
 }
 
 package Model {
-        class ControlPolicial {
+        class CambioDeVehiculo {
              + aplicarEfecto(Jugador): void
         }
 }
 
-Obstaculo <|-- Pozos
-Obstaculo <|-- Piquete
-Obstaculo <|-- ControlPolicial
+Sorpresa <|-- Favorable
+Sorpresa <|-- Desfavorable
+Sorpresa <|-- CambioDeVehiculo
 
 @enduml

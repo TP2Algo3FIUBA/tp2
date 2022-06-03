@@ -1,16 +1,10 @@
 @startuml
 
-package Model {
         class Jugador {
         		- movimientos : int
-        		
-                + sorpresaFavorable() : void
-                + sorpresaDesfavorable() : void
-                + sorpresaCambiodeVehiculo() : void
-                + penalizacionPozo(): void
-	            + penalizacionPiquete() : void
-	            + penalizacionControl() : void
+        		- vehiculo : Vehiculo
+        		+ mover(): void
         }
-}
+
 
 @enduml
