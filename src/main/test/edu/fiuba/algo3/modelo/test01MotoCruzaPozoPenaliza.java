@@ -13,7 +13,7 @@ public class test01MotoCruzaPozoPenaliza {
         Jugador jugador = new Jugador(moto);
         Pozo pozo = new Pozo();
         Interseccion interseccion = new Interseccion(pozo);
-
+        //agrego un cambio.
         assertEquals(1, 1);
 
     }
