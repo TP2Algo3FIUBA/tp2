@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 public class Jugador {
     private int movimientos;
     private Esquina posicion;
-    private Moto vehiculo; // Cambiar
+    private Vehiculo vehiculo; // Cambiar
 
     public Jugador (Moto v){
         vehiculo = v;

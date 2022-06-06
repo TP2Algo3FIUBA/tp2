@@ -4,10 +4,10 @@ public class Interseccion {
 
     private Esquina esquinaUno;
     private Esquina esquinaDos;
-    private Pozo obstaculo; // Muy mal
+    private Obstaculo obstaculo;
 
-    public Interseccion(Pozo pozo){ // recibir obstaculo/sorpresa
-        obstaculo = pozo;
+    public Interseccion(Obstaculo obs){ // recibir obstaculo/sorpresa
+        obstaculo = obs;
     }
 
     public void unirEsquinas(Esquina esquinaA, Esquina esquinaB) {
@@ -16,8 +16,10 @@ public class Interseccion {
     }
 
     private Esquina opuesta(Esquina origen) {
-        // cambiar
-        return esquinaDos;
+        if(origen.equals(esquinaUno)){
+            return esquinaDos;
+        }
+        return esquinaUno;
     }
 
     public Esquina moverAOpuesto(Esquina esquina, Jugador jugador) {

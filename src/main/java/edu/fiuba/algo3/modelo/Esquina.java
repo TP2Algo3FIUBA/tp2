@@ -21,4 +21,6 @@ public class Esquina {
     public Esquina moverJugadorHaciaDerecha(Jugador jugador) {
         return interseccionDerecha.moverAOpuesto(this, jugador);
     }
+
+
 }
