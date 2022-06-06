@@ -4,4 +4,8 @@ public class Pozo {
     public Pozo(){
 
     }
+
+    public void aplicarPenalizacion(Jugador jugador) {
+        jugador.aplicarPenalizacion(this);
+    }
 }

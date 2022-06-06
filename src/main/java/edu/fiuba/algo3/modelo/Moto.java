@@ -4,4 +4,8 @@ public class Moto {
     public Moto() {
 
     }
+
+    public int aplicarPenalizacion(Pozo obstaculo) {
+        return -3;
+    }
 }
