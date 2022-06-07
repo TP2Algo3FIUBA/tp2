@@ -23,13 +23,14 @@ public class CuatroPorCuatro extends Vehiculo{
     public void atravezarPozo() {
         this.pozosAtravezados ++;
         if(this.pozosAtravezados==3){
-            conductor.incrementarMovimiento(2);
+            conductor.incrementarMovimientos(2);
+            this.pozosAtravezados = 0;
         }
     }
 
     @Override
     public void atravezarPiquete() {
-        this.conductor.incrementarMovimiento(0);
+        this.conductor.incrementarMovimientos(0);
     }
 
     @Override

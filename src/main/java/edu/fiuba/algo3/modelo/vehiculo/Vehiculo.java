@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.manzana.Esquina;
 
 public abstract class Vehiculo {
 
-    private Jugador conductor;
+    Jugador conductor;
 
     public Vehiculo(Jugador jugaddor) {
         conductor = jugaddor;
@@ -21,6 +21,6 @@ public abstract class Vehiculo {
     public abstract int cantidadDeMovimientos();
 
     public  void atravezarCuadra(){
-        this.conductor.incrementarMovimiento(1);
+        this.conductor.incrementarMovimientos(1);
     }
 }

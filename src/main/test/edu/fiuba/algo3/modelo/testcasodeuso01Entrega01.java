@@ -89,7 +89,7 @@ public class testcasodeuso01Entrega01 {
 
 
         // Assert
-        assertEquals(2, cuatroporcuatro.cantidadDeMovimientos());
+        assertEquals(5, cuatroporcuatro.cantidadDeMovimientos());
 
     }
     @Test
@@ -98,11 +98,8 @@ public class testcasodeuso01Entrega01 {
         // Arrrange
         Jugador jugaddor = new Jugador();
         Auto auto = new Auto(jugaddor);
-
         Cuadra cuadra = new Cuadra( new Piquete());
-
         Esquina esquina = new Esquina(cuadra);
-
         auto.mover(esquina);
 
 

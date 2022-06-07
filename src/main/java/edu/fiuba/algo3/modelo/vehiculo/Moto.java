@@ -19,16 +19,14 @@ public class Moto extends Vehiculo {
         esquina.arribar(this);
     }
 
-
-
     @Override
     public void atravezarPozo() {
-        this.conductor.incrementarMovimiento(3);
+        this.conductor.incrementarMovimientos(3);
     }
 
     @Override
     public void atravezarPiquete() {
-        this.conductor.incrementarMovimiento(2);
+        this.conductor.incrementarMovimientos(2);
     }
 
     @Override

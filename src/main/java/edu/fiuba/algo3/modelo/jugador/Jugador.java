@@ -10,7 +10,7 @@ public class Jugador {
 
     }
 
-    public void incrementarMovimiento(int i) {
+    public void incrementarMovimientos(int i) {
         movimientos += i;
     }
 

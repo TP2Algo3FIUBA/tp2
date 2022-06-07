@@ -5,13 +5,10 @@ import edu.fiuba.algo3.modelo.manzana.Esquina;
 
 
 public class Auto extends Vehiculo {
-    private final Jugador conductor;
 
     public Auto(Jugador jugador) {
-        this.conductor = jugador;
+        super(jugador);
     }
-
-
 
     @Override
     public void mover(Esquina esquina) {
@@ -25,12 +22,13 @@ public class Auto extends Vehiculo {
 
     @Override
     public void atravezarPozo() {
-        this.conductor.incrementarMovimiento(3);
+        this.conductor.incrementarMovimientos(3);
     }
 
     @Override
     public void atravezarPiquete() {
-        this.conductor.incrementarMovimiento(2);
+        this.conductor.incrementarMovimientos(0);
+        // tiene que pegar la vuelta
     }
 
 }
