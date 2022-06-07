@@ -1,7 +1,7 @@
 @startuml
 
-
-abstract  class Obstaculo {
+package Obstaculo{
+interface Obstaculo {
     + {abstract} penalizar(Vehiculo): void
 }
 
@@ -22,9 +22,9 @@ class ControlPolicial {
     + penalizar(Vehiculo): void
 }
 
-
-Obstaculo <|-- Pozos
-Obstaculo <|-- Piquete
-Obstaculo <|-- ControlPolicial
+}
+Obstaculo <|.. Pozos
+Obstaculo <|.. Piquete
+Obstaculo <|.. ControlPolicial
 
 @enduml

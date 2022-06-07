@@ -1,6 +1,16 @@
 @startuml
-         class Esquina {
-           - cuadra: Cuadra
-           + arribar(Moto): void
+
+!include obstaculo.plantuml
+
+package Manzana{
+    class Esquina {
+        - cuadra: Cuadra
+        + arribar(Vehiculo): void
+    }
+    class Cuadra {
+            + trancita(Vehiculo): void
         }
+Esquina -> Cuadra
+Cuadra -down-> Obstaculo
+}
 @enduml

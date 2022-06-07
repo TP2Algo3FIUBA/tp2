@@ -1,32 +1,23 @@
 @startuml
 
-package Model {
-        abstract  class Sorpresa {
+package Sorpresa {
+       interface Sorpresa {
                 
-                + {abstract} aplicarEfecto(Jugador): void
-        }
-}
 
-package Model {
+        }
         class Favorable {
-               + aplicarEfecto(Jugador): void
-        }
-}
 
-package Model {
+                }
         class Desfavorable {
-               + aplicarEfecto(Jugador): void
-        }
-}
 
-package Model {
+                }
         class CambioDeVehiculo {
-             + aplicarEfecto(Jugador): void
-        }
+
+                }
 }
 
-Sorpresa <|-- Favorable
-Sorpresa <|-- Desfavorable
-Sorpresa <|-- CambioDeVehiculo
+Sorpresa <|.. Favorable
+Sorpresa <|.. Desfavorable
+Sorpresa <|.. CambioDeVehiculo
 
 @enduml

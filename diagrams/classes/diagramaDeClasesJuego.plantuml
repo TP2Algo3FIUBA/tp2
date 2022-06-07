@@ -1,0 +1,82 @@
+@startuml
+
+ class Jugador {
+        - movimientos : int
+    }
+class Esquina {
+        - cuadra: Cuadra
+        + arribar(Vehiculo): void
+    }
+    class Cuadra {
+            + trancita(Vehiculo): void
+        }
+    abstract class Vehiculo {
+
+            + {abstract} mover(esquina: Esquina): void
+    }
+
+    class Moto {
+        + mover(esquina: Esquina): void
+    }
+
+    class Auto {
+          + mover(esquina: Esquina): void
+    }
+
+    class 4x4 {
+          + mover(esquina: Esquina): void
+    }
+           interface Sorpresa {
+
+
+            }
+            class Favorable {
+
+                    }
+            class Desfavorable {
+
+                    }
+            class CambioDeVehiculo {
+
+                    }
+
+interface Obstaculo {
+    + {abstract} penalizar(Vehiculo): void
+}
+
+
+class Pozos {
+    + penalizar(Vehiculo): void
+}
+
+
+
+class Piquete {
+    + penalizar(Vehiculo): void
+}
+
+
+
+class ControlPolicial {
+    + penalizar(Vehiculo): void
+}
+
+
+Obstaculo <|.. Pozos
+Obstaculo <|.. Piquete
+Obstaculo <|.. ControlPolicial
+
+Sorpresa <|.. Favorable
+Sorpresa <|.. Desfavorable
+Sorpresa <|.. CambioDeVehiculo
+
+Esquina -left> Cuadra
+Cuadra -down-> Obstaculo
+Vehiculo <|--- Moto
+Vehiculo <|--- Auto
+Vehiculo <|--- 4x4
+Vehiculo -right-> Jugador
+Esquina .right.> Vehiculo
+Vehiculo .left.> Esquina
+Cuadra -left-> Sorpresa
+@enduml
