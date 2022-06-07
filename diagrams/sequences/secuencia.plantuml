@@ -1,0 +1,20 @@
+@startuml
+Actor test
+test -> Moto : mover(Esquina)
+Moto -> Esquina: arribar(Moto)
+Esquina -> Cuadra: trancita(Moto)
+
+Cuadra -> Pozo: penalizar(Moto)
+Pozo -> Moto: conductorPenalizadoEnTurnos(3)
+Moto-> Jugador: turnosPenalizados(3)
+Jugador -> Turno: estadoPenalizado(3)
+Turno --> Jugador
+Jugador --> Moto
+Moto --> Pozo
+Pozo --> Cuadra
+Cuadra --> Esquina
+Esquina --> Moto
+
+
+
+@enduml

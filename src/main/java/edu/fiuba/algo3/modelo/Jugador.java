@@ -1,28 +1,32 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Jugador {
-    private int movimientos;
-    private Esquina posicion;
-    private Vehiculo vehiculo; // Cambiar
+    // supuesto
+    private final ArrayList<Turno> turnos = new ArrayList<>();
 
-    public Jugador (Moto v){
-        vehiculo = v;
-        movimientos = 10; // supuesto
+
+    public Jugador (){
+        for(int i = 0; i<10;i++){
+            turnos.add(new Turno(new Habilitado()));
+        }
     }
 
-    public void moverHaciaLaDerecha() {
-        posicion = posicion.moverJugadorHaciaDerecha(this);
+    public void turnosPenalizados(int i) {
+        for(int j = 0; j<i;j++){
+            turnos.add(new Turno(new Penalizado()));
+        }
     }
 
-    public int movimientosRestantes() {
-        return movimientos;
-    }
-
-    public void cambiarPosicion(Esquina nuevaPosicion) {
-        posicion = nuevaPosicion;
-    }
-
-    public void aplicarPenalizacion(Pozo obstaculo) {
-        movimientos = movimientos + vehiculo.aplicarPenalizacion(obstaculo);
+    public int turnosPenalizados() {
+        AtomicInteger turnosPenalizados= new AtomicInteger();
+        turnos.forEach(turno -> {
+            if (turno.estado().getPenalidad()){
+                turnosPenalizados.getAndIncrement();
+            }
+        });
+        return turnosPenalizados.intValue();
     }
 }

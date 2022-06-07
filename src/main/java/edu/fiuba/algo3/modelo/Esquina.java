@@ -2,25 +2,14 @@ package edu.fiuba.algo3.modelo;
 
 public class Esquina {
 
-    private Interseccion interseccionSuperior;
-    private Interseccion interseccionInferior;
-    private Interseccion interseccionIzquierda;
-    private Interseccion interseccionDerecha;
-    public Esquina () {
+    private final Cuadra cuadra;
 
+
+    public Esquina(Cuadra unaCuadra) {
+        this.cuadra = unaCuadra;
     }
 
-    public void asignarInterseccionIzquierda(Interseccion interseccion) {
-        interseccionIzquierda = interseccion;
+    public void arribar(Moto moto) {
+        this.cuadra.trancita(moto);
     }
-
-    public void asignarInterseccionDerecha(Interseccion interseccion) {
-        interseccionDerecha = interseccion;
-    }
-
-    public Esquina moverJugadorHaciaDerecha(Jugador jugador) {
-        return interseccionDerecha.moverAOpuesto(this, jugador);
-    }
-
-
 }

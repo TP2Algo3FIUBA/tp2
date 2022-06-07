@@ -1,0 +1,20 @@
+@startuml
+
+        class Jugador {
+        		- turnos : ArrayList<Turno>
+        }
+
+        class Turno {
+         }
+         interface Estado {
+
+         }
+         class Habilitado{}
+         class Penalizado{}
+
+Jugador -> Turno
+Turno -> Estado
+Habilitado ..|> Estado
+Penalizado ..|> Estado
+
+@enduml
