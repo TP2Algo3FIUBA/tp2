@@ -5,16 +5,17 @@ Moto -> Esquina: arribar(Moto)
 Esquina -> Cuadra: trancita(Moto)
 
 Cuadra -> Pozo: penalizar(Moto)
-Pozo -> Moto: conductorPenalizadoEnTurnos(3)
+Pozo -> Moto: penalizarConductor(3)
 Moto-> Jugador: turnosPenalizados(3)
-Jugador -> Turno: estadoPenalizado(3)
-Turno --> Jugador
+loop 3 times
+Jugador -> Penalizado: new()
+Penalizado --> Jugador
+end
 Jugador --> Moto
 Moto --> Pozo
 Pozo --> Cuadra
 Cuadra --> Esquina
 Esquina --> Moto
-
-
+Moto --> test
 
 @enduml
