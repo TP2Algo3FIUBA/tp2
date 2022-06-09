@@ -1,0 +1,11 @@
+@startuml
+scale 500 width
+
+[*] --> creacion : se crea lo necesario del tablero
+creacion --> jugable : el juego es jugable
+jugable -right-> finaliza : hay un ganador
+finaliza --> [*]
+
+
+}
+@enduml

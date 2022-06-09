@@ -1,13 +1,14 @@
 @startuml
-scale 500 width
+scale 350 width
 
-[*] --> jugadorAvanzar
-jugadorAvanzar --> moverAEsquina
-moverAEsquina -right-> trancitarCuadra
+[*] --> creado : jugador ingresa al juego
+creado --> movimiento : comienza a moverse
+movimiento --> arriboAEsquina : arriba a la esquina elegida
+arriboAEsquina -right-> trancitaCuadra : trancita cuadra
 state c <<choice>>
-trancitarCuadra --> c : llego a la meta?
+trancitaCuadra --> c : llego a la meta final?
 c --> [*] : si
-c --> moverAEsquina : no
+c --> arriboAEsquina : no
 
 }
 @enduml
