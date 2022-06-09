@@ -2,7 +2,7 @@
 Actor test
 test -> Moto : mover(Esquina)
 Moto -> Esquina: arribar(Moto)
-Esquina -> Cuadra: trancita(Moto)
+Esquina -> Cuadra: transita(Moto)
 Cuadra -> Moto: atravezarCuadra()
 Moto --> Cuadra
 Cuadra -> Pozo: penalizar(Moto)
