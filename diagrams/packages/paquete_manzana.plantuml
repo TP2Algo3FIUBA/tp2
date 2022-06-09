@@ -1,20 +1,18 @@
 @startuml
 
-!include ../classes/esquina.plantuml
-
-package JUnit {
-        class TestEntrega01{
-        + UnaMotoAtraviesaCiudadYSeEncuentraConUnPozoYEsPenalizadaTresMovimientos : void
-        + AutoAtraviesaCiudadYSeEncuentraConUnPozoYEsPenalizadaTresMovimientos :void
-        + Una4x4AtraviesaCiudadYSeEncuentraConUnPozoYNoEsPenalizada : void
-        + Una4x4AtraviesaTresPozoYEsPenalizadaDosMovimientos : void
-        + UnAutoAtraviesaCiudadYSeEncuentraConUnPiqueteYNoEsPenalizada : void
-        }
+package Modelo {
+    package Manzana{
+        class Esquina{}
+        class Cuadra{}
+        class Obstaculo{}
+        class Sorpresa{}
+    }
+    package Vehiculo{
+         class Jugador{}
+         class Auto{}
+         class Moto{}
+         class 4x4{}
+         }
 }
-
-
-TestEntrega01 --> Esquina: "<<instantiate>>"
-TestEntrega01 --> Cuadra: "<<instantiate>>"
-TestEntrega01 --> Obstaculo: "<<instantiate>>"
 
 @enduml

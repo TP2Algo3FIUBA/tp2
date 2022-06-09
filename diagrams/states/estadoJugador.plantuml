@@ -1,0 +1,13 @@
+@startuml
+scale 500 width
+
+[*] --> jugadorAvanzar
+jugadorAvanzar --> moverAEsquina
+moverAEsquina -right-> trancitarCuadra
+state c <<choice>>
+trancitarCuadra --> c : llego a la meta?
+c --> [*] : si
+c --> moverAEsquina : no
+
+}
+@enduml
