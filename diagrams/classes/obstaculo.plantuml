@@ -1,26 +1,23 @@
 @startuml
 
 package Obstaculo{
-interface Obstaculo {
-    + {abstract} penalizar(Vehiculo): void
-}
+    interface Obstaculo {
+        + {abstract} penalizar(Vehiculo): void
+    }
+
+    class Pozos {
+        + penalizar(Vehiculo): void
+    }
 
 
-class Pozos {
-    + penalizar(Vehiculo): void
-}
+    class Piquete {
+        + penalizar(Vehiculo): void
+    }
 
 
-
-class Piquete {
-    + penalizar(Vehiculo): void
-}
-
-
-
-class ControlPolicial {
-    + penalizar(Vehiculo): void
-}
+    class ControlPolicial {
+        + penalizar(Vehiculo): void
+    }
 
 }
 Obstaculo <|.. Pozos

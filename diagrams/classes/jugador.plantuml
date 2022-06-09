@@ -2,8 +2,7 @@
 
 package Jugador{
     class Jugador {
-        - movimientos : int
-    }
+            - movimientos : int
+        }
 }
-
 @enduml

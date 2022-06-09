@@ -1,0 +1,20 @@
+@startuml
+
+!include ../classes/esquina.plantuml
+
+package JUnit {
+        class TestEntrega01{
+        + UnaMotoAtraviesaCiudadYSeEncuentraConUnPozoYEsPenalizadaTresMovimientos : void
+        + AutoAtraviesaCiudadYSeEncuentraConUnPozoYEsPenalizadaTresMovimientos :void
+        + Una4x4AtraviesaCiudadYSeEncuentraConUnPozoYNoEsPenalizada : void
+        + Una4x4AtraviesaTresPozoYEsPenalizadaDosMovimientos : void
+        + UnAutoAtraviesaCiudadYSeEncuentraConUnPiqueteYNoEsPenalizada : void
+        }
+}
+
+
+TestEntrega01 --> Esquina: "<<instantiate>>"
+TestEntrega01 --> Cuadra: "<<instantiate>>"
+TestEntrega01 --> Obstaculo: "<<instantiate>>"
+
+@enduml

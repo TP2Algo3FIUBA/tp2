@@ -1,0 +1,11 @@
+@startuml
+
+
+package Model {
+!include sorpresa.plantuml
+!include vehiculo.plantuml
+!include esquina.plantuml
+Vehiculo .left.> Esquina
+Cuadra ---down> Sorpresa
+}
+@enduml

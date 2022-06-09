@@ -1,27 +1,26 @@
 @startuml
 
-!import jugador.plantuml
-package Vehiculo {
-abstract class Vehiculo {
+!include jugador.plantuml
 
-        + {abstract} mover(esquina: Esquina): void
-}
+package Vehiculo{
+    abstract class Vehiculo {
+                + {abstract} mover(esquina: Esquina): void
+        }
 
-class Moto {
-    + mover(esquina: Esquina): void
-}
+        class Moto {
+            + mover(esquina: Esquina): void
+        }
 
-class Auto {
-      + mover(esquina: Esquina): void
-}
+        class Auto {
+              + mover(esquina: Esquina): void
+        }
 
-class 4x4 {
-      + mover(esquina: Esquina): void
-}
+        class 4x4 {
+              + mover(esquina: Esquina): void
+        }
 }
 Vehiculo <|--- Moto
 Vehiculo <|--- Auto
 Vehiculo <|--- 4x4
 Vehiculo -left-> Jugador
-
 @enduml

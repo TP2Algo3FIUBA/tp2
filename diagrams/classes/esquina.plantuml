@@ -10,7 +10,7 @@ package Manzana{
     class Cuadra {
             + trancita(Vehiculo): void
         }
+}
 Esquina -> Cuadra
 Cuadra -down-> Obstaculo
-}
 @enduml
