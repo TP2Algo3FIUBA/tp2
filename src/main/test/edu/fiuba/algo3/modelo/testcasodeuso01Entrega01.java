@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.obstaculo.Pozo;
+import edu.fiuba.algo3.modelo.sorpresa.Sorpresa;
 import edu.fiuba.algo3.modelo.vehiculo.Auto;
 import edu.fiuba.algo3.modelo.vehiculo.CuatroPorCuatro;
 import edu.fiuba.algo3.modelo.vehiculo.Moto;
@@ -18,36 +19,50 @@ public class testcasodeuso01Entrega01 {
     public void UnaMotoAtraviesaCiudadYSeEncuentraConUnPozoYEsPenalizadaTresMovimientos(){
 
         // Arrrange
-        Jugador jugaddor = new Jugador();
-        Moto moto = new Moto(jugaddor);
+        Esquina esquina00 = new Esquina(00); //   00 ---- 01
+        Esquina esquina01 = new Esquina(01); //    |       |
+        Esquina esquina10 = new Esquina(10); //    |       |
+        Esquina esquina11 = new Esquina(11); //   10 ----  11
 
-        Cuadra cuadra = new Cuadra( new Pozo());
+        Cuadra cuadra00_01 = new Cuadra(esquina00, "derecha", esquina01, "izquierda", new Pozo(), new Sorpresa());
+        Cuadra cuadra00_10 = new Cuadra(esquina00, "abajo", esquina10, "arriba", new Pozo(), new Sorpresa());
+        Cuadra cuadra01_11 = new Cuadra(esquina01, "abajo", esquina11, "arriba", new Pozo(), new Sorpresa());
+        Cuadra cuadra10_11 = new Cuadra(esquina10, "derecha", esquina11, "izquierda", new Pozo(), new Sorpresa());
 
-        Esquina esquina = new Esquina(cuadra);
+        // init jugador en posicion 00
+        Jugador jugador = new Jugador(new Moto(esquina00));
 
-        moto.mover(esquina);
+        // Act
+        jugador.movDerecha();
 
         // Assert
-        assertEquals(4, moto.cantidadDeMovimientos());
-
+        assertEquals(4, jugador.cantidadDeMovimientos());
+        assertEquals(01, jugador.posicion());
     }
 
     @Test
     public void AutoAtraviesaCiudadYSeEncuentraConUnPozoYEsPenalizadaTresMovimientos(){
 
         // Arrrange
-        Jugador jugaddor = new Jugador();
-        Auto auto = new Auto(jugaddor);
+        Esquina esquina00 = new Esquina(00); //   00 ---- 01
+        Esquina esquina01 = new Esquina(01); //    |       |
+        Esquina esquina10 = new Esquina(10); //    |       |
+        Esquina esquina11 = new Esquina(11); //   10 ----  11
 
-        Cuadra cuadra = new Cuadra( new Pozo());
+        Cuadra cuadra00_01 = new Cuadra(esquina00, "derecha", esquina01, "izquierda", new Pozo(), new Sorpresa());
+        Cuadra cuadra00_10 = new Cuadra(esquina00, "abajo", esquina10, "arriba", new Pozo(), new Sorpresa());
+        Cuadra cuadra01_11 = new Cuadra(esquina01, "abajo", esquina11, "arriba", new Pozo(), new Sorpresa());
+        Cuadra cuadra10_11 = new Cuadra(esquina10, "derecha", esquina11, "izquierda", new Pozo(), new Sorpresa());
 
-        Esquina esquina = new Esquina(cuadra);
+        // init jugador en posicion 00
+        Jugador jugador = new Jugador(new Auto(esquina00));
 
-        auto.mover(esquina);
-
+        // Act
+        jugador.movDerecha();
 
         // Assert
-        assertEquals(4, auto.cantidadDeMovimientos());
+        assertEquals(4, jugador.cantidadDeMovimientos());
+        assertEquals(01, jugador.posicion());
 
     }
 
@@ -55,57 +70,76 @@ public class testcasodeuso01Entrega01 {
     public void Una4x4AtraviesaCiudadYSeEncuentraConUnPozoYNoEsPenalizada(){
 
         // Arrrange
-        Jugador jugaddor = new Jugador();
-        CuatroPorCuatro cuatroporcuatro = new CuatroPorCuatro(jugaddor);
+        Esquina esquina00 = new Esquina(00); //   00 ---- 01
+        Esquina esquina01 = new Esquina(01); //    |       |
+        Esquina esquina10 = new Esquina(10); //    |       |
+        Esquina esquina11 = new Esquina(11); //   10 ----  11
 
-        Cuadra cuadra = new Cuadra( new Pozo());
+        Cuadra cuadra00_01 = new Cuadra(esquina00, "derecha", esquina01, "izquierda", new Pozo(), new Sorpresa());
+        Cuadra cuadra00_10 = new Cuadra(esquina00, "abajo", esquina10, "arriba", new Pozo(), new Sorpresa());
+        Cuadra cuadra01_11 = new Cuadra(esquina01, "abajo", esquina11, "arriba", new Pozo(), new Sorpresa());
+        Cuadra cuadra10_11 = new Cuadra(esquina10, "derecha", esquina11, "izquierda", new Pozo(), new Sorpresa());
 
-        Esquina esquina = new Esquina(cuadra);
+        // init jugador en posicion 00
+        Jugador jugador = new Jugador(new CuatroPorCuatro(esquina00));
 
-        cuatroporcuatro.mover(esquina);
-
+        // Act
+        jugador.movDerecha();
 
         // Assert
-        assertEquals(1, cuatroporcuatro.cantidadDeMovimientos());
+        assertEquals(1, jugador.cantidadDeMovimientos());
+        assertEquals(01, jugador.posicion());
 
     }
     @Test
     public void Una4x4AtraviesaTresPozoYEsPenalizadaDosMovimientos(){
 
         // Arrrange
-        Jugador jugaddor = new Jugador();
-        CuatroPorCuatro cuatroporcuatro = new CuatroPorCuatro(jugaddor);
+        Esquina esquina00 = new Esquina(00); //   00 ---- 01
+        Esquina esquina01 = new Esquina(01); //    |       |
+        Esquina esquina10 = new Esquina(10); //    |       |
+        Esquina esquina11 = new Esquina(11); //   10 ----  11
 
-        Cuadra primerCuadra = new Cuadra( new Pozo());
-        Esquina primerEsquina = new Esquina(primerCuadra);
-        Cuadra segundaCuadra = new Cuadra( new Pozo());
-        Esquina segundaEsquina = new Esquina(segundaCuadra);
-        Cuadra tercerCuadra = new Cuadra( new Pozo());
-        Esquina tercerEsquina = new Esquina(tercerCuadra);
+        Cuadra cuadra00_01 = new Cuadra(esquina00, "derecha", esquina01, "izquierda", new Pozo(), new Sorpresa());
+        Cuadra cuadra00_10 = new Cuadra(esquina00, "abajo", esquina10, "arriba", new Pozo(), new Sorpresa());
+        Cuadra cuadra01_11 = new Cuadra(esquina01, "abajo", esquina11, "arriba", new Pozo(), new Sorpresa());
+        Cuadra cuadra10_11 = new Cuadra(esquina10, "derecha", esquina11, "izquierda", new Pozo(), new Sorpresa());
 
-        cuatroporcuatro.mover(primerEsquina);
-        cuatroporcuatro.mover(segundaEsquina);
-        cuatroporcuatro.mover(tercerEsquina);
+        // init jugador en posicion 00
+        Jugador jugador = new Jugador(new CuatroPorCuatro(esquina00));
 
+        // Act
+        jugador.movDerecha();
+        jugador.movAbajo();
+        jugador.movIzquierda();
 
         // Assert
-        assertEquals(5, cuatroporcuatro.cantidadDeMovimientos());
+        assertEquals(5, jugador.cantidadDeMovimientos());
 
     }
     @Test
     public void UnAutoAtraviesaCiudadYSeEncuentraConUnPiqueteYNoEsPenalizada(){
 
         // Arrrange
-        Jugador jugaddor = new Jugador();
-        Auto auto = new Auto(jugaddor);
-        Cuadra cuadra = new Cuadra( new Piquete());
-        Esquina esquina = new Esquina(cuadra);
-        auto.mover(esquina);
+        Esquina esquina00 = new Esquina(00); //   00 ---- 01
+        Esquina esquina01 = new Esquina(01); //    |       |
+        Esquina esquina10 = new Esquina(10); //    |       |
+        Esquina esquina11 = new Esquina(11); //   10 ----  11
 
+        Cuadra cuadra00_01 = new Cuadra(esquina00, "derecha", esquina01, "izquierda", new Piquete(), new Sorpresa());
+        Cuadra cuadra00_10 = new Cuadra(esquina00, "abajo", esquina10, "arriba", new Piquete(), new Sorpresa());
+        Cuadra cuadra01_11 = new Cuadra(esquina01, "abajo", esquina11, "arriba", new Piquete(), new Sorpresa());
+        Cuadra cuadra10_11 = new Cuadra(esquina10, "derecha", esquina11, "izquierda", new Piquete(), new Sorpresa());
+
+        // init jugador en posicion 00
+        Jugador jugador = new Jugador(new CuatroPorCuatro(esquina00));
+
+        // Act
+        jugador.movDerecha();
 
         // Assert
-        assertEquals(1, auto.cantidadDeMovimientos());
-
+        assertEquals(1, jugador.cantidadDeMovimientos());
+        assertEquals(01, jugador.posicion());
     }
 }
 

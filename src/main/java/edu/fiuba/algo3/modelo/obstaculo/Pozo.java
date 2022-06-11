@@ -12,8 +12,4 @@ public class Pozo extends Obstaculo {
 
     }
 
-    @Override
-    public void penalizar( Vehiculo unVehiculo) {
-        unVehiculo.atravezarPozo();
-    }
 }

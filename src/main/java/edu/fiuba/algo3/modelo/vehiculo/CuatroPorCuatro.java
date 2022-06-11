@@ -2,41 +2,36 @@ package edu.fiuba.algo3.modelo.vehiculo;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.obstaculo.Obstaculo;
+import edu.fiuba.algo3.modelo.sorpresa.Sorpresa;
 
 
 public class CuatroPorCuatro extends Vehiculo{
 
     private int pozosAtravezados;
 
-    public CuatroPorCuatro(Jugador jugaddor) {
-        super(jugaddor);
+    public CuatroPorCuatro(Esquina unaPosicion) {
+        super(unaPosicion);
         this.pozosAtravezados=0;
     }
 
     @Override
-    public void mover(Esquina esquina) {
-        esquina.arribar(this);
+    public int atravezarObstaculo(Obstaculo unObstaculo) {
+        return 0;
     }
 
-
     @Override
-    public void atravezarPozo() {
+    public int atravezarSorpresa(Sorpresa sorpresa) {
+        return 0;
+    }
+
+    /*public int atravezarPozo() {
         this.pozosAtravezados ++;
         if(this.pozosAtravezados==3){
-            conductor.incrementarMovimientos(2);
             this.pozosAtravezados = 0;
+            return 2;
         }
-    }
-
-    @Override
-    public void atravezarPiquete() {
-        this.conductor.incrementarMovimientos(0);
-    }
-
-    @Override
-    public int cantidadDeMovimientos() {
-        return this.conductor.cantidadDeMovimientos();
-    }
-
+        return 0;
+    }*/
 
 }

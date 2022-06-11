@@ -2,35 +2,24 @@ package edu.fiuba.algo3.modelo.vehiculo;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.obstaculo.Obstaculo;
+import edu.fiuba.algo3.modelo.sorpresa.Sorpresa;
 
 public class Moto extends Vehiculo {
 
 
-    public Moto(Jugador jugaddor) {
-        super(jugaddor);
-       /* objetosAChocar = new HashMap<>();
-        objetosAChocar.put(Pozo.class, (x) -> collideWithAsteriod(x));
-        objetosAChocar.put(Piquete.class, (x) -> collideWithStation(x));*/
+    public Moto(Esquina unaPosicion) {
+        super(unaPosicion);
+            }
 
+    @Override
+    public int atravezarObstaculo(Obstaculo unObstaculo) {
+        return 0;
     }
 
     @Override
-    public void mover(Esquina esquina) {
-        esquina.arribar(this);
+    public int atravezarSorpresa(Sorpresa sorpresa) {
+        return 0;
     }
 
-    @Override
-    public void atravezarPozo() {
-        this.conductor.incrementarMovimientos(3);
-    }
-
-    @Override
-    public void atravezarPiquete() {
-        this.conductor.incrementarMovimientos(2);
-    }
-
-    @Override
-    public int cantidadDeMovimientos() {
-        return this.conductor.cantidadDeMovimientos();
-    }
 }

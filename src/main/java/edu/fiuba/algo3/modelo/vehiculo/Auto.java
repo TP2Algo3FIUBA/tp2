@@ -2,33 +2,25 @@ package edu.fiuba.algo3.modelo.vehiculo;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.obstaculo.Obstaculo;
+import edu.fiuba.algo3.modelo.sorpresa.Sorpresa;
 
 
 public class Auto extends Vehiculo {
 
-    public Auto(Jugador jugador) {
-        super(jugador);
+    public Auto(Esquina unaPosicion) {
+        super(unaPosicion);
     }
 
     @Override
-    public void mover(Esquina esquina) {
-        esquina.arribar(this);
+    public int atravezarObstaculo(Obstaculo unObstaculo) {
+        return 3;
     }
 
     @Override
-    public int cantidadDeMovimientos() {
-        return this.conductor.cantidadDeMovimientos();
+    public int atravezarSorpresa(Sorpresa sorpresa) {
+        return 0;
     }
 
-    @Override
-    public void atravezarPozo() {
-        this.conductor.incrementarMovimientos(3);
-    }
-
-    @Override
-    public void atravezarPiquete() {
-        this.conductor.incrementarMovimientos(0);
-        // tiene que pegar la vuelta
-    }
 
 }
