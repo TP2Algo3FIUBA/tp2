@@ -18,13 +18,12 @@ public class Cuadra {
 		this.sorpresa = unaSorpresa;
 	}
 	
-	public void moverVehiculo(Vehiculo vehiculoEnLaCuadra, Esquina esquinaInicio) { // Checkear si esto viola "tell don't ask"
+	public void moverVehiculo(Vehiculo vehiculoEnLaCuadra, Esquina esquinaInicio) { 
 //		evento.afectarVehiculo(vehiculoEnLaCuadra);
 		Esquina esquinaADestino = esquinaA;
-		if (esquinaA.equals(esquinaInicio)) {
+		if (esquinaA.equals(esquinaInicio)) { // Checkear si esto viola "tell don't ask"
 			esquinaADestino = esquinaB;
 		}
 		esquinaADestino.posicionarVehiculo(vehiculoEnLaCuadra);
-		vehiculoEnLaCuadra.setEsquinaActual(esquinaADestino);
 	}
 }

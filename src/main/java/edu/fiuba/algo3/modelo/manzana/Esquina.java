@@ -26,6 +26,7 @@ public class Esquina {
 
 	public void posicionarVehiculo(Vehiculo unVehiculo) {
 		vehiculoEnLaEsquina = unVehiculo;
+		unVehiculo.setEsquinaActual(this); 	
 	}
 
 	public Vehiculo getVehiculoEnLaEsquina() {

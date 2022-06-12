@@ -14,5 +14,13 @@ public class testUnitJugador {
 
         assertEquals(0, jugador.getMovimientos());
     }
+    
+    @Test
+    public void UnIncrementarMovimientosDelJugador() {
+        Jugador jugador = new Jugador(new Moto());
+        jugador.incrementarMovimientos(5);
+
+        assertEquals(jugador.getMovimientos(), 5);
+    }
 
 }

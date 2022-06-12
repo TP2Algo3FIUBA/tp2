@@ -37,7 +37,8 @@ class EsquinaTest {
 		assertEquals(inicio.getVehiculoEnLaEsquina(), moto);
 		assertEquals(destino.getVehiculoEnLaEsquina(), null);
 
-		inicio.moverVehiculo("Sur");
+//		inicio.moverVehiculo("Sur");
+		moto.moverseAEsquina("Sur");
 
 		assertEquals(inicio.getVehiculoEnLaEsquina(), null);
 		assertEquals(destino.getVehiculoEnLaEsquina(), moto);
