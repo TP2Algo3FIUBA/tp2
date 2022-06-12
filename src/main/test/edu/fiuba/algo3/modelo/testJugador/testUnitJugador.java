@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class testUnitJugador {
     @Test
-    public void UnJugadorRecienInicializadoTieneCeroMovimientosUtilizados() {
-        Jugador jugador = new Jugador(new Moto(new Esquina(0)));
+    public void UnJugadorRecienInicializadoTieneCeroMovimientos() {
+        Jugador jugador = new Jugador(new Moto());
 
-        assertEquals(0, jugador.cantidadDeMovimientos());
+        assertEquals(0, jugador.getMovimientos());
     }
 
 }

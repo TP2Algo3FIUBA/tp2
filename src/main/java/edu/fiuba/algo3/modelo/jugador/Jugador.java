@@ -19,27 +19,4 @@ public class Jugador {
 		public void incrementarMovimientos(int movimientos){
     	this.movimientos += movimientos;
     }
-
-//    public void movArriba (){
-//        movimientos = movimientos + vehiculo.movArriba();
-//    }
-//    public void movAbajo(){
-//        movimientos = movimientos + vehiculo.movAbajo();
-//    }
-//
-//    public void movDerecha(){
-//        movimientos = movimientos + vehiculo.movDerecha();
-//    }
-//
-//    public void movIzquierda(){
-//        movimientos = movimientos + vehiculo.movIzquierda();
-//    }
-//
-//    public int cantidadDeMovimientos() {
-//        return this.movimientos;
-//    }
-//
-//    public int posicion() {
-//        return vehiculo.posicion();
-//    }
 }
