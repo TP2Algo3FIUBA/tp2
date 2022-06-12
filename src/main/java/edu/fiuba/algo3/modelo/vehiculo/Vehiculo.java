@@ -10,7 +10,9 @@ public abstract class Vehiculo {
 	
 			Jugador conductor;
 			
-			public Vehiculo() {}
+			public Vehiculo() {
+				conductor = null;
+			}
 			
 			public void incrementarMovimientos(int movimientos) {
 				conductor.incrementarMovimientos(movimientos);

@@ -8,25 +8,28 @@ public class Esquina {
 	private HashMap<String, Cuadra> cuadras;
 	Vehiculo vehiculoEnLaEsquina;
 
-	public Esquina(int unaCoordenada) {
+	public Esquina() {
 		this.cuadras = new HashMap<>();
 		vehiculoEnLaEsquina = null;
 	}
 
-	public void dirijirseACuadra(String direccion, Vehiculo vehiculo) {
-		Cuadra cuadraAdirijirse;
-		try {
-			cuadraAdirijirse = cuadras.get(direccion);
-			vehiculoEnLaEsquina.incrementarMovimientos(1);
-			cuadraAdirijirse.moverVehiculo(vehiculoEnLaEsquina);
-			vehiculoEnLaEsquina = null;
-		} catch (Exception e) { // TO DO: checkear el tipo de exception exacto que tira esto
-			// se intento mover fuera del tablero
-		}
+	public void moverVehiculo(String direccion) {
+		Cuadra cuadraAdirijirse = cuadras.get(direccion);
+
+		if (cuadraAdirijirse == null)
+			throw new CuadraInexistenteException();
+
+		vehiculoEnLaEsquina.incrementarMovimientos(1);
+		cuadraAdirijirse.moverVehiculo(vehiculoEnLaEsquina, this);
+		vehiculoEnLaEsquina = null;
 	}
 
 	public void posicionarVehiculo(Vehiculo unVehiculo) {
 		vehiculoEnLaEsquina = unVehiculo;
+	}
+
+	public Vehiculo getVehiculoEnLaEsquina() {
+		return vehiculoEnLaEsquina;
 	}
 
 	public void insertarCuadra(String direccion, Cuadra cuadra) {

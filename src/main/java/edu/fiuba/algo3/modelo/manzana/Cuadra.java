@@ -5,37 +5,25 @@ import edu.fiuba.algo3.modelo.sorpresa.Sorpresa;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class Cuadra {
-    private Esquina esquinaA;
-    private Esquina esquinaB;
+	private Esquina esquinaA;
+	private Esquina esquinaB;
 //    private Evento evento;
-    private Obstaculo obstaculo;
-    private Sorpresa sorpresa;
+	private Obstaculo obstaculo;
+	private Sorpresa sorpresa;
 
-    public Cuadra(Esquina unaEsquinaA, String claveEsqA, Esquina unaEsquinaB, String claveEsqB, Obstaculo unObstaculo, Sorpresa unaSorpresa) {
-        this.esquinaA = unaEsquinaA;
-        this.esquinaB = unaEsquinaB;
-        this.obstaculo = unObstaculo;
-        this.sorpresa = unaSorpresa;
-
-        esquinaA.insertarCuadra(claveEsqA, this);
-        esquinaB.insertarCuadra(claveEsqB, this);
-    }
-
-
-    public int desplazar(Vehiculo unVehiculo, Esquina esquinaInicio) {
-        int modificacionMovimientos = 1 + unVehiculo.atravezarObstaculo(obstaculo) + unVehiculo.atravezarSorpresa(sorpresa);
-
-        if (esquinaA.equals(esquinaInicio) ) {
-            esquinaB.posicionarVehiculo( unVehiculo );
-            return modificacionMovimientos;
-        }
-        esquinaA.posicionarVehiculo( unVehiculo );
-        return modificacionMovimientos;
-    }
-
-
-		public void moverVehiculo(Vehiculo vehiculoEnLaEsquina) {
-			// TODO Auto-generated method stub
-			
+	public Cuadra(Esquina unaEsquinaA, Esquina unaEsquinaB, Obstaculo unObstaculo, Sorpresa unaSorpresa) {
+		this.esquinaA = unaEsquinaA;
+		this.esquinaB = unaEsquinaB;
+		this.obstaculo = unObstaculo;
+		this.sorpresa = unaSorpresa;
+	}
+	
+	public void moverVehiculo(Vehiculo vehiculoEnLaCuadra, Esquina esquinaInicio) { // Checkear si esto viola "tell don't ask"
+//		evento.afectarVehiculo(vehiculoEnLaCuadra);
+		Esquina esquinaADestino = esquinaA;
+		if (esquinaA.equals(esquinaInicio)) {
+			esquinaADestino = esquinaB;
 		}
+		esquinaADestino.posicionarVehiculo(vehiculoEnLaCuadra);
+	}
 }
