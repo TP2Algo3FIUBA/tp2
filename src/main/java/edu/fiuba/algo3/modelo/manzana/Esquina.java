@@ -35,4 +35,8 @@ public class Esquina {
 	public void insertarCuadra(String direccion, Cuadra cuadra) {
 		cuadras.put(direccion, cuadra);
 	}
+	
+	public HashMap<String, Cuadra> getCuadras() { // TO-DO: remove later.
+		return cuadras;
+	}
 }

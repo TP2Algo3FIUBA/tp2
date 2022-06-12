@@ -11,14 +11,14 @@ public class Moto extends Vehiculo {
 		super();
 	}
 
-	@Override
-	public int atravezarObstaculo(Obstaculo unObstaculo) {
-		return 0;
-	}
-
-	@Override
-	public int atravezarSorpresa(Sorpresa sorpresa) {
-		return 0;
-	}
+//	@Override
+//	public int atravezarObstaculo(Obstaculo unObstaculo) {
+//		return 0;
+//	}
+//
+//	@Override
+//	public int atravezarSorpresa(Sorpresa sorpresa) {
+//		return 0;
+//	}
 
 }

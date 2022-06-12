@@ -9,8 +9,6 @@ import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.CuadraInexistenteException;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.vehiculo.Moto;
-import exceptions.InvalidRadiusException;
-import figures.Circle;
 
 class EsquinaTest {
 

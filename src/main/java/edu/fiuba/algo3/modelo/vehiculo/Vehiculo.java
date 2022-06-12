@@ -8,10 +8,12 @@ import edu.fiuba.algo3.modelo.sorpresa.Sorpresa;
 
 public abstract class Vehiculo {
 	
-			Jugador conductor;
+			public Jugador conductor;
+			private Esquina esquinaActual;
 			
 			public Vehiculo() {
 				conductor = null;
+				esquinaActual = null;
 			}
 			
 			public void incrementarMovimientos(int movimientos) {
@@ -26,42 +28,24 @@ public abstract class Vehiculo {
 				this.conductor = conductor;
 			}
 
-//    private Esquina posicion;
-//
-//    public Vehiculo(Esquina unaPosicion) {
-//        posicion = unaPosicion;
-//    }
-//
-//    public int movArriba() {
-//        return posicion.dirijirseAPos("arriba", this);
-//    }
-//
-//    public int movAbajo() {
-//        // posicion = algo
-//        return posicion.dirijirseAPos("abajo", this);
-//    }
-//
-//    public int movDerecha() {
-//        return posicion.dirijirseAPos("derecha", this);
-//    }
-//
-//    public int movIzquierda() {
-//        // posicion = algo
-//        return posicion.dirijirseAPos("izquierda", this);
-//    }
-//
-//    public int posicion() {
-//        return posicion.coordenada();
-//    }
-//
-//    public void actualizarPosicion(Esquina unaEsquina) {
-//        posicion = unaEsquina;
-//    }
+			public void setEsquinaActual(Esquina esquinaActual) {
+				this.esquinaActual = esquinaActual;
+			}
+			
+			public void moverseAEsquina(String direccion) {
+				this.esquinaActual.moverVehiculo(direccion);
+			}
 
+			public Esquina getEsquinaActual() {
+				return esquinaActual;
+			}
+			
+
+			
     
 
-		public abstract int atravezarObstaculo(Obstaculo unObstaculo);
-
-    public abstract int atravezarSorpresa(Sorpresa sorpresa);
+//		public abstract int atravezarObstaculo(Obstaculo unObstaculo);
+//
+//    public abstract int atravezarSorpresa(Sorpresa sorpresa);
 
 }

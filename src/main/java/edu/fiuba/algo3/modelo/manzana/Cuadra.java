@@ -25,5 +25,6 @@ public class Cuadra {
 			esquinaADestino = esquinaB;
 		}
 		esquinaADestino.posicionarVehiculo(vehiculoEnLaCuadra);
+		vehiculoEnLaCuadra.setEsquinaActual(esquinaADestino);
 	}
 }
