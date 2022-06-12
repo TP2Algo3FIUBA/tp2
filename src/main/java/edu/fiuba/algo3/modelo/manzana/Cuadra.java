@@ -5,10 +5,9 @@ import edu.fiuba.algo3.modelo.sorpresa.Sorpresa;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class Cuadra {
-    //private Obstaculo obstaculo;
-    //private Sorpresa sorpresa;
     private Esquina esquinaA;
     private Esquina esquinaB;
+//    private Evento evento;
     private Obstaculo obstaculo;
     private Sorpresa sorpresa;
 
@@ -33,4 +32,10 @@ public class Cuadra {
         esquinaA.posicionarVehiculo( unVehiculo );
         return modificacionMovimientos;
     }
+
+
+		public void moverVehiculo(Vehiculo vehiculoEnLaEsquina) {
+			// TODO Auto-generated method stub
+			
+		}
 }

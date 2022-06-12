@@ -7,19 +7,18 @@ import edu.fiuba.algo3.modelo.sorpresa.Sorpresa;
 
 public class Moto extends Vehiculo {
 
+	public Moto() {
+		super();
+	}
 
-    public Moto(Esquina unaPosicion) {
-        super(unaPosicion);
-            }
+	@Override
+	public int atravezarObstaculo(Obstaculo unObstaculo) {
+		return 0;
+	}
 
-    @Override
-    public int atravezarObstaculo(Obstaculo unObstaculo) {
-        return 0;
-    }
-
-    @Override
-    public int atravezarSorpresa(Sorpresa sorpresa) {
-        return 0;
-    }
+	@Override
+	public int atravezarSorpresa(Sorpresa sorpresa) {
+		return 0;
+	}
 
 }
