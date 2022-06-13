@@ -10,6 +10,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 2** - [Juan518munoz](https://github.com/juan518munoz)
 * **Integrante 3** - [iregazzoli](https://github.com/iregazzoli)
 * **Integrante 4** - [Danikim01](https://github.com/Danikim01)
+* **Integrante 5** - [CamiFio](https://github.com/CamiFio)
 
 Corrector: **Jose Pablo Suarez**
 
