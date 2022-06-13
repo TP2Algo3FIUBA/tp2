@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.CuadraInexistenteException;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.vehiculo.Moto;
 
 class EsquinaTest {
@@ -25,7 +26,8 @@ class EsquinaTest {
 	void testMoverVehiculo() {
 		Esquina inicio = new Esquina();
 		Esquina destino = new Esquina();
-		Cuadra cuadra = new Cuadra(inicio, destino, null, null);
+		Pozo pozo = new Pozo();
+		Cuadra cuadra = new Cuadra(inicio, destino, pozo);
 		Moto moto = new Moto();
 		Jugador conductor = new Jugador(moto);
 		moto.setConductor(conductor);
@@ -37,7 +39,6 @@ class EsquinaTest {
 		assertEquals(inicio.getVehiculoEnLaEsquina(), moto);
 		assertEquals(destino.getVehiculoEnLaEsquina(), null);
 
-//		inicio.moverVehiculo("Sur");
 		moto.moverseAEsquina("Sur");
 
 		assertEquals(inicio.getVehiculoEnLaEsquina(), null);
@@ -48,7 +49,7 @@ class EsquinaTest {
 	void testMoverVehiculoACuadraInvalida() {
 		Esquina inicio = new Esquina();
 		Esquina destino = new Esquina();
-		Cuadra cuadra = new Cuadra(inicio, destino, null, null);
+		Cuadra cuadra = new Cuadra(inicio, destino,  null);
 		Moto moto = new Moto();
 		Jugador conductor = new Jugador(moto);
 		moto.setConductor(conductor);

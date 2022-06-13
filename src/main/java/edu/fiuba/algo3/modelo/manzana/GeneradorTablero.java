@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo.manzana;
 
+import edu.fiuba.algo3.modelo.evento.Evento;
+import edu.fiuba.algo3.modelo.evento.GeneradorEventos;
+
 //import Eventos.Evento;
 
 //import Eventos.GeneradorEventos;
@@ -27,41 +30,41 @@ public class GeneradorTablero { // TO DO: que esto una clase con solo metodos de
 			for (int columnaActual = 0; columnaActual < dimensiones; columnaActual++) {
 				Esquina esquinaInicio = nuevoTablero.obtenerEsquina(filaActual, columnaActual);
 				Esquina esquinaDestino;
-//				Evento evento = generadorEventos.generarEvento();
+				Evento evento = GeneradorEventos.generarEvento();
 
 				if (filaActual != 0) {
 					esquinaDestino = nuevoTablero.obtenerEsquina(filaActual - 1, columnaActual);
-					Cuadra nuevaCuadraInicioADestino = new Cuadra(esquinaInicio, esquinaDestino, null, null); // y aca en lugar de un obstaculo le pasas un evento
+					Cuadra nuevaCuadraInicioADestino = new Cuadra(esquinaInicio, esquinaDestino, evento); // y aca en lugar de un obstaculo le pasas un evento
 					esquinaInicio.insertarCuadra(NORTE, nuevaCuadraInicioADestino);
 
-					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio, null, null);
+					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio, evento);
 					esquinaDestino.insertarCuadra(SUR, nuevaCuadraDestinoAInicio);
 				}
 
 				if (columnaActual != 0) {
 					esquinaDestino = nuevoTablero.obtenerEsquina(filaActual, columnaActual - 1);
-					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino, null, null);
+					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  evento);
 					esquinaInicio.insertarCuadra(OESTE, nuevaCuadra);
 
-					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio, null, null);
+					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento);
 					esquinaDestino.insertarCuadra(ESTE, nuevaCuadraDestinoAInicio);
 				}
 
 				if (filaActual != dimensiones - 1) {
 					esquinaDestino = nuevoTablero.obtenerEsquina(filaActual + 1, columnaActual);
-					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino, null, null);
+					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  evento);
 					esquinaInicio.insertarCuadra(SUR, nuevaCuadra);
 
-					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio, null, null);
+					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento);
 					esquinaDestino.insertarCuadra(NORTE, nuevaCuadraDestinoAInicio);
 				}
 
 				if (columnaActual != dimensiones - 1) {
 					esquinaDestino = nuevoTablero.obtenerEsquina(filaActual, columnaActual + 1);
-					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino, null, null);
+					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  evento);
 					esquinaInicio.insertarCuadra(ESTE, nuevaCuadra);
 
-					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio, null, null);
+					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento);
 					esquinaDestino.insertarCuadra(OESTE, nuevaCuadraDestinoAInicio);
 				}
 			}

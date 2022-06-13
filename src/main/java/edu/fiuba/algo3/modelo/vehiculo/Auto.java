@@ -1,14 +1,23 @@
 package edu.fiuba.algo3.modelo.vehiculo;
 
-import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.manzana.CuadraInexistenteException;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
-import edu.fiuba.algo3.modelo.obstaculo.Obstaculo;
-import edu.fiuba.algo3.modelo.sorpresa.Sorpresa;
+import edu.fiuba.algo3.modelo.manzana.HayUnPiqueteException;
 
 public class Auto extends Vehiculo {
 
-	public Auto(Esquina unaPosicion) {
+	public Auto() {
 		super();
+	}
+
+	@Override
+	public void chocarContraPozo(){
+		conductor.incrementarMovimientos(3);
+	}
+
+	@Override
+	public void chocarContraPiquete(){
+		throw new HayUnPiqueteException();
 	}
 
 //	@Override
