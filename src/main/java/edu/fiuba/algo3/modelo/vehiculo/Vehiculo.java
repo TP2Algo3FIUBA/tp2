@@ -9,17 +9,8 @@ public abstract class Vehiculo {
 	private Esquina esquinaActual;
 
 	public Vehiculo() {
-		//conductor = null; // !!!
 		esquinaActual = null; // !!!
 	}
-
-	/*public Jugador getConductor() {
-		return conductor;
-	}
-
-	public void setConductor(Jugador conductor) {
-		this.conductor = conductor;
-	}*/
 
 	public void setEsquinaActual(Esquina esquinaActual) {
 		this.esquinaActual = esquinaActual;

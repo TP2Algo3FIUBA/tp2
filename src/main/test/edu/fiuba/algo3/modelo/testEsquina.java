@@ -3,18 +3,14 @@ package edu.fiuba.algo3.modelo;
 import static org.junit.jupiter.api.Assertions.*;
 
 import edu.fiuba.algo3.modelo.evento.EventoVacio;
-import edu.fiuba.algo3.modelo.manzana.Tablero;
-import edu.fiuba.algo3.modelo.vehiculo.Auto;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
-import edu.fiuba.algo3.modelo.manzana.CuadraInexistenteException;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
-import edu.fiuba.algo3.modelo.obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.vehiculo.Moto;
 
-class EsquinaTest {
+class testEsquina {
 
 	@Test
 	void testmoverVehiculoADireccionValida() {

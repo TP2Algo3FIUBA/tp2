@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-public class SorpresasTests {
+public class testSorpresas {
     // implementar
 }

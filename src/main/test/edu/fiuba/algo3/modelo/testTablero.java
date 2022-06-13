@@ -10,9 +10,8 @@ import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.GeneradorTablero;
 import edu.fiuba.algo3.modelo.manzana.Tablero;
 import edu.fiuba.algo3.modelo.vehiculo.Moto;
-import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 
-class TableroTest {
+class testTablero {
 
 	@Test
 	void testAgregarUnaEsquinas() {

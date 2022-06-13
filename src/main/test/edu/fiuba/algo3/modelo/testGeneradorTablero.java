@@ -1,13 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.manzana.GeneradorTablero;
 import edu.fiuba.algo3.modelo.manzana.Tablero;
 
-class GeneradorTableroTest {
+class testGeneradorTablero {
 
 	@Test
 	void testGenerarTablero() {
