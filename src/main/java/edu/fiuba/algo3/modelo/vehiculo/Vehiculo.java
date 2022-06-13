@@ -24,9 +24,11 @@ public abstract class Vehiculo {
 		return esquinaActual;
 	}
 
-	public abstract void chocarContraPozo(Jugador jugador);
+	public abstract boolean chocarContraPozo(Jugador jugador);
 
 	public abstract boolean chocarContraPiquete(Jugador jugador);
+
+	public abstract Vehiculo aplicarSorpresaCambioVehiculo();
 
 	public void sorpresaFavorable(Jugador jugador) {
 		jugador.incrementarMovimientos((jugador.getMovimientos()) * (20 / 100) * (-1));// ! viola encapsulamiento
@@ -35,5 +37,7 @@ public abstract class Vehiculo {
 	public void sorpresaDesfavorable(Jugador jugador) {
 		jugador.incrementarMovimientos((jugador.getMovimientos()) * (25 / 100)); // ! viola encapsulamiento
 	}
+
+
 
 }

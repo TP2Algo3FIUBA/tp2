@@ -9,8 +9,9 @@ public class Moto extends Vehiculo {
 	}
 
 	@Override
-	public void chocarContraPozo(Jugador jugador){
+	public boolean chocarContraPozo(Jugador jugador){
 		jugador.incrementarMovimientos(3);
+		return true;
 	}
 
 	@Override
@@ -18,6 +19,11 @@ public class Moto extends Vehiculo {
 		jugador.incrementarMovimientos(2);
         return true;
     }
+
+	@Override
+	public Vehiculo aplicarSorpresaCambioVehiculo() {
+		return (new Auto());
+	}
 
 
 }

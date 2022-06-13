@@ -34,4 +34,10 @@ public class Jugador {
 	public Vehiculo getVehiculo() {
 		return this.vehiculo;
 	}
+
+	public void aplicarSorpresaCambioVehiculo() {
+		Esquina posicionActual = vehiculo.getEsquinaActual(); //
+		vehiculo = vehiculo.aplicarSorpresaCambioVehiculo();  // Raro? se resuelve poniendo la posicion dentro del jugador
+		vehiculo.setEsquinaActual(posicionActual);		      //
+	}
 }

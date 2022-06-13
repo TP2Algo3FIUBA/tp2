@@ -9,13 +9,19 @@ public class Auto extends Vehiculo {
 	}
 
 	@Override
-	public void chocarContraPozo(Jugador jugador){
+	public boolean chocarContraPozo(Jugador jugador){
 		jugador.incrementarMovimientos(3);
+		return true;
 	}
 
 	@Override
 	public boolean chocarContraPiquete(Jugador jugador){
 		//throw new HayUnPiqueteException();
 		return false;
+	}
+
+	@Override
+	public Vehiculo aplicarSorpresaCambioVehiculo() {
+		return (new CuatroPorCuatro());
 	}
 }
