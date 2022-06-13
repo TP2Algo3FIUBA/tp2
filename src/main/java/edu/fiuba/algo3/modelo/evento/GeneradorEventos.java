@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.evento;
 
 import edu.fiuba.algo3.modelo.obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.obstaculo.Pozo;
+import edu.fiuba.algo3.modelo.sorpresa.SorpresaDesfavorable;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaFavorable;
 
 public class GeneradorEventos {
@@ -18,6 +19,9 @@ public class GeneradorEventos {
 			switch (SubTipoEvento) {
 			case 1:
 				eventoGenerado = (Evento) new SorpresaFavorable();
+				break;
+			case 2:
+				eventoGenerado = (Evento) new SorpresaDesfavorable();
 				break;
 
 			}
