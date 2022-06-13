@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.modelo.vehiculo;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
-import edu.fiuba.algo3.modelo.obstaculo.Obstaculo;
-import edu.fiuba.algo3.modelo.sorpresa.Sorpresa;
 
 public abstract class Vehiculo {
 	
@@ -39,10 +36,12 @@ public abstract class Vehiculo {
 			public Esquina getEsquinaActual() {
 				return esquinaActual;
 			}
-			
 
-			
-    
+			public abstract void chocarContraPozo();
+
+			public abstract void chocarContraPiquete();
+
+
 
 //		public abstract int atravezarObstaculo(Obstaculo unObstaculo);
 //

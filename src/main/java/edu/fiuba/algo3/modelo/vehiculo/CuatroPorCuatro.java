@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.modelo.vehiculo;
 
-import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.manzana.Esquina;
-import edu.fiuba.algo3.modelo.obstaculo.Obstaculo;
-import edu.fiuba.algo3.modelo.sorpresa.Sorpresa;
+import edu.fiuba.algo3.modelo.manzana.HayUnPiqueteException;
 
 public class CuatroPorCuatro extends Vehiculo {
 
@@ -12,6 +9,20 @@ public class CuatroPorCuatro extends Vehiculo {
 	public CuatroPorCuatro() {
 		super();
 		this.pozosAtravezados = 0;
+	}
+
+	@Override
+	public void chocarContraPozo(){
+		this.pozosAtravezados++;
+		if(this.pozosAtravezados==3){
+			conductor.incrementarMovimientos(2);
+		}
+		conductor.incrementarMovimientos(0);
+	}
+
+	@Override
+	public void chocarContraPiquete(){
+		throw new HayUnPiqueteException();
 	}
 
 //	@Override

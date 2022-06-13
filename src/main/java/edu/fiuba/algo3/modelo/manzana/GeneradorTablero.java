@@ -31,37 +31,37 @@ public class GeneradorTablero { // TO DO: que esto una clase con solo metodos de
 
 				if (filaActual != 0) {
 					esquinaDestino = nuevoTablero.obtenerEsquina(filaActual - 1, columnaActual);
-					Cuadra nuevaCuadraInicioADestino = new Cuadra(esquinaInicio, esquinaDestino, null, null); // y aca en lugar de un obstaculo le pasas un evento
+					Cuadra nuevaCuadraInicioADestino = new Cuadra(esquinaInicio, esquinaDestino, null); // y aca en lugar de un obstaculo le pasas un evento
 					esquinaInicio.insertarCuadra(NORTE, nuevaCuadraInicioADestino);
 
-					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio, null, null);
+					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio, null);
 					esquinaDestino.insertarCuadra(SUR, nuevaCuadraDestinoAInicio);
 				}
 
 				if (columnaActual != 0) {
 					esquinaDestino = nuevoTablero.obtenerEsquina(filaActual, columnaActual - 1);
-					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino, null, null);
+					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  null);
 					esquinaInicio.insertarCuadra(OESTE, nuevaCuadra);
 
-					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio, null, null);
+					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  null);
 					esquinaDestino.insertarCuadra(ESTE, nuevaCuadraDestinoAInicio);
 				}
 
 				if (filaActual != dimensiones - 1) {
 					esquinaDestino = nuevoTablero.obtenerEsquina(filaActual + 1, columnaActual);
-					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino, null, null);
+					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  null);
 					esquinaInicio.insertarCuadra(SUR, nuevaCuadra);
 
-					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio, null, null);
+					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  null);
 					esquinaDestino.insertarCuadra(NORTE, nuevaCuadraDestinoAInicio);
 				}
 
 				if (columnaActual != dimensiones - 1) {
 					esquinaDestino = nuevoTablero.obtenerEsquina(filaActual, columnaActual + 1);
-					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino, null, null);
+					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  null);
 					esquinaInicio.insertarCuadra(ESTE, nuevaCuadra);
 
-					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio, null, null);
+					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  null);
 					esquinaDestino.insertarCuadra(OESTE, nuevaCuadraDestinoAInicio);
 				}
 			}

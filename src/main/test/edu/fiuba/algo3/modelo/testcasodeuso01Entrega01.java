@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.modelo;
-
+/*
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
@@ -143,3 +143,4 @@ public class testcasodeuso01Entrega01 {
     }
 }
 
+*/

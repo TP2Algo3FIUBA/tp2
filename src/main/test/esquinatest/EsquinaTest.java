@@ -25,7 +25,7 @@ class EsquinaTest {
 	void testMoverVehiculo() {
 		Esquina inicio = new Esquina();
 		Esquina destino = new Esquina();
-		Cuadra cuadra = new Cuadra(inicio, destino, null, null);
+		Cuadra cuadra = new Cuadra(inicio, destino,  null);
 		Moto moto = new Moto();
 		Jugador conductor = new Jugador(moto);
 		moto.setConductor(conductor);
@@ -47,7 +47,7 @@ class EsquinaTest {
 	void testMoverVehiculoACuadraInvalida() {
 		Esquina inicio = new Esquina();
 		Esquina destino = new Esquina();
-		Cuadra cuadra = new Cuadra(inicio, destino, null, null);
+		Cuadra cuadra = new Cuadra(inicio, destino,  null);
 		Moto moto = new Moto();
 		Jugador conductor = new Jugador(moto);
 		moto.setConductor(conductor);

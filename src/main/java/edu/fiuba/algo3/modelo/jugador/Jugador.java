@@ -16,7 +16,7 @@ public class Jugador {
 			return movimientos;
 		}
 
-		public void incrementarMovimientos(int movimientos){
+        public void incrementarMovimientos(int movimientos){
     	this.movimientos += movimientos;
     }
 }
