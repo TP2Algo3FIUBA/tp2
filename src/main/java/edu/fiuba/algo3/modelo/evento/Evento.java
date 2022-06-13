@@ -1,7 +1,8 @@
 package edu.fiuba.algo3.modelo.evento;
 
-import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 public interface Evento {
-    void afectarVehiculo(Vehiculo vehiculo);
+    boolean afectarJugador(Jugador jugador);
+
 }

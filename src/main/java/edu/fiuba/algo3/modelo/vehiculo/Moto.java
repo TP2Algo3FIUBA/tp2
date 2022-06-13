@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.vehiculo;
 
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+
 public class Moto extends Vehiculo {
 
 	public Moto() {
@@ -7,21 +9,15 @@ public class Moto extends Vehiculo {
 	}
 
 	@Override
-	public void chocarContraPozo(){
-		conductor.incrementarMovimientos(3);
+	public void chocarContraPozo(Jugador jugador){
+		jugador.incrementarMovimientos(3);
 	}
 
 	@Override
-	public void chocarContraPiquete(){ conductor.incrementarMovimientos(2); }
+	public boolean chocarContraPiquete(Jugador jugador) {
+		jugador.incrementarMovimientos(2);
+        return true;
+    }
 
-//	@Override
-//	public int atravezarObstaculo(Obstaculo unObstaculo) {
-//		return 0;
-//	}
-//
-//	@Override
-//	public int atravezarSorpresa(Sorpresa sorpresa) {
-//		return 0;
-//	}
 
 }

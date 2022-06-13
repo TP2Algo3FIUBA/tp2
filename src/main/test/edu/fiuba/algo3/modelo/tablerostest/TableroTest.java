@@ -1,7 +1,8 @@
-package tablerostest;
+package edu.fiuba.algo3.modelo.tablerostest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import edu.fiuba.algo3.modelo.juego.Juego;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
@@ -42,28 +43,25 @@ class TableroTest {
 	@Test
 	void testPosicionarVehiculoEnElInicio() {
 		Tablero tableroTest = GeneradorTablero.generarTablero(3);
-		Vehiculo moto = new Moto();
-		tableroTest.posicionarEnInicioVehiculo(moto);
 
-		Esquina esquinaInicio = tableroTest.obtenerEsquina(0, 0);
+        Jugador jugador = new Jugador(new Moto());
 
-		assertEquals(esquinaInicio.getVehiculoEnLaEsquina(), moto);
+        Juego juego = new Juego(jugador, tableroTest);
+        juego.spawnearJugadorEn(0,0);
+
+		assertEquals(jugador.posicionActual(), tableroTest.obtenerEsquina(0,0));
 	}
 	
 	@Test
 	void testMoverVehiculo() {
-		Tablero tableroTest = GeneradorTablero.generarTablero(3);
-		
-		Vehiculo moto = new Moto();
-		Jugador conductor = new Jugador(moto);
-		moto.setConductor(conductor);
-		tableroTest.posicionarEnInicioVehiculo(moto);
-		
-		Esquina esquinaInicio = moto.getEsquinaActual();
-		moto.moverseAEsquina("Este");
-		Esquina esquinaDestino = moto.getEsquinaActual();
-		
-		assertEquals(esquinaInicio.getVehiculoEnLaEsquina(), null);
-		assertEquals(esquinaDestino.getVehiculoEnLaEsquina(), moto);
+        Tablero tableroTest = GeneradorTablero.generarTablero(3);
+
+        Jugador jugador = new Jugador(new Moto());
+
+        Juego juego = new Juego(jugador, tableroTest);
+        juego.spawnearJugadorEn(0,0);
+
+        juego.moverJugadorEnDireccion("Este");
+        assertEquals(jugador.posicionActual(), tableroTest.obtenerEsquina(0,1));
 	}
 }

@@ -1,10 +1,12 @@
 package edu.fiuba.algo3.modelo.evento;
 
-import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 public class EventoVacio implements Evento {
 
 	@Override
-	public void afectarVehiculo(Vehiculo vehiculoEnLaCuadra) {}
+	public boolean afectarJugador(Jugador vehiculoEnLaCuadra) {
+		return true;
+	}
 
 }

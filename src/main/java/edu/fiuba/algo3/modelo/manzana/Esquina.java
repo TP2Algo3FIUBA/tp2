@@ -1,36 +1,26 @@
 package edu.fiuba.algo3.modelo.manzana;
 
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 import java.util.HashMap;
 
 public class Esquina {
 	private HashMap<String, Cuadra> cuadras;
-	Vehiculo vehiculoEnLaEsquina;
 
 	public Esquina() {
 		this.cuadras = new HashMap<>();
-		vehiculoEnLaEsquina = null;
 	}
 
-	public void moverVehiculo(String direccion) {
-		Cuadra cuadraAdirijirse = cuadras.get(direccion);
+	public void moverVehiculo(Jugador jugador, String direccion) {
 
+		Cuadra cuadraAdirijirse = cuadras.get(direccion);
 		if (cuadraAdirijirse == null)
 			throw new CuadraInexistenteException();
 
-		vehiculoEnLaEsquina.incrementarMovimientos(1);
-		cuadraAdirijirse.moverVehiculo(vehiculoEnLaEsquina, this);
-		vehiculoEnLaEsquina = null;
-	}
+		jugador.incrementarMovimientos(1);
 
-	public void posicionarVehiculo(Vehiculo unVehiculo) {
-		vehiculoEnLaEsquina = unVehiculo;
-		unVehiculo.setEsquinaActual(this); 	
-	}
-
-	public Vehiculo getVehiculoEnLaEsquina() {
-		return vehiculoEnLaEsquina;
+		cuadraAdirijirse.moverVehiculo(jugador, this);
 	}
 
 	public void insertarCuadra(String direccion, Cuadra cuadra) {
