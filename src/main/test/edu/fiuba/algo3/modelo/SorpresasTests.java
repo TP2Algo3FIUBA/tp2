@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.obstaculosTest;
+package edu.fiuba.algo3.modelo;
 
 public class SorpresasTests {
     // implementar
