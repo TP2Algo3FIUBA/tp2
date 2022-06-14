@@ -1,0 +1,8 @@
+@startuml
+    class GeneradorTablero {
+         -generarEsquinas(dimensiones: Int, nuevoTablero: Tablero)
+         -generarCuadras(dimensiones: Int, nuevoTablero: Tablero)
+         +generarTablero(dimensiones: Int): Tablero
+    }
+
+@enduml

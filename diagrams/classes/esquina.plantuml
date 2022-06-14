@@ -1,11 +1,9 @@
 @startuml
-         class Esquina {
-           - cuadra: Cuadra
-           + arribar(Moto): void
-        }
 
-        class Esquina2{
-
-        }
+    class Esquina {
+         -cuadras : HashMap<String, Cuadra>
+         +moverVehiculo(jugador: Jugador, direccion: String)
+         +insertarCuadra(direccion: String, cuadra: Cuadra)
+    }
 
 @enduml

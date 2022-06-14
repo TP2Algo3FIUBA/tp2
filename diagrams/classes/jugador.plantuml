@@ -1,19 +1,17 @@
 @startuml
 
-        class Jugador {
-        		- turnos : ArrayList<Turno>
-        }
-
-        class Turno {
-        }
-        interface Estado {
-        }
-        class Habilitado{}
-        class Penalizado{}
-
-Jugador -> Turno
-Turno -> Estado
-Habilitado ..|> Estado
-Penalizado ..|> Estado
+    class Jugador {
+        - movimientos : Int
+        - vehiculo : Vehiculo
+        + getMovimientos(): Int
+        + getVehiculo(): Vehiculo
+        + incrementarMovimientos(movimientos : Int)
+        + moverEnDireccion(direccion : String)
+        + posicionActual(): Esquina
+        + spawnearVehiculoEn(unaEsquina : Esquina)
+        + aplicarSorpresaCambioVehiculo()
+        + sorpresaFavorable()
+        + sorpresaDesfavorable()
+    }
 
 @enduml

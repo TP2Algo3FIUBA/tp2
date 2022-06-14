@@ -42,13 +42,13 @@ public class Jugador {
 	}
 
 	public void sorpresaFavorable() {
-		this.movimientos = (int) Math.round(movimientos*0.8) - 1;
+		this.movimientos = (int) Math.round((movimientos)*0.8) ;
 		//No tendria porque estar el -1 aca, cuando se aplica sorpresa, directamente no se tiene q sumar movimientos
 		//Tenemos que reever toda la logica de como sumar puntos.
 
 	}
 
 	public void sorpresaDesfavorable() {
-		this.movimientos += (int) Math.round(movimientos*0.25) ;
+		this.movimientos = (int) Math.round((movimientos)*1.25);
 	}
 }

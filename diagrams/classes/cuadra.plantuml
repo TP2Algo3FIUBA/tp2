@@ -1,0 +1,11 @@
+@startuml
+
+    class Cuadra {
+         -esquinaA: Esquina
+         -esquinaB: Esquina
+         -evento: Evento
+         -obtenerEsquinaOpuesta(esquinaRecibida: Esquina)
+         +moverVehiculo(jugador: Jugador, esquinaInicio: Esquina)
+    }
+
+@enduml
