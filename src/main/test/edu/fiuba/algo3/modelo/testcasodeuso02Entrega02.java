@@ -69,7 +69,7 @@ public class testcasodeuso02Entrega02 {
         juego.moverJugadorEnDireccion("Oeste");
         juego.moverJugadorEnDireccion("Norte");
         // Assert
-        assertEquals(9, jugador.getMovimientos());
+        assertEquals(10, jugador.getMovimientos());
 
     }
 

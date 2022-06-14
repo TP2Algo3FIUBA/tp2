@@ -140,7 +140,7 @@ public class testSorpresas {
 
         jugador.moverEnDireccion("Este");
         jugador.moverEnDireccion("Oeste");
-        assertEquals(0,jugador.getMovimientos());
+        assertEquals(2,jugador.getMovimientos());
     }
 
     @Test
@@ -158,7 +158,7 @@ public class testSorpresas {
 
         jugador.moverEnDireccion("Este");
         jugador.moverEnDireccion("Oeste");
-        assertEquals(0,jugador.getMovimientos());
+        assertEquals(2,jugador.getMovimientos());
     }
 
     @Test
@@ -176,7 +176,7 @@ public class testSorpresas {
 
         jugador.moverEnDireccion("Este");
         jugador.moverEnDireccion("Oeste");
-        assertEquals(0,jugador.getMovimientos());
+        assertEquals(2,jugador.getMovimientos());
     }
 
 
