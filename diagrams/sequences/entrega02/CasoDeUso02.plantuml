@@ -1,3 +1,23 @@
 @startuml
+title: unVehículoAtraviesaLaCiudadYEncuentraUnaSorpresaDesfavorable
 
+Actor test
+test -> ":Juego" : moverJugadorEnDireccion("Norte")
+":Juego" -> ":Jugador" : moverEnDireccion("Norte")
+":Jugador" -> ":Auto" : moverseAEsquina(this, "Norte")
+":Auto" -> esquinaActual : moverVehiculo(":Jugador", "Norte")
+esquinaActual -> cuadras : get("Norte")
+esquinaActual <-- cuadras : cuadraAdirijirse = Cuadra
+esquinaActual -> ":Jugador" : incrementarMovimientos(1)
+esquinaActual -> cuadraAdirijirse : moverVehiculo(":Jugador", this)
+cuadraAdirijirse -> ":SorpresaDesfavorable" : afectarJugador(jugador)
+":SorpresaDesfavorable" -> ":Jugador" : sorpresaDesfavorable()
+":Jugador" -> ":Jugador" : movimientos = movimientos*0.8
+":SorpresaDesfavorable" <-- ":Jugador"
+cuadraAdirijirse <-- ":SorpresaDesfavorable" : puedeAvanzar = true
+cuadraAdirijirse <- cuadraAdirijirse : obtenerEsquinaOpuesta(esquinaInicio)
+cuadraAdirijirse -> ":Jugador" : getVehiculo
+cuadraAdirijirse <-- ":Jugador" : vehiculo = ":Auto"
+cuadraAdirijirse -> ":Auto" : setEsquinaActual(esquinaDestino)
+test <-- cuadraAdirijirse
 @enduml
