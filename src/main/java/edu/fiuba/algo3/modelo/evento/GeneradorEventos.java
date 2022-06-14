@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.evento;
 
+import edu.fiuba.algo3.modelo.obstaculo.ControlPolicial;
 import edu.fiuba.algo3.modelo.obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaDesfavorable;
@@ -27,14 +28,22 @@ public class GeneradorEventos {
 			}
 
 		case 2:
+			eventoGenerado = new EventoVacio();
+			break;
+
+		case 3:
 			switch (SubTipoEvento) {
 			case 1:
 				eventoGenerado = (Evento) new Pozo();
 			case 2:
 				eventoGenerado = (Evento) new Piquete();
 				break;
+			case 3:
+				eventoGenerado = (Evento) new ControlPolicial();
+				break;
 			}
 
+			return null;
 		}
 		return eventoGenerado;
 	}

@@ -27,6 +27,8 @@ public abstract class Vehiculo {
 	public abstract boolean chocarContraPozo(Jugador jugador);
 
 	public abstract boolean chocarContraPiquete(Jugador jugador);
+	
+	public abstract void atravezarControlPolicial(Jugador jugador);
 
 	public abstract Vehiculo aplicarSorpresaCambioVehiculo();
 
@@ -36,6 +38,11 @@ public abstract class Vehiculo {
 
 	public void sorpresaDesfavorable(Jugador jugador) {
 		jugador.incrementarMovimientos((jugador.getMovimientos()) * (25 / 100)); // ! viola encapsulamiento
+	}
+
+	public void atravezarControlPolicial() {
+		// TODO Auto-generated method stub
+		
 	}
 
 

@@ -12,9 +12,9 @@ public class CuatroPorCuatro extends Vehiculo {
 	}
 
 	@Override
-	public boolean chocarContraPozo(Jugador jugador){
+	public boolean chocarContraPozo(Jugador jugador) {
 		this.pozosAtravezados++;
-		if(this.pozosAtravezados==3){
+		if (this.pozosAtravezados == 3) {
 			jugador.incrementarMovimientos(2);
 		}
 		jugador.incrementarMovimientos(0);
@@ -22,14 +22,23 @@ public class CuatroPorCuatro extends Vehiculo {
 	}
 
 	@Override
-	public boolean chocarContraPiquete(Jugador jugador){
-		//throw new HayUnPiqueteException();
+	public boolean chocarContraPiquete(Jugador jugador) {
+		// throw new HayUnPiqueteException();
 		return false;
 	}
 
 	@Override
 	public Vehiculo aplicarSorpresaCambioVehiculo() {
 		return (new Moto());
+	}
+
+	@Override
+	public void atravezarControlPolicial(Jugador jugador) {
+		double probabilidadPenalizacion = Math.random();
+		if (probabilidadPenalizacion <= 0.3) {
+			jugador.incrementarMovimientos(3);
+		}
+
 	}
 
 }

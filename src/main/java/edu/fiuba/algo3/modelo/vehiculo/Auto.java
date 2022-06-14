@@ -24,4 +24,12 @@ public class Auto extends Vehiculo {
 	public Vehiculo aplicarSorpresaCambioVehiculo() {
 		return (new CuatroPorCuatro());
 	}
+
+	@Override
+	public void atravezarControlPolicial(Jugador jugador) {
+		double probabilidadPenalizacion = Math.random();
+		if (probabilidadPenalizacion <= 0.5) {
+			jugador.incrementarMovimientos(3);
+		}
+	}
 }
