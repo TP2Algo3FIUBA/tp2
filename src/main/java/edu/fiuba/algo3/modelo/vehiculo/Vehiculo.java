@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo.vehiculo;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+
 import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.manzana.EsquinaNoValidaException;
 
 public abstract class Vehiculo {
 
@@ -9,10 +11,12 @@ public abstract class Vehiculo {
 	private Esquina esquinaActual;
 
 	public Vehiculo() {
-		esquinaActual = null; // !!!
+		esquinaActual = new Esquina(); //
+
 	}
 
 	public void setEsquinaActual(Esquina esquinaActual) {
+		if(esquinaActual== null){throw new EsquinaNoValidaException();}
 		this.esquinaActual = esquinaActual;
 	}
 

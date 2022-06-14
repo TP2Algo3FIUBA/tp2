@@ -4,8 +4,8 @@ Cosas por hacer entrega 2
 - [ ] Diagramas de Secuencia - **Juan**
 - [ ] Test Unitario Jugador - **Lucas**
 - [ ] Test Unitario Pozo - **Lucas**
-- [ ] Test Unitario Piquete - **Cami**
-- [ ] Test Unitario Evento Vacio - **Cami**
+- [x] Test Unitario Piquete - **Cami**
+- [x] Test Unitario Evento Vacio - **Cami**
 - [x] Test Unitario Generador Eventos - **Nacho**
 - [x] Test Unitario Cuadra - **Juan**
 - [x] Test Unitario CuadraInexistente - **Nacho**
@@ -15,5 +15,5 @@ Cosas por hacer entrega 2
 - [ ] Test Unitario Sorpresa Cambio Vehiculo - **Dani**
 - [ ] Test Unitario Sorpresa Desfavorable - **Dani**
 - [ ] Test Unitario Sorpresa Favorable - **Dani**
-- [ ] Verificar lo de cuadra vacia - **Cami**
+- [ ] Test Unitario Vehiculo - **Cami**
 
