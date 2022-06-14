@@ -1,25 +1,41 @@
 @startuml
 
+    abstract class Vehiculo {
+        - esquinaActual : Esquina
 
-interface Vehiculo {
+        + {abstract} chocarContraPozo(unJugador: Jugador): boolean
+        + {abstract} chocarContraPiquete(unJugador: Jugador): boolean
+        + {abstract} aplicarSorpresaCambioVehiculo(unJugador: Jugador) : Vehiculo
+        + setEsquinaActual(setEsquinaActual: Esquina): void
+        + moverseAEsquina(jugador: Jugador, direccion: String); void
+    }
 
-        + {abstract} mover(unJugador: Jugador): void
-}
+    class Auto {
+        + chocarContraPozo(jugador: Jugador): boolean
+        + chocarContraPiquete(jugador: Jugador): boolean
+        + aplicarSorpresaCambioVehiculo(): Vehiculo
+        + atravezarControlPolicial(jugador: Jugador): boolean
+    }
 
-class Moto {
-    + mover(): void
-}
+    class Moto {
+        + chocarContraPozo(jugador: Jugador): boolean
+        + chocarContraPiquete(jugador: Jugador): boolean
+        + aplicarSorpresaCambioVehiculo(): Vehiculo
+        + atravezarControlPolicial(jugador: Jugador): boolean
+    }
 
-class Auto {
-      + mover(): void
-}
 
-class 4x4 {
-      + mover(): void
-}
 
-Vehiculo <|.. Moto
-Vehiculo <|.. Auto
-Vehiculo <|.. 4x4
+    class CuatroPorCuatro {
+        - pozosAtravezados : Int
+        + chocarContraPozo(jugador: Jugador): boolean
+        + chocarContraPiquete(jugador: Jugador): boolean
+        + aplicarSorpresaCambioVehiculo(): Vehiculo
+        + atravezarControlPolicial(jugador: Jugador): boolean
+    }
+
+   Vehiculo <|-- Auto
+   Vehiculo <|-- Moto
+   Vehiculo <|-- CuatroPorCuatro
 
 @enduml
