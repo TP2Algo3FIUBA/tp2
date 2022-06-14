@@ -17,7 +17,7 @@ public class testSorpresas {
     @Test
     void testSorpresaCambioDeAuto() {
         // Arrange
-        Esquina esquina00 = new Esquina();  //   00 ---- 01
+        Esquina esquina00 = new Esquina();  //   00 --#-- 01
         Esquina esquina01 = new Esquina();
 
         // conecto 00 con 01
