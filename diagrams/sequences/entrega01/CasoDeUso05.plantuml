@@ -1,17 +1,3 @@
 @startuml
-Actor test
-test -> Auto : mover(Esquina)
-Auto -> Esquina: arribar(Auto)
-Esquina -> Cuadra: trancita(Auto)
-Cuadra -> Auto: atravezarCuadra()
-Auto --> Cuadra
-Cuadra -> Piquete: penalizar(Auto)
-Piquete -> Auto: atravezarPozo()
-Auto -> Jugador: incrementarMovimientos(0)
-Jugador --> Auto
-Auto --> Piquete
-Piquete --> Cuadra
-Cuadra --> Esquina
-Esquina --> Auto
-Auto --> test
+
 @enduml

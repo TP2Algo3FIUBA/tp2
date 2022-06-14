@@ -1,17 +1,28 @@
 @startuml
+
+title: unaMotoAtraviesaCiudadYSeEncuentraConUnPozoYEsPenalizadaTresMovimientos
+
+
 Actor test
-test -> Moto : mover(Esquina)
-Moto -> Esquina: arribar(Moto)
-Esquina -> Cuadra: trancita(Moto)
-Cuadra -> Moto: atravezarCuadra()
-Moto --> Cuadra
-Cuadra -> Pozo: penalizar(Moto)
-Pozo -> Moto: atravezarPozo()
-Moto -> Jugador: incrementarMovimientos(3)
-Jugador --> Moto
-Moto --> Pozo
-Pozo --> Cuadra
-Cuadra --> Esquina
-Esquina --> Moto
-Moto --> test
+test -> Juego : moverJugadorEnDireccion("Este")
+Juego -> Jugador : moverEnDireccion("Este")
+Jugador -> Moto : moverseAEsquina(this, "Este")
+Moto -> esquinaActual : moverVehiculo(jugador, "Este")
+esquinaActual -> cuadras : get("Este")
+esquinaActual <-- cuadras : cuadraAdirijirse = Cuadra
+esquinaActual -> jugador : incrementarMovimientos(1)
+esquinaActual -> cuadraAdirijirse : moverVehiculo(jugador, this)
+cuadraAdirijirse -> Pozo : afectarJugador(jugador)
+Pozo -> jugador : getVehiculo
+Pozo <-- jugador : vehiculo = Moto
+Pozo -> Moto : chocarContraPozo(jugador)
+Moto -> jugador : incrementarMovimientos(3)
+Pozo <-- Moto : puedeAvanzar = true
+cuadraAdirijirse <-- Pozo : puedeAvanzar = true
+cuadraAdirijirse <- cuadraAdirijirse : obtenerEsquinaOpuesta(esquinaInicio)
+cuadraAdirijirse -> jugador : getVehiculo
+cuadraAdirijirse <-- jugador : vehiculo = Moto
+cuadraAdirijirse -> Moto : setEsquinaActual(esquinaDestino)
+test <-- cuadraAdirijirse
+
 @enduml
