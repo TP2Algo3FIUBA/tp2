@@ -14,8 +14,8 @@ class testGeneradorEventos {
 		GeneradorEventos generador = new GeneradorEventos();
 		
 		Evento evento = generador.generarEvento();
-		System.out.println(evento.getClass());
-//		assertEquals(generador.generarEvento(), );
+		
+		assertTrue(evento instanceof Evento);
 	}
 
 }
