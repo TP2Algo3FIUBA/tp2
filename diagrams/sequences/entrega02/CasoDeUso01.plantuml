@@ -14,7 +14,7 @@ esquinaActual -> jugador : incrementarMovimientos(1)
 esquinaActual -> cuadraAdirijirse : moverVehiculo(jugador, this)
 cuadraAdirijirse -> SorpresaFavorable : afectarJugador(jugador)
 SorpresaFavorable -> jugador : sorpresaFavorable()
-jugador -> jugador : movimientos = movimientos*0.8
+jugador -> jugador : movimientos = movimientos*1.25
 SorpresaFavorable <-- jugador
 cuadraAdirijirse <-- SorpresaFavorable : puedeAvanzar = true
 cuadraAdirijirse <- cuadraAdirijirse : obtenerEsquinaOpuesta(esquinaInicio)
