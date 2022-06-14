@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.manzana.CuadraInexistenteException;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.Tablero;
 
@@ -15,7 +16,11 @@ public class Juego {
     }
 
     public void moverJugadorEnDireccion(String direccion) {
+    	try {
         jugador.moverEnDireccion(direccion);
+    	} catch(CuadraInexistenteException e){
+    		
+    	}
     }
 
     public Esquina obtenerPosicionJugador() {

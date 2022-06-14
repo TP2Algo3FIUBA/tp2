@@ -16,8 +16,10 @@ public class Esquina {
 	public void moverVehiculo(Jugador jugador, String direccion) {
 
 		Cuadra cuadraAdirijirse = cuadras.get(direccion);
-		if (cuadraAdirijirse == null)
+		if (cuadraAdirijirse == null) {
 			throw new CuadraInexistenteException();
+//			return;
+		}
 
 		jugador.incrementarMovimientos(1);
 
