@@ -10,8 +10,8 @@ public class GeneradorEventos {
 	}
 
 	public static Evento generarEvento() {
-		int tipoEvento = (int) Math.random() * 3 + 1;
-		int SubTipoEvento = (int) Math.random() * 3 + 1;
+		int tipoEvento = (int) Math.random() * 2 + 1;
+		int SubTipoEvento = (int) Math.random() * 2 + 1;
 
 		Evento eventoGenerado = null;
 		switch (tipoEvento) {
@@ -27,10 +27,6 @@ public class GeneradorEventos {
 			}
 
 		case 2:
-			eventoGenerado = new EventoVacio();
-			break;
-
-		case 3:
 			switch (SubTipoEvento) {
 			case 1:
 				eventoGenerado = (Evento) new Pozo();
