@@ -4,26 +4,27 @@ title: unVehículoAtraviesaLaCiudadYEncuentraUnaSorpresaCambioDeVehículo
 Actor test
 test -> ":Juego"  : moverJugadorEnDireccion("Norte")
 ":Juego" -> ":Jugador" : moverEnDireccion("Norte")
-":Jugador" -> ":Moto" : moverseAEsquina(this, "Norte")
-":Moto" -> esquinaActual : moverVehiculo(":Jugador", "Norte")
+":Jugador" -> ":Auto" : moverseAEsquina(this, "Norte")
+":Auto" -> esquinaActual : moverVehiculo(":Jugador", "Norte")
 esquinaActual -> cuadras : get("Norte")
 esquinaActual <-- cuadras : cuadraAdirijirse = Cuadra
 esquinaActual -> ":Jugador" : incrementarMovimientos(1)
 esquinaActual -> cuadraAdirijirse : moverVehiculo(":Jugador", this)
 
-cuadraAdirijirse -> SorpresaCambioDeVehiculo : afectarJugador(jugador)
-SorpresaCambioDeVehiculo -> ":Jugador" : aplicarSorpresaCambioVehiculo()
+cuadraAdirijirse -> ":SorpresaCambioDeVehiculo" : afectarJugador(jugador)
+":SorpresaCambioDeVehiculo" -> ":Jugador" : aplicarSorpresaCambioVehiculo()
 
-":Jugador" -> ":Moto" : getEsquinaActual
-":Jugador" <-- ":Moto" : esquinaActual
-":Jugador" --> ":Moto" : aplicarSorpresaCambioVehiculo()
-":Jugador" <-- ":Moto" : :Auto
-":Jugador" -> ":Auto" : setEsquinaActual(esquinaActual)
-cuadraAdirijirse <-- SorpresaCambioDeVehiculo : puedeAvanzar = true
+":Jugador" -> ":Auto" : getEsquinaActual
+":Jugador" <-- ":Auto" : esquinaActual
+":Jugador" --> ":Auto" : aplicarSorpresaCambioVehiculo()
+":Jugador" <-- ":Auto" : :CuatroPorCuatro
+":Jugador" -> ":CuatroPorCuatro" : setEsquinaActual(esquinaActual)
+":SorpresaCambioDeVehiculo" <-- ":Jugador"
+cuadraAdirijirse <-- ":SorpresaCambioDeVehiculo" : puedeAvanzar = true
 
 cuadraAdirijirse <- cuadraAdirijirse : obtenerEsquinaOpuesta(esquinaInicio)
 cuadraAdirijirse -> ":Jugador" : getVehiculo
-cuadraAdirijirse <-- ":Jugador" : vehiculo = ":Auto"
-cuadraAdirijirse -> ":Auto" : setEsquinaActual(esquinaDestino)
+cuadraAdirijirse <-- ":Jugador" : vehiculo = ":CuatroPorCuatro"
+cuadraAdirijirse -> ":CuatroPorCuatro" : setEsquinaActual(esquinaDestino)
 test <-- cuadraAdirijirse
 @enduml
