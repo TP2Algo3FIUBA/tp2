@@ -4,23 +4,23 @@ title: unVehículoAtraviesaLaCiudadYEncuentraUnaSorpresaFavorable
 
 
 Actor test
-test -> Juego : moverJugadorEnDireccion("Norte")
-Juego -> jugador : moverEnDireccion("Norte")
-jugador -> Auto : moverseAEsquina(this, "Norte")
-Auto -> esquinaActual : moverVehiculo(jugador, "Norte")
+test -> ":Juego" : moverJugadorEnDireccion("Norte")
+":Juego" -> ":Jugador" : moverEnDireccion("Norte")
+":Jugador" -> ":Auto" : moverseAEsquina(this, "Norte")
+":Auto" -> esquinaActual : moverVehiculo(":Jugador", "Norte")
 esquinaActual -> cuadras : get("Norte")
 esquinaActual <-- cuadras : cuadraAdirijirse = Cuadra
-esquinaActual -> jugador : incrementarMovimientos(1)
-esquinaActual -> cuadraAdirijirse : moverVehiculo(jugador, this)
-cuadraAdirijirse -> SorpresaFavorable : afectarJugador(jugador)
-SorpresaFavorable -> jugador : sorpresaFavorable()
-jugador -> jugador : movimientos = movimientos*1.25
-SorpresaFavorable <-- jugador
-cuadraAdirijirse <-- SorpresaFavorable : puedeAvanzar = true
+esquinaActual -> ":Jugador" : incrementarMovimientos(1)
+esquinaActual -> cuadraAdirijirse : moverVehiculo(":Jugador", this)
+cuadraAdirijirse -> ":SorpresaFavorable" : afectarJugador(jugador)
+":SorpresaFavorable" -> ":Jugador" : sorpresaFavorable()
+":Jugador" -> ":Jugador" : movimientos = movimientos*1.25
+":SorpresaFavorable" <-- ":Jugador"
+cuadraAdirijirse <-- ":SorpresaFavorable" : puedeAvanzar = true
 cuadraAdirijirse <- cuadraAdirijirse : obtenerEsquinaOpuesta(esquinaInicio)
-cuadraAdirijirse -> jugador : getVehiculo
-cuadraAdirijirse <-- jugador : vehiculo = Auto
-cuadraAdirijirse -> Auto : setEsquinaActual(esquinaDestino)
+cuadraAdirijirse -> ":Jugador" : getVehiculo
+cuadraAdirijirse <-- ":Jugador" : vehiculo = ":Auto"
+cuadraAdirijirse -> ":Auto" : setEsquinaActual(esquinaDestino)
 test <-- cuadraAdirijirse
 
 @enduml
