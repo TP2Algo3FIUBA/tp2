@@ -1,12 +1,9 @@
 @startuml
 
 package Model {
-         class Juego {   	
-        		
+         class Juego {
         		- Puntajes[] : ints
-        		
                 + iniciarPartida() : void
-                
         }
 
 }

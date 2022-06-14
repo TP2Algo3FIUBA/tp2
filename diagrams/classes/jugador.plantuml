@@ -5,12 +5,11 @@
         }
 
         class Turno {
-         }
-         interface Estado {
-
-         }
-         class Habilitado{}
-         class Penalizado{}
+        }
+        interface Estado {
+        }
+        class Habilitado{}
+        class Penalizado{}
 
 Jugador -> Turno
 Turno -> Estado

@@ -3,4 +3,9 @@
            - cuadra: Cuadra
            + arribar(Moto): void
         }
+
+        class Esquina2{
+
+        }
+
 @enduml
