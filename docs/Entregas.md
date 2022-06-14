@@ -7,7 +7,7 @@ Cosas por hacer entrega 2
 - [ ] Test Unitario Piquete - **Cami**
 - [ ] Test Unitario Evento Vacio - **Cami**
 - [ ] Test Unitario Generador Eventos - **Nacho**
-- [ ] Test Unitario Cuadra - **Juan**
+- [x] Test Unitario Cuadra - **Juan**
 - [ ] Test Unitario CuadraInexistente - **Nacho**
 - [ ] Test Unitario Esquina - **Nacho**
 - [ ] Test Unitario Generador Tablero - **Nacho**
