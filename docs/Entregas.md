@@ -6,11 +6,11 @@ Cosas por hacer entrega 2
 - [ ] Test Unitario Pozo - **Lucas**
 - [ ] Test Unitario Piquete - **Cami**
 - [ ] Test Unitario Evento Vacio - **Cami**
-- [ ] Test Unitario Generador Eventos - **Nacho**
+- [x] Test Unitario Generador Eventos - **Nacho**
 - [x] Test Unitario Cuadra - **Juan**
 - [x] Test Unitario CuadraInexistente - **Nacho**
 - [x] Test Unitario Esquina - **Nacho**
-- [ ] Test Unitario Generador Tablero - **Nacho**
+- [x] Test Unitario Generador Tablero - **Nacho**
 - [ ] Test Unitario Tablero - **Dani**
 - [ ] Test Unitario Sorpresa Cambio Vehiculo - **Dani**
 - [ ] Test Unitario Sorpresa Desfavorable - **Dani**

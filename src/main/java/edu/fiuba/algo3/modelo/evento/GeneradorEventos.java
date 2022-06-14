@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.evento;
 import edu.fiuba.algo3.modelo.obstaculo.ControlPolicial;
 import edu.fiuba.algo3.modelo.obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.obstaculo.Pozo;
+import edu.fiuba.algo3.modelo.sorpresa.SorpresaCambioDeVehiculo;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaDesfavorable;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaFavorable;
 
@@ -13,7 +14,6 @@ public class GeneradorEventos {
 	public static Evento generarEvento() {
 		int tipoEvento = (int) (Math.random() * 3) + 1;
 		int SubTipoEvento = (int) (Math.random() * 3) + 1;
-		System.out.println("evento: " + tipoEvento);
 
 		Evento eventoGenerado = null;
 		switch (tipoEvento) {
@@ -25,9 +25,12 @@ public class GeneradorEventos {
 			case 2:
 				eventoGenerado = (Evento) new SorpresaDesfavorable();
 				break;
-
+			case 3:
+				eventoGenerado = (Evento) new SorpresaCambioDeVehiculo();
+				break;
 			}
-
+			break;
+			
 		case 2:
 			switch (SubTipoEvento) {
 			case 1:
@@ -39,6 +42,7 @@ public class GeneradorEventos {
 				eventoGenerado = (Evento) new ControlPolicial();
 				break;
 			}
+			break;
 			
 		case 3:
 			eventoGenerado = new EventoVacio();
