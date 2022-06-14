@@ -40,4 +40,15 @@ public class Jugador {
 		vehiculo = vehiculo.aplicarSorpresaCambioVehiculo();  // Raro? se resuelve poniendo la posicion dentro del jugador
 		vehiculo.setEsquinaActual(posicionActual);		      //
 	}
+
+	public void sorpresaFavorable() {
+		this.movimientos = (int) Math.round(movimientos*0.8) - 1;
+		//No tendria porque estar el -1 aca, cuando se aplica sorpresa, directamente no se tiene q sumar movimientos
+		//Tenemos que reever toda la logica de como sumar puntos.
+
+	}
+
+	public void sorpresaDesfavorable() {
+		this.movimientos += (int) Math.round(movimientos*0.25) ;
+	}
 }

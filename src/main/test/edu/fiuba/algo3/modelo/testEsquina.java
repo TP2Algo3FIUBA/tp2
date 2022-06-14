@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
@@ -19,7 +18,7 @@ class testEsquina {
         Esquina esquina01 = new Esquina();
 
         // conecto 00 con 01
-        Cuadra cuadra00_01 = new Cuadra(esquina00, esquina01, new EventoVacio());
+        Cuadra cuadra00_01 = new Cuadra(esquina00, esquina01);
         esquina00.insertarCuadra("Este", cuadra00_01);
         esquina01.insertarCuadra("Oeste", cuadra00_01);
 
@@ -33,8 +32,4 @@ class testEsquina {
         assertEquals(jugador.posicionActual(), esquina01);
 	}
 
-    /*@Test
-    void testmoverVehiculoADireccionInvalida() {
-        // implementar
-    }*/
 }

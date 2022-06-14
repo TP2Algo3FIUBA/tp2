@@ -10,7 +10,7 @@ public class SorpresaFavorable implements Evento{
 		@Override
 		public boolean afectarJugador(Jugador jugador) {
 
-			//jugador.sorpresaFavorable(); cambiar, usaba vehiculo
+			jugador.sorpresaFavorable();
 			return true;
 		}
 }

@@ -1,19 +1,25 @@
 package edu.fiuba.algo3.modelo.manzana;
 
 import edu.fiuba.algo3.modelo.evento.Evento;
+import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class Cuadra {
-	private Esquina esquinaA;
-	private Esquina esquinaB;
-    private Evento evento;
+	private final Esquina esquinaA;
+	private final Esquina esquinaB;
+    private Evento evento = new EventoVacio();
 
 
 	public Cuadra(Esquina unaEsquinaA, Esquina unaEsquinaB, Evento unEvento) {
 		this.esquinaA = unaEsquinaA;
 		this.esquinaB = unaEsquinaB;
 		this.evento = unEvento;
+	}
+
+	public Cuadra(Esquina unaEsquinaA, Esquina unaEsquinaB) {
+		this.esquinaA = unaEsquinaA;
+		this.esquinaB = unaEsquinaB;
 	}
 
 	private Esquina obtenerEsquinaOpuesta(Esquina esquinaRecibida) {

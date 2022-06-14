@@ -1,12 +1,11 @@
 package edu.fiuba.algo3.modelo.manzana;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 import java.util.HashMap;
 
 public class Esquina {
-	private HashMap<String, Cuadra> cuadras;
+	private final HashMap<String, Cuadra> cuadras;
 
 	public Esquina() {
 		this.cuadras = new HashMap<>();
@@ -16,7 +15,7 @@ public class Esquina {
 
 		Cuadra cuadraAdirijirse = cuadras.get(direccion);
 		if (cuadraAdirijirse == null)
-			throw new CuadraInexistenteException();
+			return ;//throw new CuadraInexistenteException();
 
 		jugador.incrementarMovimientos(1);
 
