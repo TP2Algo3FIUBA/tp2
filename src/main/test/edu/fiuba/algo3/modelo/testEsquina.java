@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
+import edu.fiuba.algo3.modelo.manzana.CuadraInexistenteException;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.vehiculo.Moto;
 
@@ -30,6 +31,55 @@ class testEsquina {
 
         // Assert
         assertEquals(jugador.posicionActual(), esquina01);
+	}
+	
+	@Test
+	void testPosicionarVehiculo() {
+		Esquina esquina = new Esquina();
+		Jugador jugador = new Jugador(new Moto());
+		jugador.spawnearVehiculoEn(esquina);
+
+		assertEquals(jugador.posicionActual(), esquina);
+	}
+
+	
+	@Test
+	void testMoverVehiculoYVolverAEsquinaDeInicio() {
+		Esquina inicio = new Esquina();
+		Esquina destino = new Esquina();
+		Cuadra cuadra = new Cuadra(inicio, destino);
+		Jugador jugador = new Jugador(new Moto());
+
+		inicio.insertarCuadra("Sur", cuadra);
+		destino.insertarCuadra("Norte", cuadra);
+		jugador.spawnearVehiculoEn(inicio);
+
+		assertEquals(jugador.posicionActual(), inicio);
+
+		jugador.moverEnDireccion("Sur");
+
+		assertEquals(jugador.posicionActual(), destino);
+		
+		jugador.moverEnDireccion("Norte");
+		
+		assertEquals(jugador.posicionActual(), inicio);
+	}
+
+	@Test
+	void testMoverVehiculoACuadraInvalida() {
+		Esquina inicio = new Esquina();
+		Esquina destino = new Esquina();
+		Cuadra cuadra = new Cuadra(inicio, destino);
+		Jugador jugador = new Jugador(new Moto());
+
+		inicio.insertarCuadra("Sur", cuadra);
+		destino.insertarCuadra("Norte", cuadra);
+		jugador.spawnearVehiculoEn(inicio);
+
+		assertThrows(CuadraInexistenteException.class, () -> {
+			jugador.moverEnDireccion("Este");
+		});
+
 	}
 
 }

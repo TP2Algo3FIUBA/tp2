@@ -6,16 +6,18 @@ import java.util.HashMap;
 
 public class Esquina {
 	private final HashMap<String, Cuadra> cuadras;
+//	private Jugador jugadorEnLaEsquina;
 
 	public Esquina() {
 		this.cuadras = new HashMap<>();
+//		jugadorEnLaEsquina = null;
 	}
 
 	public void moverVehiculo(Jugador jugador, String direccion) {
 
 		Cuadra cuadraAdirijirse = cuadras.get(direccion);
 		if (cuadraAdirijirse == null)
-			return ;//throw new CuadraInexistenteException();
+			throw new CuadraInexistenteException();
 
 		jugador.incrementarMovimientos(1);
 
