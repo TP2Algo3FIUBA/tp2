@@ -11,8 +11,9 @@ public class GeneradorEventos {
 	}
 
 	public static Evento generarEvento() {
-		int tipoEvento = (int) Math.random() * 3 + 1;
-		int SubTipoEvento = (int) Math.random() * 3 + 1;
+		int tipoEvento = (int) (Math.random() * 3) + 1;
+		int SubTipoEvento = (int) (Math.random() * 3) + 1;
+		System.out.println("evento: " + tipoEvento);
 
 		Evento eventoGenerado = null;
 		switch (tipoEvento) {
@@ -28,10 +29,6 @@ public class GeneradorEventos {
 			}
 
 		case 2:
-			eventoGenerado = new EventoVacio();
-			break;
-
-		case 3:
 			switch (SubTipoEvento) {
 			case 1:
 				eventoGenerado = (Evento) new Pozo();
@@ -42,9 +39,12 @@ public class GeneradorEventos {
 				eventoGenerado = (Evento) new ControlPolicial();
 				break;
 			}
-
-			return null;
+			
+		case 3:
+			eventoGenerado = new EventoVacio();
+			break;
 		}
+
 		return eventoGenerado;
 	}
 }

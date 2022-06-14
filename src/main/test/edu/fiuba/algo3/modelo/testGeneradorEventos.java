@@ -4,11 +4,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import edu.fiuba.algo3.modelo.evento.Evento;
+import edu.fiuba.algo3.modelo.evento.GeneradorEventos;
+
 class testGeneradorEventos {
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testGenerarUnEvento() {
+		GeneradorEventos generador = new GeneradorEventos();
+		
+		Evento evento = generador.generarEvento();
+		System.out.println(evento.getClass());
+//		assertEquals(generador.generarEvento(), );
 	}
 
 }
