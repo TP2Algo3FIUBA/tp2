@@ -1,0 +1,37 @@
+@startuml
+Actor test
+test -> CuatroPorCuatro : mover(Esquina)
+CuatroPorCuatro --> test
+note left
+    primer pozo atravezado
+end note
+test -> CuatroPorCuatro : mover(Esquina)
+CuatroPorCuatro --> test
+note left
+    segundo pozo atravezado
+end note
+test -> CuatroPorCuatro : mover(Esquina)
+note left
+    comienzo tercer pozo atravezado
+end note
+CuatroPorCuatro -> Esquina: arribar(CuatroPorCuatro)
+Esquina -> Cuadra: trancita(CuatroPorCuatro)
+Cuadra -> CuatroPorCuatro: atravezarCuadra()
+CuatroPorCuatro --> Cuadra
+Cuadra -> Pozo: penalizar(CuatroPorCuatro)
+Pozo -> CuatroPorCuatro: atravezarPozo()
+
+CuatroPorCuatro -> CuatroPorCuatro : pozosAtravezados++
+note left
+    pozosAtravezados == 3
+end note
+CuatroPorCuatro -> CuatroPorCuatro : pozosAtravezados = 0
+
+CuatroPorCuatro -> Jugador: incrementarMovimientos(3)
+Jugador --> CuatroPorCuatro
+CuatroPorCuatro --> Pozo
+Pozo --> Cuadra
+Cuadra --> Esquina
+Esquina --> CuatroPorCuatro
+CuatroPorCuatro --> test
+@enduml

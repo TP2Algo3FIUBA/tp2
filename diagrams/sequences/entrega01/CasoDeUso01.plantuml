@@ -1,0 +1,17 @@
+@startuml
+Actor test
+test -> Moto : mover(Esquina)
+Moto -> Esquina: arribar(Moto)
+Esquina -> Cuadra: trancita(Moto)
+Cuadra -> Moto: atravezarCuadra()
+Moto --> Cuadra
+Cuadra -> Pozo: penalizar(Moto)
+Pozo -> Moto: atravezarPozo()
+Moto -> Jugador: incrementarMovimientos(3)
+Jugador --> Moto
+Moto --> Pozo
+Pozo --> Cuadra
+Cuadra --> Esquina
+Esquina --> Moto
+Moto --> test
+@enduml

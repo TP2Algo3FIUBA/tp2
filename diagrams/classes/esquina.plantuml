@@ -1,0 +1,6 @@
+@startuml
+         class Esquina {
+           - cuadra: Cuadra
+           + arribar(Moto): void
+        }
+@enduml

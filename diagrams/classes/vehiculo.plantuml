@@ -1,0 +1,25 @@
+@startuml
+
+
+interface Vehiculo {
+
+        + {abstract} mover(unJugador: Jugador): void
+}
+
+class Moto {
+    + mover(): void
+}
+
+class Auto {
+      + mover(): void
+}
+
+class 4x4 {
+      + mover(): void
+}
+
+Vehiculo <|.. Moto
+Vehiculo <|.. Auto
+Vehiculo <|.. 4x4
+
+@enduml
