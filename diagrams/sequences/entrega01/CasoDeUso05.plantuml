@@ -1,3 +1,21 @@
 @startuml
+title: unAutoAtraviesaCiudadYSeEncuentraConUnPiqueteYNoEsPenalizada
 
+Actor test
+test -> ":Juego" : moverJugadorEnDireccion("Norte")
+":Juego" -> ":Jugador": moverEnDireccion("Norte")
+":Jugador" -> ":Auto" : moverseAEsquina(this, "Norte")
+":Auto"  -> "esquinaActual: Esquina" : moverVehiculo(jugador, "Norte")
+"esquinaActual: Esquina" -> cuadras : get("Norte")
+"esquinaActual: Esquina" <-- cuadras : cuadraAdirijirse = Cuadra
+"esquinaActual: Esquina" -> ":Jugador" : incrementarMovimientos(1)
+"esquinaActual: Esquina" -> "cuadraAdirijirse:Cuadra" : moverVehiculo(jugador, this)
+"cuadraAdirijirse:Cuadra" -> ":Piquete"  : afectarJugador(jugador)
+":Piquete" -> ":Jugador" : getVehiculo
+":Piquete"  <-- ":Jugador" : vehiculo = Auto
+":Piquete"  -> ":Auto"  : chocarContraPiquete(jugador)
+":Piquete"  <-- ":Auto"  : puedeAvanzar = false
+"cuadraAdirijirse:Cuadra" <-- ":Piquete" : puedeAvanzar = false
+
+test <-- "cuadraAdirijirse:Cuadra"
 @enduml

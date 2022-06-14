@@ -4,25 +4,25 @@ title: unaMotoAtraviesaCiudadYSeEncuentraConUnPozoYEsPenalizadaTresMovimientos
 
 
 Actor test
-test -> Juego : moverJugadorEnDireccion("Este")
-Juego -> Jugador : moverEnDireccion("Este")
-Jugador -> Moto : moverseAEsquina(this, "Este")
-Moto -> esquinaActual : moverVehiculo(jugador, "Este")
-esquinaActual -> cuadras : get("Este")
-esquinaActual <-- cuadras : cuadraAdirijirse = Cuadra
-esquinaActual -> jugador : incrementarMovimientos(1)
-esquinaActual -> cuadraAdirijirse : moverVehiculo(jugador, this)
-cuadraAdirijirse -> Pozo : afectarJugador(jugador)
-Pozo -> jugador : getVehiculo
-Pozo <-- jugador : vehiculo = Moto
-Pozo -> Moto : chocarContraPozo(jugador)
-Moto -> jugador : incrementarMovimientos(3)
-Pozo <-- Moto : puedeAvanzar = true
-cuadraAdirijirse <-- Pozo : puedeAvanzar = true
-cuadraAdirijirse <- cuadraAdirijirse : obtenerEsquinaOpuesta(esquinaInicio)
-cuadraAdirijirse -> jugador : getVehiculo
-cuadraAdirijirse <-- jugador : vehiculo = Moto
-cuadraAdirijirse -> Moto : setEsquinaActual(esquinaDestino)
-test <-- cuadraAdirijirse
+test -> ":Juego" : moverJugadorEnDireccion("Este")
+":Juego" -> ":Jugador"  : moverEnDireccion("Este")
+":Jugador"  -> ":Moto" : moverseAEsquina(this, "Este")
+":Moto"  -> "esquinaActual: Esquina" : moverVehiculo(jugador, "Este")
+"esquinaActual: Esquina" -> cuadras : get("Este")
+"esquinaActual: Esquina" <-- cuadras : cuadraAdirijirse = Cuadra
+"esquinaActual: Esquina" -> ":Jugador"  : incrementarMovimientos(1)
+"esquinaActual: Esquina" -> "cuadraAdirijirse:Cuadra" : moverVehiculo(jugador, this)
+"cuadraAdirijirse:Cuadra" -> ":Pozo" : afectarJugador(jugador)
+":Pozo" -> ":Jugador"  : getVehiculo
+":Pozo" <-- ":Jugador"  : vehiculo = Moto
+":Pozo" -> ":Moto"  : chocarContraPozo(jugador)
+":Moto"  -> ":Jugador"  : incrementarMovimientos(3)
+":Pozo" <-- ":Moto"  : puedeAvanzar = true
+"cuadraAdirijirse:Cuadra" <-- ":Pozo" : puedeAvanzar = true
+"cuadraAdirijirse:Cuadra" <- "cuadraAdirijirse:Cuadra" : obtenerEsquinaOpuesta(esquinaInicio)
+"cuadraAdirijirse:Cuadra" -> ":Jugador"  : getVehiculo
+"cuadraAdirijirse:Cuadra" <-- ":Jugador"  : vehiculo = Moto
+"cuadraAdirijirse:Cuadra" -> ":Moto"  : setEsquinaActual(esquinaDestino)
+test <-- "cuadraAdirijirse:Cuadra"
 
 @enduml

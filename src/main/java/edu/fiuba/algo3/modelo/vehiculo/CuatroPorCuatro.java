@@ -16,6 +16,7 @@ public class CuatroPorCuatro extends Vehiculo {
 		this.pozosAtravezados++;
 		if (this.pozosAtravezados == 3) {
 			jugador.incrementarMovimientos(2);
+			this.pozosAtravezados = 0;
 		}
 		jugador.incrementarMovimientos(0);
 		return true;
