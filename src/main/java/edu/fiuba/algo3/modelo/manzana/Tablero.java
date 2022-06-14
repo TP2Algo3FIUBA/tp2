@@ -21,9 +21,4 @@ public class Tablero {
 		filas.get(fila).add(nuevaEsquina);
 	}
 
-	public void posicionarEnInicioVehiculo(Vehiculo vehiculo) {
-		Esquina esquinaInicio = (filas.get(0)).get(0);
-		//esquinaInicio.posicionarVehiculo(vehiculo);
-		vehiculo.setEsquinaActual(esquinaInicio);
-	}
 }

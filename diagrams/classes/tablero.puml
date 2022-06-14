@@ -1,3 +1,9 @@
 @startuml
 
+    class Tablero {
+         -filas: ArrayList<ArrayList<Esquina>>
+         +obtenerEsquina(fila: Int, columna: Int): Esquina
+         +agregarEsquina(fila: Int, columna: Int)
+    }
+
 @enduml
