@@ -1,0 +1,12 @@
+@startuml
+
+    class Juego {
+         - jugador : Jugador
+         - tablero : Tablero
+         +moverJugadorEnDireccion(direccion: String)
+         +obtenerPosicionJugador(): Esquina
+         +spawnearJugadorEn(fila: Int, columna: Int)
+         +cantidadMovJugador(): Int
+    }
+
+@enduml
