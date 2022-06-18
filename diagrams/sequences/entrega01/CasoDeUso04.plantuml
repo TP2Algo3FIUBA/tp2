@@ -1,11 +1,11 @@
 @startuml
 title: una4x4AtraviesaTresPozoYEsPenalizadaDosMovimientos
 Actor test
-test -> ":Juego" : moverJugadorEnDireccion("Sur")
-":Juego" -> ":Jugador" : moverEnDireccion("Sur")
-":Jugador" -> ":CuatroPorCuatro" : moverseAEsquina(this, "Sur")
-":CuatroPorCuatro" -> "esquinaActual: Esquina" : moverVehiculo(jugador, "Sur")
-"esquinaActual: Esquina" -> cuadras : get("Sur")
+test -> ":Juego" : moverJugadorEnDireccion(Sur)
+":Juego" -> ":Jugador" : moverEnDireccion(Sur)
+":Jugador" -> ":CuatroPorCuatro" : moverseAEsquina(this, Sur)
+":CuatroPorCuatro" -> "esquinaActual: Esquina" : moverVehiculo(jugador, Sur)
+"esquinaActual: Esquina" -> cuadras : get(Sur)
 "esquinaActual: Esquina" <-- cuadras : cuadraAdirijirse = Cuadra
 "esquinaActual: Esquina" -> ":Jugador" : incrementarMovimientos(1)
 "esquinaActual: Esquina" -> "cuadraAdirijirse:Cuadra" : moverVehiculo(jugador, this)

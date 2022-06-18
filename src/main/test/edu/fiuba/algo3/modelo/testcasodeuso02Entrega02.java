@@ -1,6 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
 
+import edu.fiuba.algo3.direcciones.DirEste;
+import edu.fiuba.algo3.direcciones.DirNorte;
+import edu.fiuba.algo3.direcciones.DirOeste;
+import edu.fiuba.algo3.direcciones.DirSur;
 import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
@@ -23,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class testcasodeuso02Entrega02 {
 
 
-    /*@Test
+    @Test
     public void unVehículoAtraviesaLaCiudadYEncuentraUnaSorpresaFavorable(){
         // Arrange
         Esquina esquina00 = new Esquina();          //   00 --*-- 01
@@ -36,25 +40,31 @@ public class testcasodeuso02Entrega02 {
         tablero.agregarEsquina(1, esquina10);
         tablero.agregarEsquina(1, esquina11);
 
+        // Creo direcciones
+        DirNorte Norte = new DirNorte();
+        DirSur Sur = new DirSur();
+        DirEste Este = new DirEste();
+        DirOeste Oeste = new DirOeste();
+
         // conecto 00 con 01
         Cuadra cuadra00_01 = new Cuadra(esquina00, esquina01, new Pozo());
-        esquina00.insertarCuadra("Este", cuadra00_01);
-        esquina01.insertarCuadra("Oeste", cuadra00_01);
+        esquina00.insertarCuadra(Este, cuadra00_01);
+        esquina01.insertarCuadra(Oeste, cuadra00_01);
 
         // conecto 10 con 11
         Cuadra cuadra10_11 = new Cuadra(esquina10, esquina11, new Pozo());
-        esquina10.insertarCuadra("Este", cuadra10_11);
-        esquina11.insertarCuadra("Oeste", cuadra10_11);
+        esquina10.insertarCuadra(Este, cuadra10_11);
+        esquina11.insertarCuadra(Oeste, cuadra10_11);
 
         // conecto 00 con 10
         Cuadra cuadra00_10 = new Cuadra(esquina00, esquina10, new SorpresaFavorable());
-        esquina00.insertarCuadra("Sur", cuadra00_10);
-        esquina10.insertarCuadra("Norte", cuadra00_10);
+        esquina00.insertarCuadra(Sur, cuadra00_10);
+        esquina10.insertarCuadra(Norte, cuadra00_10);
 
         // conecto 01 con 11
         Cuadra cuadra01_11 = new Cuadra(esquina01, esquina11, new Pozo());
-        esquina01.insertarCuadra("Sur", cuadra01_11);
-        esquina11.insertarCuadra("Norte", cuadra01_11);
+        esquina01.insertarCuadra(Sur, cuadra01_11);
+        esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
         Jugador jugador = new Jugador(new Auto());
@@ -64,10 +74,10 @@ public class testcasodeuso02Entrega02 {
         juego.spawnearJugadorEn(0,0);
 
         // Act
-        juego.moverJugadorEnDireccion("Este");
-        juego.moverJugadorEnDireccion("Sur");
-        juego.moverJugadorEnDireccion("Oeste");
-        juego.moverJugadorEnDireccion("Norte");
+        juego.moverJugadorEnDireccion(Este);
+        juego.moverJugadorEnDireccion(Sur);
+        juego.moverJugadorEnDireccion(Oeste);
+        juego.moverJugadorEnDireccion(Norte);
         // Assert
         assertEquals(10, jugador.getMovimientos());
 
@@ -86,25 +96,31 @@ public class testcasodeuso02Entrega02 {
         tablero.agregarEsquina(1, esquina10);
         tablero.agregarEsquina(1, esquina11);
 
+        // Creo direcciones
+        DirNorte Norte = new DirNorte();
+        DirSur Sur = new DirSur();
+        DirEste Este = new DirEste();
+        DirOeste Oeste = new DirOeste();
+
         // conecto 00 con 01
         Cuadra cuadra00_01 = new Cuadra(esquina00, esquina01, new Pozo());
-        esquina00.insertarCuadra("Este", cuadra00_01);
-        esquina01.insertarCuadra("Oeste", cuadra00_01);
+        esquina00.insertarCuadra(Este, cuadra00_01);
+        esquina01.insertarCuadra(Oeste, cuadra00_01);
 
         // conecto 10 con 11
         Cuadra cuadra10_11 = new Cuadra(esquina10, esquina11, new Pozo());
-        esquina10.insertarCuadra("Este", cuadra10_11);
-        esquina11.insertarCuadra("Oeste", cuadra10_11);
+        esquina10.insertarCuadra(Este, cuadra10_11);
+        esquina11.insertarCuadra(Oeste, cuadra10_11);
 
         // conecto 00 con 10
         Cuadra cuadra00_10 = new Cuadra(esquina00, esquina10, new SorpresaDesfavorable());
-        esquina00.insertarCuadra("Sur", cuadra00_10);
-        esquina10.insertarCuadra("Norte", cuadra00_10);
+        esquina00.insertarCuadra(Sur, cuadra00_10);
+        esquina10.insertarCuadra(Norte, cuadra00_10);
 
         // conecto 01 con 11
         Cuadra cuadra01_11 = new Cuadra(esquina01, esquina11, new Pozo());
-        esquina01.insertarCuadra("Sur", cuadra01_11);
-        esquina11.insertarCuadra("Norte", cuadra01_11);
+        esquina01.insertarCuadra(Sur, cuadra01_11);
+        esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
         Jugador jugador = new Jugador(new Auto());
@@ -114,10 +130,10 @@ public class testcasodeuso02Entrega02 {
         juego.spawnearJugadorEn(0,0);
 
         // Act
-        juego.moverJugadorEnDireccion("Este");
-        juego.moverJugadorEnDireccion("Sur");
-        juego.moverJugadorEnDireccion("Oeste");
-        juego.moverJugadorEnDireccion("Norte");
+        juego.moverJugadorEnDireccion(Este);
+        juego.moverJugadorEnDireccion(Sur);
+        juego.moverJugadorEnDireccion(Oeste);
+        juego.moverJugadorEnDireccion(Norte);
         // Assert
         assertEquals(16, jugador.getMovimientos());
 
@@ -137,25 +153,31 @@ public class testcasodeuso02Entrega02 {
         tablero.agregarEsquina(1, esquina10);
         tablero.agregarEsquina(1, esquina11);
 
+        // Creo direcciones
+        DirNorte Norte = new DirNorte();
+        DirSur Sur = new DirSur();
+        DirEste Este = new DirEste();
+        DirOeste Oeste = new DirOeste();
+
         // conecto 00 con 01
         Cuadra cuadra00_01 = new Cuadra(esquina00, esquina01, new Pozo());
-        esquina00.insertarCuadra("Este", cuadra00_01);
-        esquina01.insertarCuadra("Oeste", cuadra00_01);
+        esquina00.insertarCuadra(Este, cuadra00_01);
+        esquina01.insertarCuadra(Oeste, cuadra00_01);
 
         // conecto 10 con 11
         Cuadra cuadra10_11 = new Cuadra(esquina10, esquina11, new Pozo());
-        esquina10.insertarCuadra("Este", cuadra10_11);
-        esquina11.insertarCuadra("Oeste", cuadra10_11);
+        esquina10.insertarCuadra(Este, cuadra10_11);
+        esquina11.insertarCuadra(Oeste, cuadra10_11);
 
         // conecto 00 con 10
         Cuadra cuadra00_10 = new Cuadra(esquina00, esquina10, new SorpresaCambioDeVehiculo());
-        esquina00.insertarCuadra("Sur", cuadra00_10);
-        esquina10.insertarCuadra("Norte", cuadra00_10);
+        esquina00.insertarCuadra(Sur, cuadra00_10);
+        esquina10.insertarCuadra(Norte, cuadra00_10);
 
         // conecto 01 con 11
         Cuadra cuadra01_11 = new Cuadra(esquina01, esquina11, new Pozo());
-        esquina01.insertarCuadra("Sur", cuadra01_11);
-        esquina11.insertarCuadra("Norte", cuadra01_11);
+        esquina01.insertarCuadra(Sur, cuadra01_11);
+        esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
         Jugador jugador = new Jugador(new Auto());
@@ -165,10 +187,10 @@ public class testcasodeuso02Entrega02 {
         juego.spawnearJugadorEn(0,0);
 
         // Act
-        juego.moverJugadorEnDireccion("Este");
-        juego.moverJugadorEnDireccion("Sur");
-        juego.moverJugadorEnDireccion("Oeste");
-        juego.moverJugadorEnDireccion("Norte");
+        juego.moverJugadorEnDireccion(Este);
+        juego.moverJugadorEnDireccion(Sur);
+        juego.moverJugadorEnDireccion(Oeste);
+        juego.moverJugadorEnDireccion(Norte);
         // Assert
         assertTrue(jugador.getVehiculo() instanceof CuatroPorCuatro);
     }
@@ -186,25 +208,31 @@ public class testcasodeuso02Entrega02 {
         tablero.agregarEsquina(1, esquina10);
         tablero.agregarEsquina(1, esquina11);
 
+        // Creo direcciones
+        DirNorte Norte = new DirNorte();
+        DirSur Sur = new DirSur();
+        DirEste Este = new DirEste();
+        DirOeste Oeste = new DirOeste();
+
         // conecto 00 con 01
         Cuadra cuadra00_01 = new Cuadra(esquina00, esquina01, new SorpresaCambioDeVehiculo());
-        esquina00.insertarCuadra("Este", cuadra00_01);
-        esquina01.insertarCuadra("Oeste", cuadra00_01);
+        esquina00.insertarCuadra(Este, cuadra00_01);
+        esquina01.insertarCuadra(Oeste, cuadra00_01);
 
         // conecto 10 con 11
         Cuadra cuadra10_11 = new Cuadra(esquina10, esquina11, new Pozo());
-        esquina10.insertarCuadra("Este", cuadra10_11);
-        esquina11.insertarCuadra("Oeste", cuadra10_11);
+        esquina10.insertarCuadra(Este, cuadra10_11);
+        esquina11.insertarCuadra(Oeste, cuadra10_11);
 
         // conecto 00 con 10
         Cuadra cuadra00_10 = new Cuadra(esquina00, esquina10);
-        esquina00.insertarCuadra("Sur", cuadra00_10);
-        esquina10.insertarCuadra("Norte", cuadra00_10);
+        esquina00.insertarCuadra(Sur, cuadra00_10);
+        esquina10.insertarCuadra(Norte, cuadra00_10);
 
         // conecto 01 con 11
         Cuadra cuadra01_11 = new Cuadra(esquina01, esquina11, new Pozo());
-        esquina01.insertarCuadra("Sur", cuadra01_11);
-        esquina11.insertarCuadra("Norte", cuadra01_11);
+        esquina01.insertarCuadra(Sur, cuadra01_11);
+        esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
         Jugador jugador = new Jugador(new Moto());
@@ -214,10 +242,10 @@ public class testcasodeuso02Entrega02 {
         juego.spawnearJugadorEn(0,0);
 
         // Act
-        juego.moverJugadorEnDireccion("Este");
-        juego.moverJugadorEnDireccion("Sur");
-        juego.moverJugadorEnDireccion("Oeste");
-        juego.moverJugadorEnDireccion("Norte");
+        juego.moverJugadorEnDireccion(Este);
+        juego.moverJugadorEnDireccion(Sur);
+        juego.moverJugadorEnDireccion(Oeste);
+        juego.moverJugadorEnDireccion(Norte);
         // Assert
         assertTrue(jugador.getVehiculo() instanceof Auto);
 
@@ -236,25 +264,31 @@ public class testcasodeuso02Entrega02 {
         tablero.agregarEsquina(1, esquina10);
         tablero.agregarEsquina(1, esquina11);
 
+        // Creo direcciones
+        DirNorte Norte = new DirNorte();
+        DirSur Sur = new DirSur();
+        DirEste Este = new DirEste();
+        DirOeste Oeste = new DirOeste();
+
         // conecto 00 con 01
         Cuadra cuadra00_01 = new Cuadra(esquina00, esquina01, new Piquete());
-        esquina00.insertarCuadra("Este", cuadra00_01);
-        esquina01.insertarCuadra("Oeste", cuadra00_01);
+        esquina00.insertarCuadra(Este, cuadra00_01);
+        esquina01.insertarCuadra(Oeste, cuadra00_01);
 
         // conecto 10 con 11
         Cuadra cuadra10_11 = new Cuadra(esquina10, esquina11);
-        esquina10.insertarCuadra("Este", cuadra10_11);
-        esquina11.insertarCuadra("Oeste", cuadra10_11);
+        esquina10.insertarCuadra(Este, cuadra10_11);
+        esquina11.insertarCuadra(Oeste, cuadra10_11);
 
         // conecto 00 con 10
         Cuadra cuadra00_10 = new Cuadra(esquina00, esquina10);
-        esquina00.insertarCuadra("Sur", cuadra00_10);
-        esquina10.insertarCuadra("Norte", cuadra00_10);
+        esquina00.insertarCuadra(Sur, cuadra00_10);
+        esquina10.insertarCuadra(Norte, cuadra00_10);
 
         // conecto 01 con 11
         Cuadra cuadra01_11 = new Cuadra(esquina01, esquina11);
-        esquina01.insertarCuadra("Sur", cuadra01_11);
-        esquina11.insertarCuadra("Norte", cuadra01_11);
+        esquina01.insertarCuadra(Sur, cuadra01_11);
+        esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
         Jugador jugador = new Jugador(new Auto());
@@ -264,15 +298,15 @@ public class testcasodeuso02Entrega02 {
         juego.spawnearJugadorEn(0,0);
 
         // Act
-        juego.moverJugadorEnDireccion("Este");
+        juego.moverJugadorEnDireccion(Este);
         assertEquals(esquina00,jugador.posicionActual());
 
-        juego.moverJugadorEnDireccion("Sur");
+        juego.moverJugadorEnDireccion(Sur);
         // Assert
         assertEquals(esquina10,jugador.posicionActual());
 
 
-    }*/
+    }
 
 }
 

@@ -2,11 +2,11 @@
 title: autoAtraviesaCiudadYSeEncuentraConUnPozoYEsPenalizadaTresMovimientos
 
 Actor test
-test -> ":Juego"  : moverJugadorEnDireccion("Este")
-":Juego"  -> ":Jugador" : moverEnDireccion("Este")
-":Jugador" -> ":Auto" : moverseAEsquina(this, "Este")
-":Auto"  -> "esquinaActual: Esquina" : moverVehiculo(jugador, "Este")
-"esquinaActual: Esquina" -> cuadras : get("Este")
+test -> ":Juego"  : moverJugadorEnDireccion(Este)
+":Juego"  -> ":Jugador" : moverEnDireccion(Este)
+":Jugador" -> ":Auto" : moverseAEsquina(this, Este)
+":Auto"  -> "esquinaActual: Esquina" : moverVehiculo(jugador, Este)
+"esquinaActual: Esquina" -> cuadras : get(Este)
 "esquinaActual: Esquina" <-- cuadras : cuadraAdirijirse = Cuadra
 "esquinaActual: Esquina" -> ":Jugador" : incrementarMovimientos(1)
 "esquinaActual: Esquina" -> "cuadraAdirijirse:Cuadra" : moverVehiculo(jugador, this)

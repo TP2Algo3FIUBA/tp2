@@ -2,11 +2,11 @@
 title: unVehículoAtraviesaLaCiudadYEncuentraUnaSorpresaDesfavorable
 
 Actor test
-test -> ":Juego" : moverJugadorEnDireccion("Norte")
-":Juego" -> ":Jugador" : moverEnDireccion("Norte")
-":Jugador" -> ":Auto" : moverseAEsquina(this, "Norte")
-":Auto" -> esquinaActual : moverVehiculo(":Jugador", "Norte")
-esquinaActual -> cuadras : get("Norte")
+test -> ":Juego" : moverJugadorEnDireccion(Norte)
+":Juego" -> ":Jugador" : moverEnDireccion(Norte)
+":Jugador" -> ":Auto" : moverseAEsquina(this, Norte)
+":Auto" -> esquinaActual : moverVehiculo(":Jugador", Norte)
+esquinaActual -> cuadras : get(Norte)
 esquinaActual <-- cuadras : cuadraAdirijirse = Cuadra
 esquinaActual -> ":Jugador" : incrementarMovimientos(1)
 esquinaActual -> cuadraAdirijirse : moverVehiculo(":Jugador", this)
