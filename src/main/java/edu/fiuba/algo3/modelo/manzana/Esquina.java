@@ -16,7 +16,7 @@ public class Esquina {
 
 	public void moverVehiculo(Jugador jugador, Direccion direccion) {
 
-		Cuadra cuadraAdirijirse = cuadras.get(String.valueOf(direccion));
+		Cuadra cuadraAdirijirse = cuadras.get(direccion.toString());
 		if (cuadraAdirijirse == null) {
 			throw new CuadraInexistenteException();
 //			return;

@@ -1,0 +1,13 @@
+@startuml
+Actor test
+test -> Juego : moverse(Direccion)
+Juego -> Jugador : moverEn(Direccion)
+Jugador -> EsquinaActual : moverEn(Direccion, Jugador)
+EsquinaActual -> Direccion : moverseACuadra(Jugador)
+Direccion -> Cuadra : moverVehiculo(Jugador)
+Cuadra -> Evento : afectarJugador(Jugador)
+return : EsquinaDestino
+Cuadra -> Cuadra : moverVehiculo(EsquinaDestino) 
+
+
+@enduml
