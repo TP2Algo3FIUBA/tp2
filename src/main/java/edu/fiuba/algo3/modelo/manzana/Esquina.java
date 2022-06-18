@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.manzana;
 
+import edu.fiuba.algo3.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 import java.util.HashMap;
@@ -13,9 +14,9 @@ public class Esquina {
 //		jugadorEnLaEsquina = null;
 	}
 
-	public void moverVehiculo(Jugador jugador, String direccion) {
+	public void moverVehiculo(Jugador jugador, Direccion direccion) {
 
-		Cuadra cuadraAdirijirse = cuadras.get(direccion);
+		Cuadra cuadraAdirijirse = cuadras.get(String.valueOf(direccion));
 		if (cuadraAdirijirse == null) {
 			throw new CuadraInexistenteException();
 //			return;
@@ -26,8 +27,8 @@ public class Esquina {
 		cuadraAdirijirse.moverVehiculo(jugador, this);
 	}
 
-	public void insertarCuadra(String direccion, Cuadra cuadra) {
-		cuadras.put(direccion, cuadra);
+	public void insertarCuadra(Direccion direccion, Cuadra cuadra) {
+		cuadras.put(String.valueOf(direccion), cuadra);
 	}
 
 }

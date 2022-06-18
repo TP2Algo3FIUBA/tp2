@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class testcasodeuso02Entrega02 {
 
 
-    @Test
+    /*@Test
     public void unVehículoAtraviesaLaCiudadYEncuentraUnaSorpresaFavorable(){
         // Arrange
         Esquina esquina00 = new Esquina();          //   00 --*-- 01
@@ -272,7 +272,7 @@ public class testcasodeuso02Entrega02 {
         assertEquals(esquina10,jugador.posicionActual());
 
 
-    }
+    }*/
 
 }
 

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.jugador;
 
+import edu.fiuba.algo3.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 
@@ -19,7 +20,7 @@ public class Jugador {
 		this.movimientos += movimientos;
 	}
 
-	public void moverEnDireccion(String direccion) {
+	public void moverEnDireccion(Direccion direccion) {
 		vehiculo.moverseAEsquina(this, direccion); // ! raro
 	}
 

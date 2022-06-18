@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import edu.fiuba.algo3.direcciones.DirEste;
+import edu.fiuba.algo3.direcciones.DirOeste;
 import edu.fiuba.algo3.modelo.juego.Juego;
 import org.junit.jupiter.api.Test;
 
@@ -60,7 +62,10 @@ class testTablero {
         Juego juego = new Juego(jugador, tableroTest);
         juego.spawnearJugadorEn(0,0);
 
-        juego.moverJugadorEnDireccion("Este");
+		// Creo direcciones
+		DirEste Este = new DirEste();
+
+        juego.moverJugadorEnDireccion(Este);
         assertEquals(jugador.posicionActual(), tableroTest.obtenerEsquina(0,1));
 	}
 }

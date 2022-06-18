@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo.jugador;
 
+import edu.fiuba.algo3.direcciones.DirEste;
+import edu.fiuba.algo3.direcciones.DirNorte;
+import edu.fiuba.algo3.direcciones.DirOeste;
+import edu.fiuba.algo3.direcciones.DirSur;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.obstaculo.Piquete;
@@ -58,14 +62,19 @@ public class testJugador {
         Esquina esquinaC = new Esquina();
         Cuadra cuadraA_B = new Cuadra(esquinaA, esquinaB);
         Cuadra cuadraB_C = new Cuadra(esquinaB, esquinaC, new SorpresaFavorable());
-        esquinaA.insertarCuadra("Este", cuadraA_B);
-        esquinaB.insertarCuadra("Oeste", cuadraA_B);
-        esquinaB.insertarCuadra("Este", cuadraB_C);
-        esquinaC.insertarCuadra("Oeste", cuadraB_C);
+
+        // Creo direcciones
+        DirEste Este = new DirEste();
+        DirOeste Oeste = new DirOeste();
+
+        esquinaA.insertarCuadra(Este, cuadraA_B);
+        esquinaB.insertarCuadra(Oeste, cuadraA_B);
+        esquinaB.insertarCuadra(Este, cuadraB_C);
+        esquinaC.insertarCuadra(Oeste, cuadraB_C);
 
         jugador.spawnearVehiculoEn(esquinaA);
-        jugador.moverEnDireccion("Este");
-        jugador.moverEnDireccion("Este");
+        jugador.moverEnDireccion(Este);
+        jugador.moverEnDireccion(Este);
 
         assertEquals(2, jugador.getMovimientos());
     }

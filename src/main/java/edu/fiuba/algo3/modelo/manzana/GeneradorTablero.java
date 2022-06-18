@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo.manzana;
 
+import edu.fiuba.algo3.direcciones.DirEste;
+import edu.fiuba.algo3.direcciones.DirNorte;
+import edu.fiuba.algo3.direcciones.DirOeste;
+import edu.fiuba.algo3.direcciones.DirSur;
 import edu.fiuba.algo3.modelo.evento.Evento;
 import edu.fiuba.algo3.modelo.evento.GeneradorEventos;
 
@@ -9,10 +13,10 @@ import edu.fiuba.algo3.modelo.evento.GeneradorEventos;
 
 public class GeneradorTablero { // TO DO: que esto una clase con solo metodos de clase.
 	
-	static final String NORTE = "Norte";
-	static final String SUR = "Sur";
-	static final String ESTE = "Este";
-	static final String OESTE = "Oeste";
+	static final DirNorte NORTE = new DirNorte();
+	static final DirSur SUR = new DirSur();
+	static final DirEste ESTE = new DirEste();
+	static final DirOeste OESTE = new DirOeste();
 
 	private static void generarEsquinas(int dimensiones, Tablero nuevoTablero) {
 
