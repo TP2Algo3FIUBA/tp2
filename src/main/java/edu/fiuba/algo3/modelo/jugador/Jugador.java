@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.jugador;
 
 import edu.fiuba.algo3.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoVehiculo;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class Jugador {
@@ -37,9 +38,7 @@ public class Jugador {
 	}
 
 	public void aplicarSorpresaCambioVehiculo() {
-		Esquina posicionActual = vehiculo.getEsquinaActual(); //
-		vehiculo = vehiculo.aplicarSorpresaCambioVehiculo();  // Raro? se resuelve poniendo la posicion dentro del jugador
-		vehiculo.setEsquinaActual(posicionActual);		      //
+		vehiculo.aplicarSorpresaCambioVehiculo();  // Raro? se resuelve poniendo la posicion dentro del jugador
 	}
 
 	public void sorpresaFavorable() {
@@ -51,5 +50,10 @@ public class Jugador {
 
 	public void sorpresaDesfavorable() {
 		this.movimientos = (int) Math.round((movimientos)*1.25);
+	}
+
+	// Solo se utiliza para los test
+	public EstadoVehiculo getEstadoVehiculo() {
+		return this.vehiculo.getEstadoVehiculo();
 	}
 }

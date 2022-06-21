@@ -1,10 +1,17 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.direcciones.DirEste;
+import edu.fiuba.algo3.direcciones.DirOeste;
+import edu.fiuba.algo3.modelo.evento.Evento;
+import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.manzana.Cuadra;
+import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.obstaculo.Piquete;
-import edu.fiuba.algo3.modelo.vehiculo.Auto;
-import edu.fiuba.algo3.modelo.vehiculo.CuatroPorCuatro;
-import edu.fiuba.algo3.modelo.vehiculo.Moto;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoCuatroPorCuatro;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoMoto;
+import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,24 +20,61 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class testObstaculos {
     @Test
     void testPiqueteJugadorNoPuedeSeguirAvanzandoSiTieneUnAuto(){
-        Jugador jugador= new Jugador(new Auto());
-        Piquete piquete = new Piquete();
+        Esquina esquinaA = new Esquina();
+        Esquina esquinaB = new Esquina();
+        Evento evento = new Piquete();
+        Cuadra cuadra = new Cuadra(esquinaA, esquinaB, evento);
 
-        assertEquals(piquete.afectarJugador(jugador), false);
+        DirEste Este = new DirEste();
+        DirOeste Oeste = new DirOeste();
+        esquinaA.insertarCuadra(Este, cuadra);
+        esquinaB.insertarCuadra(Oeste, cuadra);
+
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoAuto()) );
+        jugador.spawnearVehiculoEn(esquinaA);
+
+        jugador.moverEnDireccion(Este);
+        assertEquals(esquinaA, jugador.posicionActual());
+
     }
+
     @Test
     void testPiqueteJugadorNoPuedeSeguirAvanzandoSiTieneUnaCuatroPoCuatro(){
-        Jugador jugador= new Jugador(new CuatroPorCuatro());
-        Piquete piquete = new Piquete();
+        Esquina esquinaA = new Esquina();
+        Esquina esquinaB = new Esquina();
+        Evento evento = new Piquete();
+        Cuadra cuadra = new Cuadra(esquinaA, esquinaB, evento);
 
-        assertEquals(piquete.afectarJugador(jugador), false);
+        DirEste Este = new DirEste();
+        DirOeste Oeste = new DirOeste();
+        esquinaA.insertarCuadra(Este, cuadra);
+        esquinaB.insertarCuadra(Oeste, cuadra);
+
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoCuatroPorCuatro()) );
+        jugador.spawnearVehiculoEn(esquinaA);
+
+        jugador.moverEnDireccion(Este);
+        assertEquals(esquinaA, jugador.posicionActual());
+
     }
+
     @Test
     void testPiqueteLeSumaMovimientosAlJugadorSiTieneUnaMoto(){
-        Jugador jugador= new Jugador(new Moto());
-        Piquete piquete = new Piquete();
+        Esquina esquinaA = new Esquina();
+        Esquina esquinaB = new Esquina();
+        Evento evento = new Piquete();
+        Cuadra cuadra = new Cuadra(esquinaA, esquinaB, evento);
 
-        assertEquals(piquete.afectarJugador(jugador), true);
+        DirEste Este = new DirEste();
+        DirOeste Oeste = new DirOeste();
+        esquinaA.insertarCuadra(Este, cuadra);
+        esquinaB.insertarCuadra(Oeste, cuadra);
+
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoAuto()) );
+        jugador.spawnearVehiculoEn(esquinaA);
+
+        jugador.moverEnDireccion(Este);
+        assertEquals(esquinaB, jugador.posicionActual());
         assertEquals(jugador.getMovimientos(), 2);
     }
 }

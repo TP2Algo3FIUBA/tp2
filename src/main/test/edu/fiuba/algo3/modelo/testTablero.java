@@ -3,15 +3,16 @@ package edu.fiuba.algo3.modelo;
 import static org.junit.jupiter.api.Assertions.*;
 
 import edu.fiuba.algo3.direcciones.DirEste;
-import edu.fiuba.algo3.direcciones.DirOeste;
 import edu.fiuba.algo3.modelo.juego.Juego;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
+import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.GeneradorTablero;
 import edu.fiuba.algo3.modelo.manzana.Tablero;
-import edu.fiuba.algo3.modelo.vehiculo.Moto;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoMoto;
 
 class testTablero {
 
@@ -45,7 +46,7 @@ class testTablero {
 	void testPosicionarVehiculoEnElInicio() {
 		Tablero tableroTest = GeneradorTablero.generarTablero(3);
 
-		Jugador jugador = new Jugador(new Moto());
+		Jugador jugador = new Jugador(new Vehiculo( new EstadoAuto() ));
 
 		Juego juego = new Juego(jugador, tableroTest);
 		juego.spawnearJugadorEn(0, 0);
@@ -57,7 +58,7 @@ class testTablero {
 	void testMoverVehiculo() {
 		Tablero tableroTest = GeneradorTablero.generarTablero(3);
 
-		Jugador jugador = new Jugador(new Moto());
+		Jugador jugador = new Jugador(new Vehiculo( new EstadoMoto() ));
 
 		Juego juego = new Juego(jugador, tableroTest);
 		juego.spawnearJugadorEn(0, 0);

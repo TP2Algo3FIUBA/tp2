@@ -6,14 +6,15 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.EsquinaNoValidaException;
 
-public abstract class Vehiculo {
+public class Vehiculo {
 
 	//public Jugador conductor;
 	private Esquina esquinaActual;
+	private EstadoVehiculo estadoVehiculo;
 
-	public Vehiculo() {
-		esquinaActual = new Esquina(); //
-
+	public Vehiculo(EstadoVehiculo unEstadoVehiculo) {
+		esquinaActual = new Esquina(); // para inicializarlo en un estado valido
+		estadoVehiculo = unEstadoVehiculo; // supuesto - caso inicial es un Auto
 	}
 
 	public void setEsquinaActual(Esquina esquinaActual) {
@@ -29,19 +30,27 @@ public abstract class Vehiculo {
 		return esquinaActual;
 	}
 
-	public abstract boolean chocarContraPozo(Jugador jugador);
+	public void chocarContraPozo(Jugador jugador) {
+		estadoVehiculo.chocarContraPozo(jugador);
+	}
 
-	public abstract boolean chocarContraPiquete(Jugador jugador);
+	public void chocarContraPiquete(Jugador jugador){
+		estadoVehiculo.chocarContraPiquete(jugador);
+	}
 	
-	public abstract void atravezarControlPolicial(Jugador jugador);
+	public void atravezarControlPolicial(Jugador jugador) {
+		estadoVehiculo.atravezarControlPolicial(jugador);
+	}
 
-	public abstract Vehiculo aplicarSorpresaCambioVehiculo();
+	public void aplicarSorpresaCambioVehiculo() {
+		estadoVehiculo = estadoVehiculo.aplicarSorpresaCambioVehiculo();
+	}
 
-	public void sorpresaFavorable(Jugador jugador) {
+	public void aplicarSorpresaFavorable(Jugador jugador) {
 		jugador.incrementarMovimientos((jugador.getMovimientos()) * (20 / 100) * (-1));// ! viola encapsulamiento
 	}
 
-	public void sorpresaDesfavorable(Jugador jugador) {
+	public void aplicarSorpresaDesfavorable(Jugador jugador) {
 		jugador.incrementarMovimientos((jugador.getMovimientos()) * (25 / 100)); // ! viola encapsulamiento
 	}
 
@@ -50,6 +59,8 @@ public abstract class Vehiculo {
 		
 	}
 
-
-
+	// Solo se utiliza para los test
+	public EstadoVehiculo getEstadoVehiculo() {
+		return this.estadoVehiculo;
+	}
 }

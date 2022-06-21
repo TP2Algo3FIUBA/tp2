@@ -2,9 +2,16 @@ package edu.fiuba.algo3.modelo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import edu.fiuba.algo3.direcciones.DirEste;
+import edu.fiuba.algo3.direcciones.DirOeste;
 import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.vehiculo.Auto;
+import edu.fiuba.algo3.modelo.manzana.Cuadra;
+import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.obstaculo.Pozo;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoMoto;
+import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.evento.Evento;
@@ -22,12 +29,22 @@ class testGeneradorEventos {
 	}
 
 	@Test
-	void testEventoVacio(){
+	void testEventoVacioPermiteAvanzarAJugador(){
+        Esquina esquinaA = new Esquina();
+        Esquina esquinaB = new Esquina();
+        Evento evento = new EventoVacio();
+        Cuadra cuadra = new Cuadra(esquinaA, esquinaB, evento);
 
-		Evento evento = new EventoVacio();
-		Jugador jugador = new Jugador(new Auto());
+        DirEste Este = new DirEste();
+        DirOeste Oeste = new DirOeste();
+        esquinaA.insertarCuadra(Este, cuadra);
+        esquinaB.insertarCuadra(Oeste, cuadra);
 
-		assertEquals(evento.afectarJugador(jugador), true);
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoMoto()) );
+        jugador.spawnearVehiculoEn(esquinaA);
+
+        jugador.moverEnDireccion(Este);
+		assertEquals(esquinaB, jugador.posicionActual());
 
 	}
 }

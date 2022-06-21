@@ -8,9 +8,10 @@ import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.Tablero;
 import edu.fiuba.algo3.modelo.obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.obstaculo.Pozo;
-import edu.fiuba.algo3.modelo.vehiculo.Auto;
-import edu.fiuba.algo3.modelo.vehiculo.CuatroPorCuatro;
-import edu.fiuba.algo3.modelo.vehiculo.Moto;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoCuatroPorCuatro;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoMoto;
+import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -58,8 +59,7 @@ public class testcasodeuso01Entrega01 {
         esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
-        Moto moto = new Moto();
-        Jugador jugador = new Jugador(moto);
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoMoto()) );
 
         // creo Juego con su Jugador y Tablero
         Juego juego = new Juego(jugador, tablero);
@@ -123,7 +123,7 @@ public class testcasodeuso01Entrega01 {
         esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
-        Jugador jugador = new Jugador(new Auto());
+        Jugador jugador = new Jugador (new Vehiculo(new EstadoAuto()) );
 
         // creo Juego con su Jugador y Tablero
         Juego juego = new Juego(jugador, tablero);
@@ -190,8 +190,7 @@ public class testcasodeuso01Entrega01 {
         esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
-        CuatroPorCuatro cxc = new CuatroPorCuatro();
-        Jugador jugador = new Jugador(cxc);
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoCuatroPorCuatro()) );
 
         // creo Juego con su Jugador y Tablero
         Juego juego = new Juego(jugador, tablero);
@@ -256,8 +255,7 @@ public class testcasodeuso01Entrega01 {
         esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
-        CuatroPorCuatro cxc = new CuatroPorCuatro();
-        Jugador jugador = new Jugador(cxc);
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoCuatroPorCuatro()) );
 
         // creo Juego con su Jugador y Tablero
         Juego juego = new Juego(jugador, tablero);
@@ -313,8 +311,7 @@ public class testcasodeuso01Entrega01 {
         esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
-        Auto auto = new Auto();
-        Jugador jugador = new Jugador(auto);
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoAuto()) );
 
         // creo Juego con su Jugador y Tablero
         Juego juego = new Juego(jugador, tablero);

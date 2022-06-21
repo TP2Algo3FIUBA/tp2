@@ -5,7 +5,6 @@ import edu.fiuba.algo3.direcciones.DirEste;
 import edu.fiuba.algo3.direcciones.DirNorte;
 import edu.fiuba.algo3.direcciones.DirOeste;
 import edu.fiuba.algo3.direcciones.DirSur;
-import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
@@ -16,9 +15,7 @@ import edu.fiuba.algo3.modelo.obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaCambioDeVehiculo;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaDesfavorable;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaFavorable;
-import edu.fiuba.algo3.modelo.vehiculo.Auto;
-import edu.fiuba.algo3.modelo.vehiculo.CuatroPorCuatro;
-import edu.fiuba.algo3.modelo.vehiculo.Moto;
+import edu.fiuba.algo3.modelo.vehiculo.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -67,7 +64,7 @@ public class testcasodeuso02Entrega02 {
         esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
-        Jugador jugador = new Jugador(new Auto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoAuto()) );
 
         // creo Juego con su Jugador y Tablero
         Juego juego = new Juego(jugador, tablero);
@@ -123,7 +120,7 @@ public class testcasodeuso02Entrega02 {
         esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
-        Jugador jugador = new Jugador(new Auto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoAuto()) );
 
         // creo Juego con su Jugador y Tablero
         Juego juego = new Juego(jugador, tablero);
@@ -180,7 +177,7 @@ public class testcasodeuso02Entrega02 {
         esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
-        Jugador jugador = new Jugador(new Auto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoAuto()) );
 
         // creo Juego con su Jugador y Tablero
         Juego juego = new Juego(jugador, tablero);
@@ -191,9 +188,11 @@ public class testcasodeuso02Entrega02 {
         juego.moverJugadorEnDireccion(Sur);
         juego.moverJugadorEnDireccion(Oeste);
         juego.moverJugadorEnDireccion(Norte);
+
         // Assert
-        assertTrue(jugador.getVehiculo() instanceof CuatroPorCuatro);
+        assertTrue(jugador.getEstadoVehiculo() instanceof EstadoCuatroPorCuatro);
     }
+
     @Test
     public void jugadorConMotoAtraviezaCiudadYSeEncuentraConSorpresaCambioDeVehiculo(){
 
@@ -235,7 +234,7 @@ public class testcasodeuso02Entrega02 {
         esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
-        Jugador jugador = new Jugador(new Moto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoMoto()) );
 
         // creo Juego con su Jugador y Tablero
         Juego juego = new Juego(jugador, tablero);
@@ -247,7 +246,7 @@ public class testcasodeuso02Entrega02 {
         juego.moverJugadorEnDireccion(Oeste);
         juego.moverJugadorEnDireccion(Norte);
         // Assert
-        assertTrue(jugador.getVehiculo() instanceof Auto);
+        assertTrue(jugador.getEstadoVehiculo() instanceof EstadoAuto);
 
     }
 
@@ -291,7 +290,7 @@ public class testcasodeuso02Entrega02 {
         esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // creo Jugador con su Vehiculo
-        Jugador jugador = new Jugador(new Auto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoAuto()) );
 
         // creo Juego con su Jugador y Tablero
         Juego juego = new Juego(jugador, tablero);
@@ -299,11 +298,11 @@ public class testcasodeuso02Entrega02 {
 
         // Act
         juego.moverJugadorEnDireccion(Este);
-        assertEquals(esquina00,jugador.posicionActual());
+        assertEquals(esquina00,jugador.posicionActual()); // Este falla porque falta implementar la delegacion a evento
 
         juego.moverJugadorEnDireccion(Sur);
         // Assert
-        assertEquals(esquina10,jugador.posicionActual());
+        assertEquals(esquina10,jugador.posicionActual()); // Este tambien va a fallar hasta que se arregle el anterior
 
 
     }

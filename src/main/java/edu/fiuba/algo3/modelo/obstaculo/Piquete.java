@@ -10,8 +10,8 @@ public class Piquete implements Evento{
     }
 
     @Override
-    public boolean afectarJugador(Jugador jugador){
+    public void afectarJugador(Jugador jugador){
         Vehiculo vehiculo = jugador.getVehiculo(); // cambiar
-        return vehiculo.chocarContraPiquete(jugador);
+        vehiculo.chocarContraPiquete(jugador);
     }
 }

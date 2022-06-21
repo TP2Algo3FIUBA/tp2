@@ -6,13 +6,14 @@ import edu.fiuba.algo3.direcciones.DirEste;
 import edu.fiuba.algo3.direcciones.DirNorte;
 import edu.fiuba.algo3.direcciones.DirOeste;
 import edu.fiuba.algo3.direcciones.DirSur;
+import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.CuadraInexistenteException;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
-import edu.fiuba.algo3.modelo.vehiculo.Moto;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoMoto;
 
 class testEsquina {
 
@@ -31,7 +32,7 @@ class testEsquina {
         esquina00.insertarCuadra(Este, cuadra00_01);
         esquina01.insertarCuadra(Oeste, cuadra00_01);
 
-        Jugador jugador = new Jugador(new Moto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoMoto()) );
         jugador.spawnearVehiculoEn(esquina00);
 
         // Act
@@ -44,7 +45,7 @@ class testEsquina {
 	@Test
 	void testPosicionarVehiculo() {
 		Esquina esquina = new Esquina();
-		Jugador jugador = new Jugador(new Moto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoMoto()) );
 		jugador.spawnearVehiculoEn(esquina);
 
 		assertEquals(jugador.posicionActual(), esquina);
@@ -56,7 +57,7 @@ class testEsquina {
 		Esquina inicio = new Esquina();
 		Esquina destino = new Esquina();
 		Cuadra cuadra = new Cuadra(inicio, destino);
-		Jugador jugador = new Jugador(new Moto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoMoto()) );
 
 		// Creo direcciones
 		DirNorte Norte = new DirNorte();
@@ -82,7 +83,7 @@ class testEsquina {
 		Esquina inicio = new Esquina();
 		Esquina destino = new Esquina();
 		Cuadra cuadra = new Cuadra(inicio, destino);
-		Jugador jugador = new Jugador(new Moto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoMoto()) );
 
 		// Creo direcciones
 		DirNorte Norte = new DirNorte();

@@ -7,9 +7,8 @@ public class SorpresaCambioDeVehiculo implements Evento{
 
     }
 
-		@Override
-		public boolean afectarJugador(Jugador jugador) {
-			jugador.aplicarSorpresaCambioVehiculo();
-			return true;
-		}
+	@Override
+	public void afectarJugador(Jugador jugador) {
+		jugador.aplicarSorpresaCambioVehiculo();
+	}
 }

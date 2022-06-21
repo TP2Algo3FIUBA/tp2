@@ -2,35 +2,33 @@ package edu.fiuba.algo3.modelo.vehiculo;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 
-public class CuatroPorCuatro extends Vehiculo {
+public class EstadoCuatroPorCuatro extends EstadoVehiculo {
 
 	private int pozosAtravezados;
 
-	public CuatroPorCuatro() {
+	public EstadoCuatroPorCuatro() {
 		super();
 		this.pozosAtravezados = 0;
 	}
 
 	@Override
-	public boolean chocarContraPozo(Jugador jugador) {
+	public void chocarContraPozo(Jugador jugador) {
 		this.pozosAtravezados++;
 		if (this.pozosAtravezados == 3) {
 			jugador.incrementarMovimientos(2);
 			this.pozosAtravezados = 0;
 		}
 		jugador.incrementarMovimientos(0);
-		return true;
 	}
 
 	@Override
-	public boolean chocarContraPiquete(Jugador jugador) {
+	public void chocarContraPiquete(Jugador jugador) {
 		// throw new HayUnPiqueteException();
-		return false;
 	}
 
 	@Override
-	public Vehiculo aplicarSorpresaCambioVehiculo() {
-		return (new Moto());
+	public EstadoVehiculo aplicarSorpresaCambioVehiculo() {
+		return (new EstadoMoto());
 	}
 
 	@Override

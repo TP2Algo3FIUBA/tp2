@@ -2,27 +2,25 @@ package edu.fiuba.algo3.modelo.vehiculo;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 
-public class Moto extends Vehiculo {
+public class EstadoMoto extends EstadoVehiculo {
 
-	public Moto() {
+	public EstadoMoto() {
 		super();
 	}
 
 	@Override
-	public boolean chocarContraPozo(Jugador jugador) {
+	public void chocarContraPozo(Jugador jugador) {
 		jugador.incrementarMovimientos(3);
-		return true;
 	}
 
 	@Override
-	public boolean chocarContraPiquete(Jugador jugador) {
+	public void chocarContraPiquete(Jugador jugador) {
 		jugador.incrementarMovimientos(2);
-		return true;
 	}
 
 	@Override
-	public Vehiculo aplicarSorpresaCambioVehiculo() {
-		return (new Auto());
+	public EstadoVehiculo aplicarSorpresaCambioVehiculo() {
+		return (new EstadoAuto());
 	}
 
 	@Override

@@ -32,18 +32,8 @@ public class Cuadra {
 
 	public void moverVehiculo(Jugador jugador, Esquina esquinaInicio) {
 
-		/*
-			Pozo: suma movimientos
-			!!! Piquete: autos y 4x4 no pueden atravezar !!!
-			Control policial: suma movimientos
-
-			Sorpresa favorable: resta movimientos
-			Sorpresa desfavorable: suma movimientos
-			!!! Cambio de vehiculo: se explica solo !!! jugador.cambiarVehiculo();
-		 */
-
-		boolean puedeAvanzar = evento.afectarJugador(jugador);  // <-- exception piquete
-		if (puedeAvanzar) {
+		evento.afectarJugador(jugador);  // <-- exception piquete
+		if (1 > 0) { // aca estaba el if puedeavanzar
 			Esquina esquinaADestino = this.obtenerEsquinaOpuesta(esquinaInicio);
 			Vehiculo vehiculoActual = jugador.getVehiculo();
 			vehiculoActual.setEsquinaActual(esquinaADestino);

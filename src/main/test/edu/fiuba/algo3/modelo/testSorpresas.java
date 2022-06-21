@@ -1,19 +1,17 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.direcciones.DirEste;
-import edu.fiuba.algo3.direcciones.DirNorte;
 import edu.fiuba.algo3.direcciones.DirOeste;
-import edu.fiuba.algo3.direcciones.DirSur;
-import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaCambioDeVehiculo;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaDesfavorable;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaFavorable;
-import edu.fiuba.algo3.modelo.vehiculo.Auto;
-import edu.fiuba.algo3.modelo.vehiculo.CuatroPorCuatro;
-import edu.fiuba.algo3.modelo.vehiculo.Moto;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoCuatroPorCuatro;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoMoto;
+import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,11 +33,11 @@ public class testSorpresas {
         esquina00.insertarCuadra(Este, cuadra00_01);
         esquina01.insertarCuadra(Oeste, cuadra00_01);
 
-        Jugador jugador = new Jugador(new Moto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoMoto()) );
         jugador.spawnearVehiculoEn(esquina00);
 
         jugador.moverEnDireccion(Este);
-        assertTrue(jugador.getVehiculo() instanceof Auto);
+        assertTrue(jugador.getEstadoVehiculo() instanceof EstadoAuto);
     }
 
 
@@ -58,11 +56,11 @@ public class testSorpresas {
         esquina00.insertarCuadra(Este, cuadra00_01);
         esquina01.insertarCuadra(Oeste, cuadra00_01);
 
-        Jugador jugador = new Jugador(new Auto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoAuto()) );
         jugador.spawnearVehiculoEn(esquina00);
 
         jugador.moverEnDireccion(Este);
-        assertTrue(jugador.getVehiculo() instanceof CuatroPorCuatro);
+        assertTrue(jugador.getEstadoVehiculo() instanceof EstadoCuatroPorCuatro);
     }
 
     @Test
@@ -80,11 +78,11 @@ public class testSorpresas {
         esquina00.insertarCuadra(Este, cuadra00_01);
         esquina01.insertarCuadra(Oeste, cuadra00_01);
 
-        Jugador jugador = new Jugador(new CuatroPorCuatro());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoCuatroPorCuatro()) );
         jugador.spawnearVehiculoEn(esquina00);
 
         jugador.moverEnDireccion(Este);
-        assertTrue(jugador.getVehiculo() instanceof Moto);
+        assertTrue(jugador.getEstadoVehiculo() instanceof EstadoMoto);
     }
 
     @Test
@@ -101,7 +99,7 @@ public class testSorpresas {
         esquina00.insertarCuadra(Este, cuadra00_01);
         esquina01.insertarCuadra(Oeste, cuadra00_01);
 
-        Jugador jugador = new Jugador(new Moto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoMoto()) );
         jugador.spawnearVehiculoEn(esquina00);
 
         jugador.moverEnDireccion(Este);
@@ -123,7 +121,7 @@ public class testSorpresas {
         esquina00.insertarCuadra(Este, cuadra00_01);
         esquina01.insertarCuadra(Oeste, cuadra00_01);
 
-        Jugador jugador = new Jugador(new Auto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoAuto()) );
         jugador.spawnearVehiculoEn(esquina00);
 
         jugador.moverEnDireccion(Este);
@@ -145,7 +143,7 @@ public class testSorpresas {
         esquina00.insertarCuadra(Este, cuadra00_01);
         esquina01.insertarCuadra(Oeste, cuadra00_01);
 
-        Jugador jugador = new Jugador(new CuatroPorCuatro());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoCuatroPorCuatro()) );
         jugador.spawnearVehiculoEn(esquina00);
 
         jugador.moverEnDireccion(Este);
@@ -167,7 +165,7 @@ public class testSorpresas {
         esquina00.insertarCuadra(Este, cuadra00_01);
         esquina01.insertarCuadra(Oeste, cuadra00_01);
 
-        Jugador jugador = new Jugador(new Moto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoMoto()) );
         jugador.spawnearVehiculoEn(esquina00);
 
         jugador.moverEnDireccion(Este);
@@ -189,7 +187,7 @@ public class testSorpresas {
         esquina00.insertarCuadra(Este, cuadra00_01);
         esquina01.insertarCuadra(Oeste, cuadra00_01);
 
-        Jugador jugador = new Jugador(new Auto());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoAuto()) );
         jugador.spawnearVehiculoEn(esquina00);
 
         jugador.moverEnDireccion(Este);
@@ -211,7 +209,7 @@ public class testSorpresas {
         esquina00.insertarCuadra(Este, cuadra00_01);
         esquina01.insertarCuadra(Oeste, cuadra00_01);
 
-        Jugador jugador = new Jugador(new CuatroPorCuatro());
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoCuatroPorCuatro()) );
         jugador.spawnearVehiculoEn(esquina00);
 
         jugador.moverEnDireccion(Este);

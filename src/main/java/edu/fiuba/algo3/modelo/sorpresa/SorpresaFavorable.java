@@ -7,10 +7,8 @@ public class SorpresaFavorable implements Evento{
 
     }
 
-		@Override
-		public boolean afectarJugador(Jugador jugador) {
-
-			jugador.sorpresaFavorable();
-			return true;
-		}
+	@Override
+	public void afectarJugador(Jugador jugador) {
+		jugador.sorpresaFavorable();
+	}
 }

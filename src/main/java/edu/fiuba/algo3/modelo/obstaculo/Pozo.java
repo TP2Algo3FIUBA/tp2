@@ -13,10 +13,9 @@ public class Pozo implements Evento{
     }
 
     @Override
-    public boolean afectarJugador(Jugador jugador){
+    public void afectarJugador(Jugador jugador){
     	Vehiculo vehiculo = jugador.getVehiculo();
         vehiculo.chocarContraPozo(jugador);
-        return true;
     }
 
 }

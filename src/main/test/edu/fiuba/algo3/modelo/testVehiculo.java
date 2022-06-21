@@ -2,35 +2,35 @@ package edu.fiuba.algo3.modelo;
 import static org.junit.jupiter.api.Assertions.*;
 
 import edu.fiuba.algo3.direcciones.DirEste;
-import edu.fiuba.algo3.direcciones.DirSur;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.EsquinaNoValidaException;
-import edu.fiuba.algo3.modelo.vehiculo.Moto;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoMoto;
+import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 class testVehiculo {
 	@Test
 	void testUnVehiculoDeberiaInicializarseConUnaEsquina() {
-		Moto moto = new Moto();
-
-		assertTrue(moto.getEsquinaActual() instanceof Esquina);
+		Vehiculo vehiculo = new Vehiculo(new EstadoMoto() );
+		assertTrue(vehiculo.getEsquinaActual() instanceof Esquina);
 	}
+
 	@Test
 	void testSePuedeInicializarUnVehiculoConSuEsquinaValida() {
-		Moto moto = new Moto();
+        Vehiculo vehiculo = new Vehiculo(new EstadoMoto() );
 
-		moto.setEsquinaActual(new Esquina());
+		vehiculo.setEsquinaActual(new Esquina());
 
-		assertTrue(moto.getEsquinaActual() instanceof Esquina);
+		assertTrue(vehiculo.getEsquinaActual() instanceof Esquina);
 	}
 
 	@Test
 	void testNoSePuedeInicializarUnVehiculoConUnaEsquinaNull(){
-		Moto moto = new Moto();
+        Vehiculo vehiculo = new Vehiculo(new EstadoMoto() );
 
-		assertThrows(EsquinaNoValidaException.class, ()-> moto.setEsquinaActual(null));
+		assertThrows(EsquinaNoValidaException.class, ()-> vehiculo.setEsquinaActual(null));
 	}
 
 	@Test
@@ -44,12 +44,12 @@ class testVehiculo {
 
 		inicio.insertarCuadra(Este, cuadra);
 
-		Moto moto = new Moto();
-		Jugador jugador = new Jugador(moto);
-		moto.setEsquinaActual(inicio);
-		moto.moverseAEsquina(jugador, Este);
+		Vehiculo vehiculo = new Vehiculo(new EstadoMoto());
+        Jugador jugador = new Jugador( vehiculo );
+		vehiculo.setEsquinaActual(inicio);
+		vehiculo.moverseAEsquina(jugador, Este);
 
-		assertEquals(moto.getEsquinaActual(), destino);
+		assertEquals(vehiculo.getEsquinaActual(), destino);
 		assertEquals(jugador.getMovimientos(), 1);
 	}
 
