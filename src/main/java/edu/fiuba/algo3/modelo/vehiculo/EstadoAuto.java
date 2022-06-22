@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.vehiculo;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.manzana.Esquina;
 
 public class EstadoAuto extends EstadoVehiculo {
 
@@ -15,7 +16,8 @@ public class EstadoAuto extends EstadoVehiculo {
 	}
 
 	@Override
-	public void chocarContraPiquete(Jugador jugador){
+	public Esquina chocarContraPiquete(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino){
+		return esquinaInicio;
 		//throw new HayUnPiqueteException();
 	}
 

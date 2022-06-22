@@ -70,11 +70,11 @@ public class testObstaculos {
         esquinaA.insertarCuadra(Este, cuadra);
         esquinaB.insertarCuadra(Oeste, cuadra);
 
-        Jugador jugador = new Jugador( new Vehiculo(new EstadoAuto()) );
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoMoto()) );
         jugador.spawnearVehiculoEn(esquinaA);
 
         jugador.moverEnDireccion(Este);
         assertEquals(esquinaB, jugador.posicionActual());
-        assertEquals(jugador.getMovimientos(), 2);
+        assertEquals(jugador.getMovimientos(), 3);
     }
 }

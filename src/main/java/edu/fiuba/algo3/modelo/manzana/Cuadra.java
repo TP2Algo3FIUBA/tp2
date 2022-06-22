@@ -31,12 +31,14 @@ public class Cuadra {
 	}
 
 	public void moverVehiculo(Jugador jugador, Esquina esquinaInicio) {
-
-		evento.afectarJugador(jugador);  // <-- exception piquete
-		if (1 > 0) { // aca estaba el if puedeavanzar
-			Esquina esquinaADestino = this.obtenerEsquinaOpuesta(esquinaInicio);
-			Vehiculo vehiculoActual = jugador.getVehiculo();
-			vehiculoActual.setEsquinaActual(esquinaADestino);
-		}
+//
+//		evento.afectarJugador(jugador);  // <-- exception piquete
+//		if (1 > 0) { // aca estaba el if puedeavanzar
+//			Esquina esquinaADestino = this.obtenerEsquinaOpuesta(esquinaInicio);
+//			Vehiculo vehiculoActual = jugador.getVehiculo();
+//			vehiculoActual.setEsquinaActual(esquinaADestino);
+//		}
+		Esquina esquinaDestino = this.obtenerEsquinaOpuesta(esquinaInicio);
+		jugador.setEsquinaActual(evento.afectarJugador(jugador, esquinaInicio, esquinaDestino));
 	}
 }

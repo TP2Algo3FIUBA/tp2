@@ -34,8 +34,8 @@ public class Vehiculo {
 		estadoVehiculo.chocarContraPozo(jugador);
 	}
 
-	public void chocarContraPiquete(Jugador jugador){
-		estadoVehiculo.chocarContraPiquete(jugador);
+	public Esquina chocarContraPiquete(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino){
+		return estadoVehiculo.chocarContraPiquete(jugador, esquinaInicio, esquinaDestino);
 	}
 	
 	public void atravezarControlPolicial(Jugador jugador) {

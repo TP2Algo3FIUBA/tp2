@@ -24,6 +24,10 @@ public class Jugador {
 	public void moverEnDireccion(Direccion direccion) {
 		vehiculo.moverseAEsquina(this, direccion); // ! raro
 	}
+	
+	public void setEsquinaActual(Esquina esquinaActual) {
+		vehiculo.setEsquinaActual(esquinaActual);
+	}
 
 	public Esquina posicionActual() {
 		return vehiculo.getEsquinaActual();
