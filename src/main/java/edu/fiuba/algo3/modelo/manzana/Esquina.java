@@ -15,6 +15,7 @@ public class Esquina {
 	}
 
 	public void moverVehiculo(Jugador jugador, Direccion direccion) {
+//		System.out.println(direccion.toString());
 
 		Cuadra cuadraAdirijirse = cuadras.get(direccion.toString());
 		if (cuadraAdirijirse == null) {

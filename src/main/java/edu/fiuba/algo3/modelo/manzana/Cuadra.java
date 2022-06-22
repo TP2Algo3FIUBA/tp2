@@ -24,7 +24,7 @@ public class Cuadra {
 
 	private Esquina obtenerEsquinaOpuesta(Esquina esquinaRecibida) {
 		Esquina esquinaADestino = esquinaA;
-		if (esquinaA.equals(esquinaRecibida)) { // Checkear si esto viola "tell don't ask"
+		if (esquinaA.equals(esquinaRecibida)) { 
 			esquinaADestino = esquinaB;
 		}
 		return esquinaADestino;
