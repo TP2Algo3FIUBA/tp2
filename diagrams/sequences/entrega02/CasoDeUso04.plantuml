@@ -1,29 +1,36 @@
 @startuml
-title: unVehículoAtraviesaLaCiudadYEncuentraUnaSorpresaCambioDeVehículo
+title: unaMotoAtraviesaLaCiudadYEncuentraUnaSorpresaCambioDeVehículo
 
 Actor test
-test -> ":Juego"  : moverJugadorEnDireccion(Norte)
-":Juego" -> ":Jugador" : moverEnDireccion(Norte)
-":Jugador" -> ":Moto" : moverseAEsquina(this, Norte)
-":Moto" -> esquinaActual : moverVehiculo(":Jugador", Norte)
-esquinaActual -> cuadras : get(Norte)
-esquinaActual <-- cuadras : cuadraAdirijirse = Cuadra
-esquinaActual -> ":Jugador" : incrementarMovimientos(1)
-esquinaActual -> cuadraAdirijirse : moverVehiculo(":Jugador", this)
+test -> ":Juego" : moverJugadorEnDireccion(Este)
+":Juego" -> ":Jugador"  : moverEnDireccion(Este)
+":Jugador"  -> ":Vehiculo" : moverseAEsquina(this, Este)
+":Vehiculo" -> "esquinaActual: Esquina" : moverVehiculo(jugador, Este)
+"esquinaActual: Esquina" -> "esquinaActual: Esquina" : getCuadra(Este)
+"esquinaActual: Esquina" -> ":Jugador" : incrementarMovimientos(1)
+return
 
-cuadraAdirijirse -> ":SorpresaCambioDeVehiculo" : afectarJugador(jugador)
+"esquinaActual: Esquina" -> "cuadraAdirijirse: Cuadra" : moverVehiculo(jugador, this)
+"cuadraAdirijirse: Cuadra" -> "cuadraAdirijirse: Cuadra" : obtenerEsquinaOpuesta(esquinaInicio)
+"cuadraAdirijirse: Cuadra" -> ":SorpresaCambioDeVehiculo" : afectarJugador(jugador, esquinaInicio, esquinaOpuesta)
+
 ":SorpresaCambioDeVehiculo" -> ":Jugador" : aplicarSorpresaCambioVehiculo()
+":Jugador" -> ":Vehiculo" : aplicarSorpresaCambioVehiculo()
+":Vehiculo" -> ":EstadoMoto" :  aplicarSorpresaCambioVehiculo()
+":EstadoMoto" --> ":Vehiculo" : this.estadoVehiculo = :EstadoAuto
+":Vehiculo" --> ":Jugador"
+":Jugador" --> ":SorpresaCambioDeVehiculo"
 
-":Jugador" -> ":Moto" : getEsquinaActual
-":Jugador" <-- ":Moto" : esquinaActual
-":Jugador" --> ":Moto" : aplicarSorpresaCambioVehiculo()
-":Jugador" <-- ":Moto" : :Auto
-":Jugador" -> ":Auto" : setEsquinaActual(esquinaActual)
-cuadraAdirijirse <-- ":SorpresaCambioDeVehiculo" : puedeAvanzar = true
+":SorpresaCambioDeVehiculo" --> "cuadraAdirijirse: Cuadra" : esquinaDestino = esquinaOpuesta
+"cuadraAdirijirse: Cuadra" -> ":Jugador" : setEsquinaActual(esquinaDestino)
+":Jugador" -> ":Vehiculo" : setEsquinaActual(esquinaDestino)
 
-cuadraAdirijirse <- cuadraAdirijirse : obtenerEsquinaOpuesta(esquinaInicio)
-cuadraAdirijirse -> ":Jugador" : getVehiculo
-cuadraAdirijirse <-- ":Jugador" : vehiculo = ":Auto"
-cuadraAdirijirse -> ":Auto" : setEsquinaActual(esquinaDestino)
-test <-- cuadraAdirijirse
+return
+":Jugador" --> "cuadraAdirijirse: Cuadra"
+"cuadraAdirijirse: Cuadra" --> "esquinaActual: Esquina"
+"esquinaActual: Esquina" --> ":Vehiculo"
+":Vehiculo" --> ":Jugador"
+":Jugador" --> ":Juego"
+":Juego" --> test
+
 @enduml

@@ -42,7 +42,7 @@ public class Jugador {
 	}
 
 	public void aplicarSorpresaCambioVehiculo() {
-		vehiculo.aplicarSorpresaCambioVehiculo();  // Raro? se resuelve poniendo la posicion dentro del jugador
+		vehiculo.aplicarSorpresaCambioVehiculo();
 	}
 
 	public void sorpresaFavorable() {

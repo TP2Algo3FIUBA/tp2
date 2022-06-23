@@ -1,11 +1,10 @@
 @startuml
 
-    abstract class Vehiculo {
-        - esquinaActual : Esquina
+    abstract class EstadoVehiculo {
 
-        + {abstract} chocarContraPozo(unJugador: Jugador): boolean
-        + {abstract} chocarContraPiquete(unJugador: Jugador): boolean
-        + {abstract} aplicarSorpresaCambioVehiculo(unJugador: Jugador) : Vehiculo
+        + {abstract} aplicarSorpresaCambioVehiculo()
+        + {abstract} chocarContraPozo(Jugador jugador)
+        + {abstract} chocarContraPiquete(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino) : Vehiculo
         + setEsquinaActual(setEsquinaActual: Esquina): void
         + moverseAEsquina(jugador: Jugador, direccion: String); void
     }
@@ -34,8 +33,8 @@
         + atravezarControlPolicial(jugador: Jugador): boolean
     }
 
-   Vehiculo <|-- Auto
-   Vehiculo <|-- Moto
-   Vehiculo <|-- CuatroPorCuatro
+   EstadoVehiculo <|-- Auto
+   EstadoVehiculo <|-- Moto
+   EstadoVehiculo <|-- CuatroPorCuatro
 
 @enduml
