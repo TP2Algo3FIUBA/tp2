@@ -1,5 +1,5 @@
 @startuml
-title: unVehículoAtraviesaLaCiudadYEncuentraUnaSorpresaCambioDeVehículo
+title: unAutoAtraviesaLaCiudadYEncuentraUnaSorpresaCambioDeVehículo
 
 Actor test
 test -> ":Juego"  : moverJugadorEnDireccion(Norte)

@@ -4,9 +4,9 @@ title: unAutoAtraviesaCiudadYSeEncuentraConUnPozoYEsPenalizadaTresMovimientos
 Actor test
 test -> ":Juego" : moverJugadorEnDireccion(Este)
 ":Juego" -> ":Jugador"  : moverEnDireccion(Este)
-":Jugador"  -> ":Vehiculo" : moverseAEsquina(this, direccion)
-":Vehiculo" -> "esquinaActual: Esquina" : moverVehiculo(jugador, direccion)
-"esquinaActual: Esquina" -> "esquinaActual: Esquina" : getCuadra(direccion)
+":Jugador"  -> ":Vehiculo" : moverseAEsquina(this, Este)
+":Vehiculo" -> "esquinaActual: Esquina" : moverVehiculo(jugador, Este)
+"esquinaActual: Esquina" -> "esquinaActual: Esquina" : getCuadra(Este)
 "esquinaActual: Esquina" -> ":Jugador" : incrementarMovimientos(1)
 return
 
