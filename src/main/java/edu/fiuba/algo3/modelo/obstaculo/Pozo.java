@@ -17,7 +17,7 @@ public class Pozo implements Evento{
     public Esquina afectarJugador(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino){
     	Vehiculo vehiculo = jugador.getVehiculo();
         vehiculo.chocarContraPozo(jugador);
-				return esquinaDestino;
+        return esquinaDestino;
     }
 
 }
