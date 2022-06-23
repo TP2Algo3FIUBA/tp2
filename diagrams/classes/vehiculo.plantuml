@@ -1,41 +1,46 @@
 @startuml
 
-    interface EstadoVehiculo {
-        +{abstract} aplicarSorpresaCambioVehiculo(): EstadoVehiculo
-        +{abstract} chocarContraPozo(Jugador jugador):
-        +{abstract} chocarContraPiquete(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino):Esquina
-        +{abstract} atravezarControlPolicial(Jugador jugador):
-        +{abstract} atravezarControlPolicialMockeado(Jugador jugador):
-
+   interface EstadoVehiculo {
+        + {abstract} aplicarSorpresaCambioVehiculo() : EstadoVehiculo
+        + {abstract} chocarContraPozo(jugador: Jugador)
+        + {abstract} chocarContraPiquete(jugador: Jugador, esquinaInicio: Esquina, esquinaDestino: Esquina) : Esquina
+        + {abstract} atravezarControlPolicial(jugador: Jugador)
     }
 
     class EstadoAuto {
-        +aplicarSorpresaCambioVehiculo(): EstadoVehiculo
-        +chocarContraPozo(Jugador jugador):
-        +chocarContraPiquete(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino):Esquina
-        +atravezarControlPolicial(Jugador jugador):
-        +atravezarControlPolicialMockeado(Jugador jugador):
+        + aplicarSorpresaCambioVehiculo() : EstadoVehiculo
+        + chocarContraPozo(jugador: Jugador)
+        + chocarContraPiquete(jugador: Jugador, esquinaInicio: Esquina, esquinaDestino: Esquina) : Esquina
+        + atravezarControlPolicial(jugador: Jugador)
     }
 
     class EstadoMoto {
-          +aplicarSorpresaCambioVehiculo(): EstadoVehiculo
-          +chocarContraPozo(Jugador jugador):
-          +chocarContraPiquete(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino):Esquina
-          +atravezarControlPolicial(Jugador jugador):
-          +atravezarControlPolicialMockeado(Jugador jugador):
+        + aplicarSorpresaCambioVehiculo() : EstadoVehiculo
+        + chocarContraPozo(jugador: Jugador)
+        + chocarContraPiquete(jugador: Jugador, esquinaInicio: Esquina, esquinaDestino: Esquina) : Esquina
+        + atravezarControlPolicial(jugador: Jugador)
     }
-
-
 
     class EstadoCuatroPorCuatro {
-        - pozosAtravezados : Int
-        +aplicarSorpresaCambioVehiculo(): EstadoVehiculo
-        +chocarContraPozo(Jugador jugador):
-        +chocarContraPiquete(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino):Esquina
-        +atravezarControlPolicial(Jugador jugador):
-        +atravezarControlPolicialMockeado(Jugador jugador):
+        + aplicarSorpresaCambioVehiculo() : EstadoVehiculo
+        + chocarContraPozo(jugador: Jugador)
+        + chocarContraPiquete(jugador: Jugador, esquinaInicio: Esquina, esquinaDestino: Esquina) : Esquina
+        + atravezarControlPolicial(jugador: Jugador)
     }
 
+    class Vehiculo {
+        - esquinaActual : Esquina
+        + setEsquinaActual(esquinaActual: Esquina)
+        + moverseAEsquina(jugador: Jugador, direccion: Direccion)
+        + getEsquinaActual() : Esquina
+        + chocarContraPozo(jugador: Jugador)
+        + chocarContraPiquete(jugador: Jugador, esquina: InicioEsquina, esquinaDestino: Esquina)
+        + aplicarSorpresaCambioVehiculo()
+        + chocharControlPolicial(jugador: Jugador)
+        + getEstadoVehiculo() : EstadoVehiculo
+    }
+
+   Vehiculo --> EstadoVehiculo
    EstadoVehiculo <|.. EstadoAuto
    EstadoVehiculo <|.. EstadoMoto
    EstadoVehiculo <|.. EstadoCuatroPorCuatro

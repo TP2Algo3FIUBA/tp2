@@ -3,10 +3,10 @@ package edu.fiuba.algo3.modelo.vehiculo;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 
-public class EstadoMoto extends EstadoVehiculo {
+public class EstadoMoto implements EstadoVehiculo {
 
 	public EstadoMoto() {
-		super();
+
 	}
 
 	@Override

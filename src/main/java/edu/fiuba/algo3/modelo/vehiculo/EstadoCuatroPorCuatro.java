@@ -3,12 +3,11 @@ package edu.fiuba.algo3.modelo.vehiculo;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 
-public class EstadoCuatroPorCuatro extends EstadoVehiculo {
+public class EstadoCuatroPorCuatro implements EstadoVehiculo {
 
 	private int pozosAtravezados;
 
 	public EstadoCuatroPorCuatro() {
-		super();
 		this.pozosAtravezados = 0;
 	}
 

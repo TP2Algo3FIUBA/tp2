@@ -37,23 +37,9 @@ public class Vehiculo {
 	public Esquina chocarContraPiquete(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino){
 		return estadoVehiculo.chocarContraPiquete(jugador, esquinaInicio, esquinaDestino);
 	}
-	
-	public void atravezarControlPolicial(Jugador jugador) {
-		estadoVehiculo.atravezarControlPolicial(jugador);
-	}
 
 	public void aplicarSorpresaCambioVehiculo() {
 		estadoVehiculo = estadoVehiculo.aplicarSorpresaCambioVehiculo();
-	}
-
-	public void aplicarSorpresaFavorable(Jugador jugador) {
-		//jugador.incrementarMovimientos((jugador.getMovimientos()) * (20 / 100) * (-1));// ! viola encapsulamiento
-		jugador.chocarContraSorpresaFavorable();
-	}
-
-	public void aplicarSorpresaDesfavorable(Jugador jugador) {
-		//jugador.incrementarMovimientos((jugador.getMovimientos()) * (25 / 100)); // ! viola encapsulamiento
-		jugador.chocarContraSorpresaDesfavofable();
 	}
 
 	public void chocharControlPolicial(Jugador jugador) {
@@ -70,4 +56,19 @@ public class Vehiculo {
 	public void chocharControlPolicialMockeado(Jugador jugador) {
 		estadoVehiculo.atravezarControlPolicialMockeado(jugador);
 	}
+
+	/*public void atravezarControlPolicial(Jugador jugador) {
+		estadoVehiculo.atravezarControlPolicial(jugador);
+	}
+
+	public void aplicarSorpresaDesfavorable(Jugador jugador) {
+		//jugador.incrementarMovimientos((jugador.getMovimientos()) * (25 / 100)); // ! viola encapsulamiento
+		jugador.chocarContraSorpresaDesfavofable();
+	}
+
+	public void aplicarSorpresaFavorable(Jugador jugador) {
+		//jugador.incrementarMovimientos((jugador.getMovimientos()) * (20 / 100) * (-1));// ! viola encapsulamiento
+		jugador.chocarContraSorpresaFavorable();
+	}*/
+
 }
