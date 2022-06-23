@@ -67,4 +67,7 @@ public class Vehiculo {
 	}
 
 
+	public void chocharControlPolicialMockeado(Jugador jugador) {
+		estadoVehiculo.atravezarControlPolicialMockeado(jugador);
+	}
 }

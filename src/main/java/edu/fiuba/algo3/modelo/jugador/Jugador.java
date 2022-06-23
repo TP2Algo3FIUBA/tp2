@@ -72,4 +72,8 @@ public class Jugador {
 	public void atravezarControlPolicial(Jugador jugador) {
 		this.vehiculo.chocharControlPolicial(jugador);
 	}
+
+	public void atravezarControlPolicialMockeado(Jugador jugador) {
+		this.vehiculo.chocharControlPolicialMockeado(jugador);
+	}
 }

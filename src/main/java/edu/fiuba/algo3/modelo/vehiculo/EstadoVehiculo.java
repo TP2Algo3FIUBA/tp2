@@ -11,4 +11,6 @@ public abstract class EstadoVehiculo {
     public abstract Esquina chocarContraPiquete(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino);
 
     public abstract void atravezarControlPolicial(Jugador jugador);
+
+    public abstract void atravezarControlPolicialMockeado(Jugador jugador);
 }

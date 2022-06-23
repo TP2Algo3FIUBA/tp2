@@ -33,4 +33,10 @@ public class EstadoAuto extends EstadoVehiculo {
 			jugador.incrementarMovimientos(3);
 		}
 	}
+
+	@Override
+	public void atravezarControlPolicialMockeado(Jugador jugador) {
+		jugador.incrementarMovimientos(3);
+	}
+
 }

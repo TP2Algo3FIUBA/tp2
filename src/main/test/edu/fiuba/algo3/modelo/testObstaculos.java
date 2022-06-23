@@ -7,6 +7,8 @@ import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.obstaculo.ControlPolicial;
+import edu.fiuba.algo3.modelo.obstaculo.ControlPolicialMockeado;
 import edu.fiuba.algo3.modelo.obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoCuatroPorCuatro;
@@ -76,5 +78,24 @@ public class testObstaculos {
         jugador.moverEnDireccion(Este);
         assertEquals(esquinaB, jugador.posicionActual());
         assertEquals(jugador.getMovimientos(), 3);
+    }
+
+    @Test
+    void testUnAutoPasaPorunControlPolicialYLeSumaTresMovimientos(){
+        Esquina esquinaA = new Esquina();
+        Esquina esquinaB = new Esquina();
+        Evento evento = new ControlPolicialMockeado();
+        Cuadra cuadra = new Cuadra(esquinaA, esquinaB, evento);
+
+        DirEste Este = new DirEste();
+        DirOeste Oeste = new DirOeste();
+        esquinaA.insertarCuadra(Este, cuadra);
+        esquinaB.insertarCuadra(Oeste, cuadra);
+
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoAuto()) );
+        jugador.spawnearVehiculoEn(esquinaA);
+
+        jugador.moverEnDireccion(Este);
+        assertEquals(jugador.getMovimientos(), 4);
     }
 }
