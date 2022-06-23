@@ -47,11 +47,13 @@ public class Vehiculo {
 	}
 
 	public void aplicarSorpresaFavorable(Jugador jugador) {
-		jugador.incrementarMovimientos((jugador.getMovimientos()) * (20 / 100) * (-1));// ! viola encapsulamiento
+		//jugador.incrementarMovimientos((jugador.getMovimientos()) * (20 / 100) * (-1));// ! viola encapsulamiento
+		jugador.chocarContraSorpresaFavorable();
 	}
 
 	public void aplicarSorpresaDesfavorable(Jugador jugador) {
-		jugador.incrementarMovimientos((jugador.getMovimientos()) * (25 / 100)); // ! viola encapsulamiento
+		//jugador.incrementarMovimientos((jugador.getMovimientos()) * (25 / 100)); // ! viola encapsulamiento
+		jugador.chocarContraSorpresaDesfavofable();
 	}
 
 	public void atravezarControlPolicial() {
@@ -63,4 +65,6 @@ public class Vehiculo {
 	public EstadoVehiculo getEstadoVehiculo() {
 		return this.estadoVehiculo;
 	}
+
+
 }

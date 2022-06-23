@@ -10,7 +10,7 @@ public class ControlPolicial implements Evento {
 	@Override
 	public Esquina afectarJugador(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino) {
 		Vehiculo vehiculo = jugador.getVehiculo();
-    	vehiculo.chocarContraPozo(jugador);
+    	vehiculo.atravezarControlPolicial(jugador);
     	return esquinaDestino;
 	}
 }

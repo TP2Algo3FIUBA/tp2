@@ -60,4 +60,12 @@ public class Jugador {
 	public EstadoVehiculo getEstadoVehiculo() {
 		return this.vehiculo.getEstadoVehiculo();
 	}
+
+	public void chocarContraSorpresaFavorable() {;
+		this.incrementarMovimientos((this.getMovimientos()) * (25 / 100));
+	}
+
+	public void chocarContraSorpresaDesfavofable() {
+		this.incrementarMovimientos((this.movimientos) * (20 / 100) * (-1));
+	}
 }
