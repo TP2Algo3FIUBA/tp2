@@ -1,6 +1,6 @@
 @startuml
 
-    abstract class EstadoVehiculo {
+   interface EstadoVehiculo {
         + {abstract} aplicarSorpresaCambioVehiculo() : EstadoVehiculo
         + {abstract} chocarContraPozo(jugador: Jugador)
         + {abstract} chocarContraPiquete(jugador: Jugador, esquinaInicio: Esquina, esquinaDestino: Esquina) : Esquina
@@ -40,9 +40,9 @@
         + getEstadoVehiculo() : EstadoVehiculo
     }
 
-   Vehiculo --> EstadoVehiculo : tiene un
-   EstadoVehiculo <|-- EstadoAuto
-   EstadoVehiculo <|-- EstadoMoto
-   EstadoVehiculo <|-- EstadoCuatroPorCuatro
+   Vehiculo --> EstadoVehiculo
+   EstadoVehiculo <|.. EstadoAuto
+   EstadoVehiculo <|.. EstadoMoto
+   EstadoVehiculo <|.. EstadoCuatroPorCuatro
 
 @enduml
