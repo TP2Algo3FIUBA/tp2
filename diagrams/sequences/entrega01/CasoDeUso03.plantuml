@@ -1,24 +1,37 @@
 @startuml
 title: una4x4AtraviesaCiudadYSeEncuentraConUnPozoYNoEsPenalizada
+
 Actor test
-test -> ":Juego" : moverJugadorEnDireccion(Sur)
-":Juego" -> ":Jugador" : moverEnDireccion(Sur)
-":Jugador" -> ":CuatroPorCuatro" : moverseAEsquina(this, Sur)
-":CuatroPorCuatro" -> "esquinaActual: Esquina" : moverVehiculo(jugador, Sur)
-"esquinaActual: Esquina" -> cuadras : get(Sur)
-"esquinaActual: Esquina" <-- cuadras : "cuadraAdirijirse:Cuadra" = Cuadra
+test -> ":Juego" : moverJugadorEnDireccion(Este)
+":Juego" -> ":Jugador"  : moverEnDireccion(Este)
+":Jugador"  -> ":Vehiculo" : moverseAEsquina(this, direccion)
+":Vehiculo" -> "esquinaActual: Esquina" : moverVehiculo(jugador, direccion)
+"esquinaActual: Esquina" -> "esquinaActual: Esquina" : getCuadra(direccion)
 "esquinaActual: Esquina" -> ":Jugador" : incrementarMovimientos(1)
-"esquinaActual: Esquina" -> "cuadraAdirijirse:Cuadra" : moverVehiculo(jugador, this)
-"cuadraAdirijirse:Cuadra" -> ":Pozo"  : afectarJugador(jugador)
-":Pozo"  -> ":Jugador" : getVehiculo
-":Pozo"  <-- ":Jugador" : vehiculo = CuatroPorCuatro
-":Pozo"  -> ":CuatroPorCuatro" : chocarContraPozo(jugador)
-":CuatroPorCuatro" -> ":CuatroPorCuatro" : pozosAtravezados++
-":Pozo"  <-- ":CuatroPorCuatro" : puedeAvanzar = true
-"cuadraAdirijirse:Cuadra" <-- ":Pozo"  : puedeAvanzar = true
-"cuadraAdirijirse:Cuadra" <- "cuadraAdirijirse:Cuadra" : obtenerEsquinaOpuesta(esquinaInicio)
-"cuadraAdirijirse:Cuadra" -> ":Jugador" : getVehiculo
-"cuadraAdirijirse:Cuadra" <-- ":Jugador" : vehiculo = CuatroPorCuatro
-"cuadraAdirijirse:Cuadra" -> ":CuatroPorCuatro" : setEsquinaActual(esquinaDestino)
-test <-- "cuadraAdirijirse:Cuadra"
+return
+
+"esquinaActual: Esquina" -> "cuadraAdirijirse: Cuadra" : moverVehiculo(jugador, this)
+"cuadraAdirijirse: Cuadra" -> "cuadraAdirijirse: Cuadra" : obtenerEsquinaOpuesta(esquinaInicio)
+"cuadraAdirijirse: Cuadra" -> ":Pozo" : afectarJugador(jugador, esquinaInicio, esquinaOpuesta)
+
+":Pozo" -> ":Jugador" : getVehiculo()
+return vehiculo
+":Pozo" -> ":Vehiculo" : chocarContraPozo(jugador)
+":Vehiculo" -> ":EstadoCuatroPorCuatro" : chocarContraPozo(jugador)
+":EstadoCuatroPorCuatro" -> ":EstadoCuatroPorCuatro" : pozosAtravezados++
+":EstadoCuatroPorCuatro" --> ":Vehiculo"
+":Vehiculo" --> ":Pozo"
+
+":Pozo" --> "cuadraAdirijirse: Cuadra" : esquinaDestino = esquinaOpuesta
+"cuadraAdirijirse: Cuadra" -> ":Jugador" : setEsquinaActual(esquinaDestino)
+":Jugador" -> ":Vehiculo" : setEsquinaActual(esquinaDestino)
+
+return
+":Jugador" --> "cuadraAdirijirse: Cuadra"
+"cuadraAdirijirse: Cuadra" --> "esquinaActual: Esquina"
+"esquinaActual: Esquina" --> ":Vehiculo"
+":Vehiculo" --> ":Jugador"
+":Jugador" --> ":Juego"
+":Juego" --> test
+
 @enduml
