@@ -68,4 +68,8 @@ public class Jugador {
 	public void chocarContraSorpresaDesfavofable() {
 		this.incrementarMovimientos((this.movimientos) * (20 / 100) * (-1));
 	}
+
+	public void atravezarControlPolicial(Jugador jugador) {
+		this.vehiculo.chocharControlPolicial(jugador);
+	}
 }

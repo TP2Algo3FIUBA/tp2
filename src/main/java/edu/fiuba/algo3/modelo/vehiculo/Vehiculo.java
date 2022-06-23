@@ -56,9 +56,9 @@ public class Vehiculo {
 		jugador.chocarContraSorpresaDesfavofable();
 	}
 
-	public void atravezarControlPolicial() {
+	public void chocharControlPolicial(Jugador jugador) {
 		// TODO Auto-generated method stub
-		
+		estadoVehiculo.atravezarControlPolicial(jugador);
 	}
 
 	// Solo se utiliza para los test
