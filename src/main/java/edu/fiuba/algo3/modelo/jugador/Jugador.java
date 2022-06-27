@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.jugador;
 
-import edu.fiuba.algo3.direcciones.Direccion;
+import edu.fiuba.algo3.modelo.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoVehiculo;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;

@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 import static org.junit.jupiter.api.Assertions.*;
 
-import edu.fiuba.algo3.direcciones.DirEste;
+import edu.fiuba.algo3.modelo.direcciones.DirEste;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;

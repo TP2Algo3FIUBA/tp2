@@ -2,14 +2,12 @@ package edu.fiuba.algo3.modelo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import edu.fiuba.algo3.direcciones.DirEste;
-import edu.fiuba.algo3.direcciones.DirOeste;
+import edu.fiuba.algo3.modelo.direcciones.DirEste;
+import edu.fiuba.algo3.modelo.direcciones.DirOeste;
 import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
-import edu.fiuba.algo3.modelo.obstaculo.Pozo;
-import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoMoto;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import org.junit.jupiter.api.Test;

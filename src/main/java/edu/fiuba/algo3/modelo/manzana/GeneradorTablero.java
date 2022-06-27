@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo.manzana;
 
-import edu.fiuba.algo3.direcciones.DirEste;
-import edu.fiuba.algo3.direcciones.DirNorte;
-import edu.fiuba.algo3.direcciones.DirOeste;
-import edu.fiuba.algo3.direcciones.DirSur;
+import edu.fiuba.algo3.modelo.direcciones.DirEste;
+import edu.fiuba.algo3.modelo.direcciones.DirNorte;
+import edu.fiuba.algo3.modelo.direcciones.DirOeste;
+import edu.fiuba.algo3.modelo.direcciones.DirSur;
 import edu.fiuba.algo3.modelo.evento.Evento;
 import edu.fiuba.algo3.modelo.evento.GeneradorEventos;
 

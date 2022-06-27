@@ -1,13 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.direcciones.DirEste;
-import edu.fiuba.algo3.direcciones.DirOeste;
+import edu.fiuba.algo3.modelo.direcciones.DirEste;
+import edu.fiuba.algo3.modelo.direcciones.DirOeste;
 import edu.fiuba.algo3.modelo.evento.Evento;
-import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
-import edu.fiuba.algo3.modelo.obstaculo.ControlPolicial;
 import edu.fiuba.algo3.modelo.obstaculo.ControlPolicialMockeado;
 import edu.fiuba.algo3.modelo.obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;

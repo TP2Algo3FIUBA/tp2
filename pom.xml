@@ -13,7 +13,7 @@
         <maven-surefire-version>3.0.0-M3</maven-surefire-version>
         <archunit-version>0.21.0</archunit-version>
         <javafx-version>15.0.1</javafx-version>
-        <main-class>edu.fiuba.algo3.Main</main-class>
+        <main-class>edu.fiuba.algo3.vista.Main</main-class>
     </properties>
     <dependencies>
         <dependency>
@@ -49,6 +49,12 @@
             <artifactId>annotations</artifactId>
             <version>RELEASE</version>
             <scope>compile</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-fxml -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>18.0.1</version>
         </dependency>
     </dependencies>
     <profiles>

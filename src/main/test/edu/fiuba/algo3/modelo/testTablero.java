@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import edu.fiuba.algo3.direcciones.DirEste;
+import edu.fiuba.algo3.modelo.direcciones.DirEste;
 import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;

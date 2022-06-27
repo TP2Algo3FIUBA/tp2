@@ -1,10 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
 
-import edu.fiuba.algo3.direcciones.DirEste;
-import edu.fiuba.algo3.direcciones.DirNorte;
-import edu.fiuba.algo3.direcciones.DirOeste;
-import edu.fiuba.algo3.direcciones.DirSur;
+import edu.fiuba.algo3.modelo.direcciones.DirEste;
+import edu.fiuba.algo3.modelo.direcciones.DirNorte;
+import edu.fiuba.algo3.modelo.direcciones.DirOeste;
+import edu.fiuba.algo3.modelo.direcciones.DirSur;
 import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;

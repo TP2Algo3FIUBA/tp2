@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.direcciones.*;
+import edu.fiuba.algo3.modelo.direcciones.DirEste;
+import edu.fiuba.algo3.modelo.direcciones.DirNorte;
+import edu.fiuba.algo3.modelo.direcciones.DirOeste;
+import edu.fiuba.algo3.modelo.direcciones.DirSur;
 import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
@@ -16,7 +19,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class testcasodeuso01Entrega01 {
+public class testcasodeuso01entrega01 {
 
     @Test
     public void unaMotoAtraviesaCiudadYSeEncuentraConUnPozoYEsPenalizadaTresMovimientos(){
@@ -265,7 +268,6 @@ public class testcasodeuso01Entrega01 {
         juego.moverJugadorEnDireccion(Sur);
         juego.moverJugadorEnDireccion(Norte);
         juego.moverJugadorEnDireccion(Sur);
-        Esquina esquinaDestino = juego.obtenerPosicionJugador();
 
         // Assert
         assertEquals(5, jugador.getMovimientos());

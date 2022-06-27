@@ -1,14 +1,5 @@
 package edu.fiuba.algo3.modelo.jugador;
 
-import edu.fiuba.algo3.direcciones.DirEste;
-import edu.fiuba.algo3.direcciones.DirOeste;
-import edu.fiuba.algo3.modelo.manzana.Cuadra;
-import edu.fiuba.algo3.modelo.manzana.Esquina;
-import edu.fiuba.algo3.modelo.sorpresa.SorpresaFavorable;
-import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
-import edu.fiuba.algo3.modelo.vehiculo.EstadoCuatroPorCuatro;
-import edu.fiuba.algo3.modelo.vehiculo.EstadoMoto;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
