@@ -2,10 +2,13 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controlador.Controller">
    <children>
@@ -20,8 +23,14 @@
          </children>
       </HBox>
       <VBox layoutX="171.0" layoutY="299.0" prefHeight="91.0" prefWidth="401.0" style="-fx-background-color: white;" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#50575e" height="230.0" layoutX="75.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="434.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#50575e" height="230.0" layoutX="28.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="434.0" />
       <Rectangle fx:id="myRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff2121" height="21.0" layoutX="83.0" layoutY="81.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" width="38.0" />
+      <Text fill="#f50101" layoutX="178.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GPS CHALLENGE" textAlignment="CENTER" wrappingWidth="230.08773803710938" />
+      <ImageView fitHeight="230.0" fitWidth="123.0" layoutX="462.0" layoutY="54.0">
+         <image>
+            <Image url="@../sprites/test.jpg" />
+         </image>
+      </ImageView>
    </children>
    <padding>
       <Insets right="10.0" />
