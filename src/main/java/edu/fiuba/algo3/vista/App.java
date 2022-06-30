@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.SystemInfo;
+//import edu.fiuba.algo3.SystemInfo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,9 +22,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage escenarioInicial) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(Paths.get("src/main/java/edu/fiuba/algo3/vista/plantillas/inicio.fxml").toUri().toURL());
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        escenarioInicial.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(Paths.get("src/main/java/edu/fiuba/algo3/vista/plantillas/Main.fxml").toUri().toURL());
+        Scene scene = new Scene(fxmlLoader.load());
+        escenarioInicial.setTitle("GPS Challenge");
         escenarioInicial.setScene(scene);
         escenarioInicial.show();
     }
