@@ -7,10 +7,19 @@ import java.util.HashMap;
 
 public class Esquina {
 	private final HashMap<String, Cuadra> cuadras;
+	private EstadoEsquina estado;
+	
 //	private Jugador jugadorEnLaEsquina;
-
+	
 	public Esquina() {
 		this.cuadras = new HashMap<>();
+		this.estado = new NoMeta();
+//		jugadorEnLaEsquina = null;
+	}
+
+	public Esquina(EstadoEsquina estado) {
+		this.cuadras = new HashMap<>();
+		this.estado = estado;
 //		jugadorEnLaEsquina = null;
 	}
 
@@ -31,5 +40,8 @@ public class Esquina {
 	public void insertarCuadra(Direccion direccion, Cuadra cuadra) {
 		cuadras.put(String.valueOf(direccion), cuadra);
 	}
-
+	
+	public EstadoEsquina checkearEstado() {
+		return estado;
+	}
 }

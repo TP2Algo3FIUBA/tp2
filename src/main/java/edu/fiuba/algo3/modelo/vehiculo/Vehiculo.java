@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.EsquinaNoValidaException;
+import edu.fiuba.algo3.modelo.manzana.EstadoEsquina;
 
 public class Vehiculo {
 
@@ -55,6 +56,10 @@ public class Vehiculo {
 
 	public void chocharControlPolicialMockeado(Jugador jugador) {
 		estadoVehiculo.atravezarControlPolicialMockeado(jugador);
+	}
+
+	public EstadoEsquina checkearEsquinaEstado() {
+		return this.esquinaActual.checkearEstado();
 	}
 
 	/*public void atravezarControlPolicial(Jugador jugador) {

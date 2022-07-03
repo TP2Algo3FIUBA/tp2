@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.jugador;
 
 import edu.fiuba.algo3.modelo.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.manzana.EstadoEsquina;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoVehiculo;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 
@@ -23,10 +24,11 @@ public class Jugador {
 
 	public void moverEnDireccion(Direccion direccion) {
 		vehiculo.moverseAEsquina(this, direccion); // ! raro
+//		return (vehiculo.getEsquinaActual().checkearEstado());
 	}
 	
 	public void setEsquinaActual(Esquina esquinaActual) {
-		vehiculo.setEsquinaActual(esquinaActual);
+		vehiculo.setEsquinaActual(esquinaActual);	
 	}
 
 	public Esquina posicionActual() {
@@ -75,5 +77,9 @@ public class Jugador {
 
 	public void atravezarControlPolicialMockeado(Jugador jugador) {
 		this.vehiculo.chocharControlPolicialMockeado(jugador);
+	}
+	
+	public EstadoEsquina checkearEsquinaEstado() {
+		return this.vehiculo.checkearEsquinaEstado();
 	}
 }

@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Paths;
 
+import edu.fiuba.algo3.modelo.juego.Juego;
+
 /**
  * JavaFX App
  */
@@ -30,7 +32,10 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch();	//preguntar a pablo si lo dejamos o que.
+        
+        Juego juego = new Juego();
+        juego.correrJuego();
     }
 
 }

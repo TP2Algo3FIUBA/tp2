@@ -22,7 +22,21 @@ public class GeneradorTablero { // TO DO: que esto una clase con solo metodos de
 
 		for (int filaActual = 0; filaActual < dimensiones; filaActual++) {
 			for (int columnaActual = 0; columnaActual < dimensiones; columnaActual++) {
-				Esquina esquina = new Esquina();
+				
+				Esquina esquina;
+				
+				if(columnaActual == 0 && filaActual == 0) {
+					
+				}
+				
+				if(columnaActual == dimensiones - 1 && filaActual == dimensiones - 1) {
+					esquina = new Esquina(new Meta()); 
+				}
+				
+				else {
+					esquina = new Esquina(); 
+				}
+				
 				nuevoTablero.agregarEsquina(filaActual, esquina);
 			}
 		}
