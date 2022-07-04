@@ -80,6 +80,12 @@ public class Tablero implements Observable {
 		esquinas.get(position.toString()).occupy(positionable);
 		positionable.setPosition(position);
 	}
+	public void positionate(Jugador positionable, Position position) {
+		Esquina esquina = esquinas.get(position.toString());
+		esquina.occupy(positionable);
+		positionable.setPosition(position);
+		positionable.spawnearVehiculoEn(esquina);
+	}
 
 	public int getHeigth() {
 		return heigth;
@@ -89,27 +95,28 @@ public class Tablero implements Observable {
 		return width;
 	}
 
-	public void movePositionableToLeft(Positionable positionable) {
+	public void movePositionableToLeft(Jugador positionable) {
 		movePositionableTo(positionable,
 				new Position(positionable.getPosition().getX() - 1, positionable.getPosition().getY()));
 	}
 
-	public void movePositionableToRigth(Positionable positionable) {
+	public void movePositionableToRigth(Jugador positionable) {
 		movePositionableTo(positionable,
 				new Position(positionable.getPosition().getX() + 1, positionable.getPosition().getY()));
 	}
 
-	public void movePositionableToUp(Positionable positionable) {
+	public void movePositionableToUp(Jugador positionable) {
 		movePositionableTo(positionable,
 				new Position(positionable.getPosition().getX(), positionable.getPosition().getY() - 1));
+
 	}
 
-	public void movePositionableToDown(Positionable positionable) {
+	public void movePositionableToDown(Jugador positionable) {
 		movePositionableTo(positionable,
 				new Position(positionable.getPosition().getX(), positionable.getPosition().getY() + 1));
 	}
 
-	private void movePositionableTo(Positionable positionable, Position position) {
+	private void movePositionableTo(Jugador positionable, Position position) {
 		Esquina fromMove = esquinas.get(positionable.getPosition().toString());
 		if (!fromMove.hasOccupant(positionable)) {
 			throw new RuntimeException("There is no target!");

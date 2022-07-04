@@ -59,11 +59,6 @@ public class App extends Application {
         Scene theScene = new Scene(vbox);
         escenarioInicial.setScene(theScene);
         escenarioInicial.show();
-        /*FXMLLoader fxmlLoader = new FXMLLoader(Paths.get("src/main/java/edu/fiuba/algo3/vista/plantillas/Main.fxml").toUri().toURL());
-        Scene scene = new Scene(fxmlLoader.load());
-        escenarioInicial.setTitle("GPS Challenge");
-        escenarioInicial.setScene(scene);
-        escenarioInicial.show();*/
     }
 
     public static void main(String[] args) {

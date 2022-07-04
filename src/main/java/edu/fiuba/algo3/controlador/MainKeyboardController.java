@@ -23,16 +23,20 @@ public class MainKeyboardController implements EventHandler<KeyEvent> {
 
     try {
       if (event.getCode() == KeyCode.W) {
-        map.movePositionableToUp(this.player);          
+        map.movePositionableToUp(this.player);
+        this.player.incrementarMovimientos(1);
       }
       if (event.getCode() == KeyCode.S) {
-        map.movePositionableToDown(this.player);            
+        map.movePositionableToDown(this.player);
+        this.player.incrementarMovimientos(1);
       }
       if (event.getCode() == KeyCode.D) {
-        map.movePositionableToRigth(this.player);   
+        map.movePositionableToRigth(this.player);
+        this.player.incrementarMovimientos(1);
       }
       if (event.getCode() == KeyCode.A) {
-        map.movePositionableToLeft(this.player);      
+        map.movePositionableToLeft(this.player);
+        this.player.incrementarMovimientos(1);
       }
       event.consume();      
     } catch (Exception e) {
