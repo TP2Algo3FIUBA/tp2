@@ -24,7 +24,10 @@ public class Juego {
 	public Juego() {
 	}
 
-	public void moverJugadorEnDireccion(Direccion direccion) {
+    public Juego(Jugador jugador, Tablero tablero) {
+    }
+
+    public void moverJugadorEnDireccion(Direccion direccion) {
 		try {
 			jugador.moverEnDireccion(direccion);
 		} catch (CuadraInexistenteException e) {

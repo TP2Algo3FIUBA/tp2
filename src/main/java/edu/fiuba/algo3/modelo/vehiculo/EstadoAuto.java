@@ -38,4 +38,9 @@ public class EstadoAuto implements EstadoVehiculo {
 		jugador.incrementarMovimientos(3);
 	}
 
+	@Override
+	public String getName() {
+		return "auto";
+	}
+
 }

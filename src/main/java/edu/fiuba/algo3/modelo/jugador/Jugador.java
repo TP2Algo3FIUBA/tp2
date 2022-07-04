@@ -5,13 +5,24 @@ import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.EstadoEsquina;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoVehiculo;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
+import edu.fiuba.algo3.modeloOpcional.Observable;
+import edu.fiuba.algo3.modeloOpcional.Observer;
+import edu.fiuba.algo3.modeloOpcional.Position;
+import edu.fiuba.algo3.modeloOpcional.Positionable;
 
-public class Jugador {
+import java.util.ArrayList;
+
+public class Jugador implements Positionable, Observable {
 	private int movimientos = 0;
+
+	private ArrayList<Observer> observers;
 	private Vehiculo vehiculo;
+	private Position position;
 
 	public Jugador(Vehiculo unVehiculo) {
+		super();
 		vehiculo = unVehiculo;
+		observers = new ArrayList<Observer>();
 	}
 
 	public int getMovimientos() {
@@ -81,5 +92,31 @@ public class Jugador {
 	
 	public EstadoEsquina checkearEsquinaEstado() {
 		return this.vehiculo.checkearEsquinaEstado();
+	}
+
+    @Override
+    public Position getPosition() {
+        return this.position;
+    }
+
+    @Override
+    public void setPosition(Position position) {
+
+		this.position = position;
+		notifyObservers();
+    }
+
+
+	public void addObserver(Observer observer) {
+		observers.add(observer);
+	}
+
+
+	public void notifyObservers() {
+		observers.stream().forEach(observer -> observer.change());
+	}
+
+	public String getVehiculoName() {
+		return this.vehiculo.getEstadoName();
 	}
 }

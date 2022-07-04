@@ -46,4 +46,9 @@ public class EstadoCuatroPorCuatro implements EstadoVehiculo {
 		jugador.incrementarMovimientos(3);
 	}
 
+	@Override
+	public String getName() {
+		return "4x4";
+	}
+
 }

@@ -1,19 +1,20 @@
 package edu.fiuba.algo3.vista;
 
 //import edu.fiuba.algo3.SystemInfo;
+import edu.fiuba.algo3.controlador.MainKeyboardController;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.manzana.Meta;
+import edu.fiuba.algo3.modelo.manzana.Tablero;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
+import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
+import edu.fiuba.algo3.modeloOpcional.Map;
+import edu.fiuba.algo3.modeloOpcional.Player;
+import edu.fiuba.algo3.modeloOpcional.Position;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.nio.file.Paths;
-
-import edu.fiuba.algo3.modelo.juego.Juego;
 
 /**
  * JavaFX App
@@ -21,21 +22,52 @@ import edu.fiuba.algo3.modelo.juego.Juego;
 public class App extends Application {
 
     public static Stage escenario;
+    boolean imputForm = false;
 
+    private PlayerView player;
+    private MetaView meta;
+    private MapView mapView;
     @Override
     public void start(Stage escenarioInicial) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(Paths.get("src/main/java/edu/fiuba/algo3/vista/plantillas/Main.fxml").toUri().toURL());
+        //Juego juego = new Juego();
+        //juego.correrJuego();
+
+
+        escenarioInicial.setTitle("Strategy Example");
+        Tablero map = new Tablero();
+        mapView = new MapView(map);
+
+        Jugador playerModel = new Jugador(new Vehiculo(new EstadoAuto()));
+        map.positionate(playerModel, new Position(0, 0));
+        map.addObserver(player);
+
+        player = new PlayerView(mapView, playerModel);
+
+        Esquina metaModel = new Esquina(new Meta());
+        map.positionate(metaModel,new Position(5,5));
+        map.addObserver(meta);
+
+        meta = new MetaView(mapView,metaModel);
+
+        VBox vbox = new VBox();
+
+        vbox.getChildren().add(mapView);
+        vbox.getChildren().add(new GunButtonContainer(playerModel));
+        vbox.setOnKeyPressed(new MainKeyboardController(playerModel,  map));
+
+
+        Scene theScene = new Scene(vbox);
+        escenarioInicial.setScene(theScene);
+        escenarioInicial.show();
+        /*FXMLLoader fxmlLoader = new FXMLLoader(Paths.get("src/main/java/edu/fiuba/algo3/vista/plantillas/Main.fxml").toUri().toURL());
         Scene scene = new Scene(fxmlLoader.load());
         escenarioInicial.setTitle("GPS Challenge");
         escenarioInicial.setScene(scene);
-        escenarioInicial.show();
+        escenarioInicial.show();*/
     }
 
     public static void main(String[] args) {
-        launch();	//preguntar a pablo si lo dejamos o que.
-        
-        Juego juego = new Juego();
-        juego.correrJuego();
+        launch();
     }
 
 }

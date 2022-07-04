@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.EsquinaNoValidaException;
 import edu.fiuba.algo3.modelo.manzana.EstadoEsquina;
+import edu.fiuba.algo3.modeloOpcional.Position;
 
 public class Vehiculo {
 
@@ -60,6 +61,18 @@ public class Vehiculo {
 
 	public EstadoEsquina checkearEsquinaEstado() {
 		return this.esquinaActual.checkearEstado();
+	}
+
+	public Position getPosition() {
+		return this.esquinaActual.getPosition();
+	}
+
+	public void setPosition(Position position) {
+		this.esquinaActual.setPosition(position);
+	}
+
+	public String getEstadoName() {
+		return String.valueOf(this.estadoVehiculo.getName());
 	}
 
 	/*public void atravezarControlPolicial(Jugador jugador) {

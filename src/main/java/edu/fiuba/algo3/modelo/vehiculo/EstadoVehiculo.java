@@ -13,4 +13,6 @@ public interface EstadoVehiculo {
     void atravezarControlPolicial(Jugador jugador);
 
      void atravezarControlPolicialMockeado(Jugador jugador);
+
+    String getName();
 }
