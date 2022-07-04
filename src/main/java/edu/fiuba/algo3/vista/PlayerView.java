@@ -37,8 +37,8 @@ public class PlayerView implements Observer, Drawable {
 
 	@Override
 	public void draw() {
-		playerImage.setTranslateX(0);
-		playerImage.setTranslateY(0);
+		playerImage.setTranslateX(-4);
+		playerImage.setTranslateY(15);
 		stage.updateView(playerImage);
 	}
 

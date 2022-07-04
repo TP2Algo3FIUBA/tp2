@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.direcciones;
 
-public class DirEste extends Direccion {
+public class DirEste implements Direccion {
 
 	@Override
 	public String toString() {

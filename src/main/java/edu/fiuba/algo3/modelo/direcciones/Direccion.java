@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.direcciones;
 
-public abstract class Direccion {
+public interface Direccion {
 
 	@Override
 	public abstract String toString();

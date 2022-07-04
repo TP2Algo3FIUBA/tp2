@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo.manzana;
 import edu.fiuba.algo3.modelo.evento.Evento;
 import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class Cuadra {
 	private final Esquina esquinaA;
@@ -39,4 +38,8 @@ public class Cuadra {
 		Esquina esquinaDestino = evento.afectarJugador(jugador, esquinaInicio, esquinaOpuesta);
 		jugador.setEsquinaActual(esquinaDestino);
 	}
+
+    public Evento getObstaculo() {
+		return this.evento;
+    }
 }

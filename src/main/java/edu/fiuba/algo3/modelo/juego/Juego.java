@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.juego;
 
+import edu.fiuba.algo3.modelo.direcciones.DirNorte;
 import edu.fiuba.algo3.modelo.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.CuadraInexistenteException;
@@ -9,29 +10,32 @@ import edu.fiuba.algo3.modelo.manzana.Meta;
 import edu.fiuba.algo3.modelo.manzana.Tablero;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
+import edu.fiuba.algo3.vista.MapView;
 
 public class Juego {
 
+	private MapView view;
 	private int tamanioTablero = 3;
 	private Jugador jugador;
 	private Tablero tablero;
 
-//    public Juego(Jugador unJugador, Tablero unTablero) {
-//        jugador = unJugador;
-//        tablero = unTablero;
-//    }
-
-	public Juego() {
+	public Juego(Jugador jugador,Tablero tablero) {
+		this.tablero = tablero;
+		this.jugador = jugador;
 	}
 
-    public Juego(Jugador jugador, Tablero tablero) {
-    }
+	public Juego(Jugador jugador,Tablero tablero, MapView mapView) {
+		this.tablero = tablero;
+		this.jugador = jugador;
+		this.view = mapView;
 
-    public void moverJugadorEnDireccion(Direccion direccion) {
+		this.tablero.renderObstaculos(mapView);
+	}
+
+	public void moverJugadorEnDireccion(Direccion direccion) {
 		try {
-			jugador.moverEnDireccion(direccion);
+			this.jugador.moverEnDireccion(direccion);
 		} catch (CuadraInexistenteException e) {
-
 		}
 	}
 
@@ -64,5 +68,9 @@ public class Juego {
 		this.tablero = GeneradorTablero.generarTablero(tamanioTablero);
 //		this.tablero.spawnearJugador(jugador);
 		spawnearJugadorEn(0, 0);
+	}
+
+	public Esquina obtenerEsquina(int i, int i1) {
+		return tablero.obtenerEsquina(i,i1);
 	}
 }

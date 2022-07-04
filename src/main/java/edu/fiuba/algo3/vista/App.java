@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 //import edu.fiuba.algo3.SystemInfo;
 import edu.fiuba.algo3.controlador.MainKeyboardController;
+import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.Meta;
@@ -33,7 +34,8 @@ public class App extends Application {
         //juego.correrJuego();
 
 
-        escenarioInicial.setTitle("Strategy Example");
+        escenarioInicial.setTitle("GPS Challenge");
+
         Tablero map = new Tablero();
         mapView = new MapView(map);
 
@@ -49,11 +51,17 @@ public class App extends Application {
 
         meta = new MetaView(mapView,metaModel);
 
+        Juego juego = new Juego(playerModel,map,mapView) ;
+
+       // ObstaculosView obstaculosView = new ObstaculosView(mapView, juego.obtenerEsquina(4,4) );
+
+        //map.addObserver(obstaculosView);
+
         VBox vbox = new VBox();
 
         vbox.getChildren().add(mapView);
-        vbox.getChildren().add(new GunButtonContainer(playerModel));
-        vbox.setOnKeyPressed(new MainKeyboardController(playerModel,  map));
+        vbox.getChildren().add(new GunButtonContainer(playerModel,juego));
+        vbox.setOnKeyPressed(new MainKeyboardController(playerModel,  map,juego));
 
 
         Scene theScene = new Scene(vbox);
