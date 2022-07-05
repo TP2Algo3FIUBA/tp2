@@ -13,4 +13,9 @@ public class SorpresaCambioDeVehiculo implements Evento{
 		jugador.aplicarSorpresaCambioVehiculo();
 		return esquinaDestino;
 	}
+
+	@Override
+	public String getName() {
+		return "sorpresacambiovehiculo";
+	}
 }

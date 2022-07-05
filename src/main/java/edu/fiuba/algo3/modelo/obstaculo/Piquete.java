@@ -15,4 +15,9 @@ public class Piquete implements Evento{
         Vehiculo vehiculo = jugador.getVehiculo(); // cambiar 
         return (vehiculo.chocarContraPiquete(jugador, esquinaInicio, esquinaDestino));
     }
+
+    @Override
+    public String getName() {
+        return "piquete";
+    }
 }

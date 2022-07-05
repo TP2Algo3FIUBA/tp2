@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Observer;
-import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaCambioDeVehiculo;
@@ -33,14 +32,8 @@ public class CuadraView implements Observer, Drawable {
 		cuadraImage.setFitHeight(64);
 		cuadraImage.setFitWidth(64);
 
-		if (cuadra.getObstaculo() instanceof SorpresaCambioDeVehiculo) {
-			cuadraImage.setImage(new Image("meta.png"));
-		}
-		else if (cuadra.getObstaculo() instanceof Pozo) {
-			cuadraImage.setImage(new Image("pozo.png"));
-		}
-		else cuadraImage.setImage(new Image("cuadra.png"));
-
+		String fileName = cuadra.getTipoCuadraName();
+		cuadraImage.setImage(new Image( fileName + ".png"));
 		tableroView.addViewOnMap(cuadraImage, (int) cuadra.getPosition().getCol(), (int) cuadra.getPosition().getFil()); // Del reves?
 		System.out.println("Dibujando esquina de Fil:" + cuadra.getPosition().getFil() + " Col:" + cuadra.getPosition().getCol());
 		draw();
@@ -55,12 +48,12 @@ public class CuadraView implements Observer, Drawable {
 
 	private void changeCuadraSkin(String fileName) {
 		System.out.println(fileName);
-		cuadraImage.setImage(new Image("cuadra.png")); //(fileName + ".png"));
+		cuadraImage.setImage(new Image(fileName + ".png"));
 	}
 
 	//@Override
 	public void change() {
-		changeCuadraSkin(cuadra.getCuadraName());
+		changeCuadraSkin(cuadra.getTipoCuadraName());
 		double actualCol = cuadra.getPosition().getCol();
 		double actualFil = cuadra.getPosition().getFil();
 		if (lastXPosition > actualCol) {

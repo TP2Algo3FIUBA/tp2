@@ -10,4 +10,9 @@ public class EventoVacio implements Evento {
 		return esquinaDestino;
 	}
 
+	@Override
+	public String getName() {
+		return "cuadra";
+	}
+
 }

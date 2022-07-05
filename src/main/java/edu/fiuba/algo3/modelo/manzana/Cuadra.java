@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.Position;
 import edu.fiuba.algo3.modelo.evento.Evento;
 import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.Observable;
 import edu.fiuba.algo3.modelo.Observer;
 
 import java.util.ArrayList;
@@ -72,7 +71,7 @@ public class Cuadra implements Observable {
 		observers.stream().forEach(observer -> observer.change());
 	}
 
-	public String getCuadraName() {
-		return "pozo"; // aca tiene que devolver el nombre del evento
+	public String getTipoCuadraName() {
+		return evento.getName(); // aca tiene que devolver el nombre del evento
 	}
 }

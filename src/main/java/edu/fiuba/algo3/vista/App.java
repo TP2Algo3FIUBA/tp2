@@ -31,8 +31,8 @@ public class App extends Application {
     public void start(Stage escenarioInicial) throws Exception {
         escenarioInicial.setTitle("GPS Challenge");
 
-        Tablero unTablero = new Tablero(8, 8); //tableroTest(); //
-        unTablero.generarTablero();
+        Tablero unTablero = tableroTest(); // new Tablero(8, 8); //
+        //unTablero.generarTablero();
         tableroView = new TableroView(unTablero);
 
         Jugador jugador = new Jugador(new Vehiculo( new EstadoAuto()) );

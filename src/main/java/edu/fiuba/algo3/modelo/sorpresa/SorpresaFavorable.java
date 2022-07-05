@@ -13,4 +13,9 @@ public class SorpresaFavorable implements Evento{
 		jugador.sorpresaFavorable();
 		return esquinaDestino;
 	}
+
+	@Override
+	public String getName() {
+		return "sorpresafavorable";
+	}
 }

@@ -13,4 +13,9 @@ public class ControlPolicial implements Evento {
     	jugador.atravezarControlPolicial(jugador);
     	return esquinaDestino;
 	}
+
+	@Override
+	public String getName() {
+		return "controlpolicial";
+	}
 }

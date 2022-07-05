@@ -20,4 +20,9 @@ public class Pozo implements Evento{
         return esquinaDestino;
     }
 
+    @Override
+    public String getName() {
+        return "pozo";
+    }
+
 }

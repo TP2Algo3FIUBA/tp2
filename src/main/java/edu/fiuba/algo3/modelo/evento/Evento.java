@@ -6,4 +6,5 @@ import edu.fiuba.algo3.modelo.manzana.Esquina;
 public interface Evento {
     Esquina afectarJugador(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino);
 
+    String getName();
 }
