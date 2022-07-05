@@ -1,5 +1,13 @@
 package edu.fiuba.algo3.modelo.juego;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.yaml.snakeyaml.Yaml;
+
 import edu.fiuba.algo3.modelo.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.CuadraInexistenteException;
@@ -45,6 +53,20 @@ public class Juego {
 		return this.jugador.getMovimientos();
 	}
 
+	private void finalizarPartida() {
+		Map<String, Object> dataJugador = new HashMap<>();
+		dataJugador.put("Puntaje", this.jugador.getMovimientos());
+		PrintWriter writer;
+		Yaml yaml = new Yaml();
+
+		try {
+			writer = new PrintWriter(new File("resources/puntajes.yml").getAbsolutePath());
+			yaml.dump(dataJugador, writer);	
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void correrJuego() {
 
 		inicializarJuego();
@@ -53,8 +75,7 @@ public class Juego {
 //    	 //controlador que determina donde mover el jugador.
 //    }
 
-		// finalizarPartida(); //guarda en un txt o ymal o json el nombre de jugador y
-		// su puntaje
+		finalizarPartida();
 	}
 
 	private void inicializarJuego() {
