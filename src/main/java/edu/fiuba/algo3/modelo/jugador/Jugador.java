@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Position;
 import edu.fiuba.algo3.modelo.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.EstadoEsquina;
+import edu.fiuba.algo3.modelo.sorpresa.Sorpresata;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoVehiculo;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import edu.fiuba.algo3.modelo.Observable;
@@ -101,4 +102,15 @@ public class Jugador implements Observable {
 	public String getVehiculoName() {
 		return this.vehiculo.getEstadoName();
 	}
+
+    public Esquina aplicarSorpresata(Sorpresata sorpresata, Esquina esquinaIncio, Esquina esquinaDestino) {
+		if(movimientos%2 == 0){
+			this.aplicarSorpresaCambioVehiculo();
+			return esquinaDestino;
+		}
+		else{
+			return this.vehiculo.chocarContraPiquete(this, esquinaIncio, esquinaDestino);
+		}
+
+    }
 }

@@ -11,6 +11,7 @@ import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.Tablero;
 import edu.fiuba.algo3.modelo.obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.obstaculo.Pozo;
+import edu.fiuba.algo3.modelo.sorpresa.Sorpresata;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoCuatroPorCuatro;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoMoto;
@@ -18,6 +19,7 @@ import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class testcasodeuso01entrega01 {
 
@@ -274,6 +276,72 @@ public class testcasodeuso01entrega01 {
 
     }
     @Test
+    public void unAutoAtraviezaUnaSorpresataConMovimientosParesYCambiaDeVehiculo(){
+        // Arrange
+        Esquina esquina00 = new Esquina();          //   00 ---- 01
+        Esquina esquina01 = new Esquina();          //    |       |
+        Esquina esquina10 = new Esquina();          //    |       |
+        Esquina esquina11 = new Esquina();          //    |       |
+        Tablero tablero = new Tablero();            //   10 --Sp- 11
+        tablero.agregarEsquina(0, esquina00);
+        tablero.agregarEsquina(0, esquina01);
+        tablero.agregarEsquina(1, esquina10);
+        tablero.agregarEsquina(1, esquina11);
+
+        // Creo direcciones
+        DirNorte Norte = new DirNorte();
+        DirSur Sur = new DirSur();
+        DirEste Este = new DirEste();
+        DirOeste Oeste = new DirOeste();
+
+        // conecto 00 con 01
+        Cuadra cuadra00_01 = new Cuadra(esquina00, esquina01);
+        esquina00.insertarCuadra(Este, cuadra00_01);
+        esquina01.insertarCuadra(Oeste, cuadra00_01);
+
+        // conecto 10 con 11
+        Cuadra cuadra10_11 = new Cuadra(esquina10, esquina11, new Sorpresata());
+        esquina10.insertarCuadra(Este, cuadra10_11);
+        esquina11.insertarCuadra(Oeste, cuadra10_11);
+
+        // conecto 00 con 10
+        Cuadra cuadra00_10 = new Cuadra(esquina00, esquina10);
+        esquina00.insertarCuadra(Sur, cuadra00_10);
+        esquina10.insertarCuadra(Norte, cuadra00_10);
+
+        // conecto 01 con 11
+        Cuadra cuadra01_11 = new Cuadra(esquina01, esquina11);
+        esquina01.insertarCuadra(Sur, cuadra01_11);
+        esquina11.insertarCuadra(Norte, cuadra01_11);
+
+        // creo Jugador con su Vehiculo
+        Jugador jugador = new Jugador( new Vehiculo(new EstadoAuto()) );
+
+        // creo Juego con su Jugador y Tablero
+        Juego juego = new Juego(jugador, tablero);
+        juego.spawnearJugadorEn(0,0);
+
+        // Act
+        juego.moverJugadorEnDireccion(Sur);
+        juego.moverJugadorEnDireccion(Este);
+
+        // Assert
+        assertEquals(2, juego.cantMovJugador());
+        assertTrue(jugador.getEstadoVehiculo() instanceof EstadoCuatroPorCuatro);
+        assertEquals(esquina11,jugador.posicionActual());
+
+        // Act
+        juego.moverJugadorEnDireccion(Oeste);
+
+        // Assert
+        assertEquals(3, juego.cantMovJugador());
+        assertTrue(jugador.getEstadoVehiculo() instanceof EstadoCuatroPorCuatro);
+        assertEquals(esquina11,jugador.posicionActual());
+
+    }
+
+
+    @Test
     public void unAutoAtraviesaCiudadYSeEncuentraConUnPiqueteYNoEsPenalizada(){
         // Arrange
         Esquina esquina00 = new Esquina();          //   00 ---- 01
@@ -327,6 +395,5 @@ public class testcasodeuso01entrega01 {
         // Assert
         assertEquals(3, juego.cantMovJugador());
     }
-
 }
 

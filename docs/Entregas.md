@@ -7,3 +7,6 @@ Cosas por hacer entrega 3
 - [ ] Ranking puntajes altos
 
 
+se debe desarrolar una nueva sorepta llama sorpresata
+chochar -> mov pares, cambio vehiculo 
+imapres -> piquete

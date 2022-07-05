@@ -9,7 +9,7 @@ import edu.fiuba.algo3.modelo.Observer;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Esquina implements Observable {//Positionable, Observable {
+public class Esquina implements Observable  {
 	private final HashMap<String, Cuadra> cuadras;
 	private EstadoEsquina estado;
 

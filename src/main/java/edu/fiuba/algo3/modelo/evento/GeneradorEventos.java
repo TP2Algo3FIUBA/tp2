@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaCambioDeVehiculo;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaDesfavorable;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaFavorable;
+import edu.fiuba.algo3.modelo.sorpresa.Sorpresata;
 
 public class GeneradorEventos {
 	public GeneradorEventos() {
@@ -23,8 +24,11 @@ public class GeneradorEventos {
 			if (SubTipoEvento < 5) {
 				eventoGenerado = (Evento) new SorpresaFavorable();
 			}
-			else if (SubTipoEvento < 8) {
+			else if (SubTipoEvento < 6) {
 				eventoGenerado = (Evento) new SorpresaDesfavorable();
+			}
+			else if (SubTipoEvento < 8) {
+				eventoGenerado = (Evento) new Sorpresata();
 			}
 			else eventoGenerado = (Evento) new SorpresaCambioDeVehiculo();
 		}
