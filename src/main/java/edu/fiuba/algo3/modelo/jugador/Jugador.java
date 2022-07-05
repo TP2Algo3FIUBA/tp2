@@ -11,7 +11,7 @@ import edu.fiuba.algo3.modelo.Observer;
 
 import java.util.ArrayList;
 
-public class Jugador implements Observable {//Positionable, Observable {
+public class Jugador implements Observable {
 	private int movimientos = 0;
 
 	private ArrayList<Observer> observers;

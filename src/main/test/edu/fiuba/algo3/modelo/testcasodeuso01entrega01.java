@@ -24,11 +24,11 @@ public class testcasodeuso01entrega01 {
     @Test
     public void unaMotoAtraviesaCiudadYSeEncuentraConUnPozoYEsPenalizadaTresMovimientos(){
         // Arrange
-        Esquina esquina00 = new Esquina();          //   00 ---- 01
-        Esquina esquina01 = new Esquina();          //    |       |
-                                                    //    *       |
-        Esquina esquina10 = new Esquina();          //    |       |
-        Esquina esquina11 = new Esquina();          //   10 ---- 11
+        Esquina esquina00 = new Esquina(0, 0);          //   00 ---- 01
+        Esquina esquina01 = new Esquina(0, 1);          //    |       |
+                                                                   //    *       |
+        Esquina esquina10 = new Esquina(1, 0);          //    |       |
+        Esquina esquina11 = new Esquina(1, 1);          //   10 ---- 11
         Tablero tablero = new Tablero();
         tablero.agregarEsquina(0, esquina00);
         tablero.agregarEsquina(0, esquina01);

@@ -44,7 +44,6 @@ public class MainKeyboardController implements EventHandler<KeyEvent> {
       //Cant move exception
     }
 
-
   }
 
 }

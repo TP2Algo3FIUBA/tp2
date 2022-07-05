@@ -19,8 +19,8 @@ public class JugadorView implements Observer, Drawable {
 		this.tableroView = tableroView;
 		this.jugador = jugador;
 
-		this.lastXPosition = jugador.getPosition().getX();
-		this.lastYPosition = jugador.getPosition().getY();
+		this.lastXPosition = jugador.getPosition().getFil();
+		this.lastYPosition = jugador.getPosition().getCol();
 
 		jugador.addObserver(this);
 
@@ -31,15 +31,15 @@ public class JugadorView implements Observer, Drawable {
 		playerImage.setFitWidth(64);
 
 		playerImage.setImage(new Image("auto.png"));
-		tableroView.addViewOnMap(playerImage, jugador.getPosition().getX(), jugador.getPosition().getY());
+		tableroView.addViewOnMap(playerImage, jugador.getPosition().getFil(), jugador.getPosition().getCol());
 		draw();
 
 	}
 
 	@Override
 	public void draw() {
-		playerImage.setTranslateX(-4);
-		playerImage.setTranslateY(15);
+		playerImage.setTranslateX(64 * this.jugador.getPosition().getCol());
+		playerImage.setTranslateY(64 * this.jugador.getPosition().getFil());
 		tableroView.updateView(playerImage);
 	}
 
@@ -51,20 +51,20 @@ public class JugadorView implements Observer, Drawable {
 	//@Override
 	public void change() {
 		changePlayerSkin(jugador.getVehiculoName());
-		int actualX = jugador.getPosition().getX();
-		int actualY = jugador.getPosition().getY();
-		if (lastXPosition > actualX) {
+		int actualCol = jugador.getPosition().getCol();
+		int actualFil = jugador.getPosition().getFil();
+		if (lastXPosition > actualCol) {
 			this.playerImage.setScaleX( - 
 			Math.abs(playerImage.getScaleX()));
 		}
 
-		else if (lastXPosition < actualX) {
+		else if (lastXPosition < actualCol) {
 			this.playerImage.setScaleX(
 			Math.abs(playerImage.getScaleX()));
 		}
-		this.lastXPosition = jugador.getPosition().getX();
-		this.lastYPosition = jugador.getPosition().getY();
-		tableroView.addViewOnMap(this.playerImage, actualX, actualY);
+		this.lastXPosition = jugador.getPosition().getFil();
+		this.lastYPosition = jugador.getPosition().getCol();
+		tableroView.addViewOnMap(this.playerImage, actualCol, actualFil);
 	}
 
 }

@@ -33,17 +33,17 @@ public class TableroView extends Group {
                 table.add(v , i, j);
             }
         }
-        Background bi = new Background(new BackgroundImage(new Image("fondo.png"),
+        /*Background bi = new Background(new BackgroundImage(new Image("fondo.png"),
         BackgroundRepeat.NO_REPEAT,
         BackgroundRepeat.NO_REPEAT,
         BackgroundPosition.CENTER,
         new BackgroundSize(this.width, this.heigth, false, false, false, false)));
-        table.setBackground(bi);
+        table.setBackground(bi);*/
 
         this.addView(table);
     }
 
-    public void addViewOnMap(Node view, int x, int y) {
+    public void addViewOnMap(Node view, int col, int fil) {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < heigth; j++) {
                 try {
@@ -53,7 +53,7 @@ public class TableroView extends Group {
                 }
             }
         }
-        panes[x][y].getChildren().add(0, view);
+        panes[col][fil].getChildren().add(0, view);
     }
 
     public void addView(Node view) {

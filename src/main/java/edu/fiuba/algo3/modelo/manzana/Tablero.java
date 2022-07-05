@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import edu.fiuba.algo3.modelo.Observable;
 import edu.fiuba.algo3.modelo.Observer;
-import edu.fiuba.algo3.modelo.Position;
 import edu.fiuba.algo3.modelo.direcciones.DirEste;
 import edu.fiuba.algo3.modelo.direcciones.DirNorte;
 import edu.fiuba.algo3.modelo.direcciones.DirOeste;
@@ -14,22 +13,29 @@ import edu.fiuba.algo3.modelo.evento.*;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 public class Tablero implements Observable {
-	ArrayList<ArrayList<Esquina>> filas = new ArrayList(); // TO DO cambiar nombre a esquinas o algo mejor
+	ArrayList<ArrayList<Esquina>> esquinas = new ArrayList(); // TO DO cambiar nombre a esquinas o algo mejor
 
-	private static final int heigth = 8;
-	private static final int width = 8;
+	private int heigth;
+	private int width;
 
-	ArrayList<ArrayList<Cuadra>> filasCuadras = new ArrayList();
+	ArrayList<ArrayList<Cuadra>> cuadras = new ArrayList();
 	private ArrayList<Observer> observers;
 	private Esquina meta;
+
+	public Tablero(int width, int heigth) {
+		super();
+		observers = new ArrayList<Observer>();
+		this.width = width;
+		this.heigth = heigth;
+	}
 
 	public Tablero() {
 		super();
 		observers = new ArrayList<Observer>();
-
-		generarEsquinas();
-		generarCuadras();
+		this.width = 0;
+		this.heigth = 0;
 	}
+
 	public void generarTablero(){
 		generarEsquinas();
 		generarCuadras();
@@ -43,15 +49,15 @@ public class Tablero implements Observable {
 				Esquina esquina;
 
 				if(columnaActual == 0 && filaActual == 0) {
-
+					esquina = new Esquina(filaActual, columnaActual);
 				}
 
-				if(columnaActual == heigth - 1 && filaActual == width - 1) {
-					esquina = new Esquina(new Meta());
+				else if(columnaActual == heigth - 1 && filaActual == width - 1) {
+					esquina = new Esquina(new Meta(), filaActual, columnaActual);
 				}
 
 				else {
-					esquina = new Esquina(columnaActual, filaActual);// esquina = new Esquina(); va del reves?
+					esquina = new Esquina(filaActual, columnaActual);
 				}
 
 				this.agregarEsquina(filaActual, esquina);
@@ -111,20 +117,20 @@ public class Tablero implements Observable {
 	}
 
 	public Esquina obtenerEsquina(int fila, int columna) {
-		return ((filas.get(fila)).get(columna));
+		return ((esquinas.get(fila)).get(columna));
 	}
 
 	public void agregarEsquina(int fila, Esquina nuevaEsquina) {
-		if (filas.size() < fila + 1)
-			filas.add(new ArrayList<Esquina>());
+		if (esquinas.size() < fila + 1)
+			esquinas.add(new ArrayList<Esquina>());
 
-		filas.get(fila).add(nuevaEsquina);
+		esquinas.get(fila).add(nuevaEsquina);
 	}
 	public void agregarCuadra(int fila, Cuadra nuevaCuadra) {
-		if (filasCuadras.size() < fila + 1)
-			filasCuadras.add(new ArrayList<Cuadra>());
+		if (cuadras.size() < fila + 1)
+			cuadras.add(new ArrayList<Cuadra>());
 
-		filasCuadras.get(fila).add(nuevaCuadra);
+		cuadras.get(fila).add(nuevaCuadra);
 	}
 	
 	public void spawnearJugador(Jugador jugador) {

@@ -38,7 +38,7 @@ public class Cuadra {
 		Esquina esquinaDestino = evento.afectarJugador(jugador, esquinaInicio, esquinaOpuesta);
 		jugador.setEsquinaActual(esquinaDestino);
 		jugador.setPosition(esquinaDestino.getPosition());
-		System.out.println("Nueva ubicacion del jugador: X:" + esquinaDestino.getPosition().getX() + " Y:" + esquinaDestino.getPosition().getY());
+		System.out.println("Nueva ubicacion del jugador: Fil:" + esquinaDestino.getPosition().getFil() + " Col:" + esquinaDestino.getPosition().getCol());
 	}
 
     public Evento getObstaculo() {

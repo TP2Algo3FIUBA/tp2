@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.manzana.EsquinaNoValidaException;
 import edu.fiuba.algo3.modelo.manzana.EstadoEsquina;
 
 public class Vehiculo {
@@ -18,7 +19,7 @@ public class Vehiculo {
 	}
 
 	public void setEsquinaActual(Esquina esquinaActual) {
-		if(esquinaActual== null){throw new RuntimeException();}//EsquinaNoValidaException();}
+		if(esquinaActual== null){throw new EsquinaNoValidaException();}
 		this.esquinaActual = esquinaActual;
 	}
 

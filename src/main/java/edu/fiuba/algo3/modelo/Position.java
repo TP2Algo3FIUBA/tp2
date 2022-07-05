@@ -1,24 +1,24 @@
 package edu.fiuba.algo3.modelo;
 
 public class Position {
-    private int x;
-    private int y;
+    private int fil;
+    private int col;
 
-    public Position(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Position(int fil, int col) {
+        this.fil = fil;
+        this.col = col;
     }
 
     @Override
     public String toString() {
-        return "("+x+", "+y+")";
+        return "("+fil+", "+col+")";
     }
 
-    public int getX() {
-        return x;
+    public int getFil() {
+        return fil;
     }
 
-    public int getY() {
-        return y;
+    public int getCol() {
+        return col;
     }
 }

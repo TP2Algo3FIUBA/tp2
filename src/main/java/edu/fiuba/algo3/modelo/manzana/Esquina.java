@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.Observable;
 import edu.fiuba.algo3.modelo.Observer;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Esquina implements Observable {//Positionable, Observable {
@@ -13,24 +14,28 @@ public class Esquina implements Observable {//Positionable, Observable {
 	private EstadoEsquina estado;
 	private Position position;
 
-//	private Jugador jugadorEnLaEsquina;
+	private ArrayList<Observer> observers;
+
 	
 	public Esquina() {
 		this.cuadras = new HashMap<>();
 		this.estado = new NoMeta();
+		this.position = new Position(0,0);// Este metodo se utiliza solamente en las pruebas si no me equivoco, por lo que la position no seria relevante
 //		jugadorEnLaEsquina = null;
 	}
 
-	public Esquina(EstadoEsquina estado) {
+	public Esquina(EstadoEsquina estado, int posFil, int posCol) {
 		this.cuadras = new HashMap<>();
 		this.estado = estado;
-		this.position = new Position(2,2);
+		this.position = new Position(posFil,posCol);
+		observers = new ArrayList<Observer>();
 //		jugadorEnLaEsquina = null;
 	}
 
-	public Esquina(int posX, int posY) {
+	public Esquina(int posFil, int posCol) {
 		this.cuadras = new HashMap<>();
-		this.position = new Position(posX,posY);
+		this.position = new Position(posFil,posCol);
+		observers = new ArrayList<Observer>();
 //		jugadorEnLaEsquina = null;
 	}
 
@@ -62,32 +67,18 @@ public class Esquina implements Observable {//Positionable, Observable {
 
 	public void setPosition(Position position) {
 		this.position = position;
+		notifyObservers();
 	}
 
-	//private Positionable occupant;
-
-	/*public void occupy(Positionable occupant) {
-		if (this.occupant != null) {
-			throw new RuntimeException();
-		}
-		this.occupant = occupant;
-	}
-
-	public boolean hasOccupant(Positionable occupant) {
-		return occupant == this.occupant;
-	}
-
-	public void dropOccupant() {
-		occupant = null;
-	}*/
-
-	@Override
 	public void addObserver(Observer observer) {
-
+		observers.add(observer);
 	}
 
-	@Override
 	public void notifyObservers() {
+		observers.stream().forEach(observer -> observer.change());
+	}
 
+	public String getEsquinaName() {
+		return "esquina";
 	}
 }
