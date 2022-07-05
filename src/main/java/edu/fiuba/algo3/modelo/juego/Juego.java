@@ -16,10 +16,10 @@ public class Juego {
 	private Jugador jugador;
 	private Tablero tablero;
 
-//    public Juego(Jugador unJugador, Tablero unTablero) {
-//        jugador = unJugador;
-//        tablero = unTablero;
-//    }
+	public Juego(Jugador unJugador, Tablero unTablero) {
+		jugador = unJugador;
+		tablero = unTablero;
+	}
 
 	public Juego() {
 	}
@@ -46,14 +46,15 @@ public class Juego {
 	}
 
 	public void correrJuego() {
-		
+
 		inicializarJuego();
 
 //    while((!jugador.checkearEsquinaEstado().equals(new Meta()))) {
 //    	 //controlador que determina donde mover el jugador.
 //    }
-		
-		//finalizarPartida(); //guarda en un txt o ymal o json el nombre de jugador y su puntaje
+
+		// finalizarPartida(); //guarda en un txt o ymal o json el nombre de jugador y
+		// su puntaje
 	}
 
 	private void inicializarJuego() {
