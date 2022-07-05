@@ -25,14 +25,14 @@ public class GeneradorTablero { // TO DO: que esto una clase con solo metodos de
 				
 				Esquina esquina;
 				
-				if(columnaActual == 0 && filaActual == 0) {
-					
-				}
+//				if(columnaActual == 0 && filaActual == 0) {
+//					
+//				}
 				
 				if(columnaActual == dimensiones - 1 && filaActual == dimensiones - 1) {
+					System.out.println("agregue una meta en la fila: " + (filaActual) + " y columna: " + columnaActual);
 					esquina = new Esquina(new Meta()); 
-				}
-				
+				}		
 				else {
 					esquina = new Esquina(); 
 				}

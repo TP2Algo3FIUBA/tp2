@@ -8,6 +8,9 @@ import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
+import edu.fiuba.algo3.modelo.direcciones.DirEste;
+import edu.fiuba.algo3.modelo.direcciones.DirOeste;
+import edu.fiuba.algo3.modelo.direcciones.DirSur;
 import edu.fiuba.algo3.modelo.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.CuadraInexistenteException;
@@ -68,8 +71,21 @@ public class Juego {
 	}
 
 	public void correrJuego() {
+		
+		System.out.println("Running");
 
 		inicializarJuego();
+		
+		jugador.moverEnDireccion(new DirEste());
+		jugador.moverEnDireccion(new DirEste());
+		jugador.moverEnDireccion(new DirSur());
+		jugador.moverEnDireccion(new DirSur());
+		
+		System.out.println(jugador.checkearEsquinaEstado());
+		
+		if(jugador.checkearEsquinaEstado() instanceof Meta){
+			System.out.println("En meta");
+		}
 
 //    while((!jugador.checkearEsquinaEstado().equals(new Meta()))) {
 //    	 //controlador que determina donde mover el jugador.
