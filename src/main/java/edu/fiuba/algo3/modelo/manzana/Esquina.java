@@ -12,10 +12,10 @@ import java.util.HashMap;
 public class Esquina implements Observable {//Positionable, Observable {
 	private final HashMap<String, Cuadra> cuadras;
 	private EstadoEsquina estado;
-	private Position position;
 
+	// Agregado para la interfaz
 	private ArrayList<Observer> observers;
-
+	private Position position;
 	
 	public Esquina() {
 		this.cuadras = new HashMap<>();

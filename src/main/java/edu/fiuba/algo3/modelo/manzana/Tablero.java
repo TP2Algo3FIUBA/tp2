@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.modelo.manzana;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import edu.fiuba.algo3.modelo.Observable;
 import edu.fiuba.algo3.modelo.Observer;
+import edu.fiuba.algo3.modelo.Position;
 import edu.fiuba.algo3.modelo.direcciones.DirEste;
 import edu.fiuba.algo3.modelo.direcciones.DirNorte;
 import edu.fiuba.algo3.modelo.direcciones.DirOeste;
@@ -21,6 +23,7 @@ public class Tablero implements Observable {
 	ArrayList<ArrayList<Cuadra>> cuadras = new ArrayList();
 	private ArrayList<Observer> observers;
 	private Esquina meta;
+
 
 	public Tablero(int width, int heigth) {
 		super();
@@ -61,6 +64,7 @@ public class Tablero implements Observable {
 				}
 
 				this.agregarEsquina(filaActual, esquina);
+
 			}
 		}
 	}
@@ -70,11 +74,11 @@ public class Tablero implements Observable {
 			for (int columnaActual = 0; columnaActual < width; columnaActual++) {
 				Esquina esquinaInicio = this.obtenerEsquina(filaActual, columnaActual);
 				Esquina esquinaDestino;
-				Evento evento = GeneradorEventos.generarEvento(); // new EventoVacio(); //
+				Evento evento = new EventoVacio(); // GeneradorEventos.generarEvento(); //
 
 				if (filaActual != 0) {
 					esquinaDestino = this.obtenerEsquina(filaActual - 1, columnaActual);
-					Cuadra nuevaCuadraInicioADestino = new Cuadra(esquinaInicio, esquinaDestino, evento); // y aca en lugar de un obstaculo le pasas un evento
+					Cuadra nuevaCuadraInicioADestino = new Cuadra(esquinaInicio, esquinaDestino, evento, filaActual, columnaActual); // y aca en lugar de un obstaculo le pasas un evento
 					esquinaInicio.insertarCuadra(new DirNorte(), nuevaCuadraInicioADestino);
 
 					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio, evento);
@@ -85,7 +89,7 @@ public class Tablero implements Observable {
 
 				if (columnaActual != 0) {
 					esquinaDestino = this.obtenerEsquina(filaActual, columnaActual - 1);
-					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  evento);
+					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  evento, filaActual, columnaActual);
 					esquinaInicio.insertarCuadra(new DirOeste(), nuevaCuadra);
 
 					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento);
@@ -98,14 +102,14 @@ public class Tablero implements Observable {
 					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  evento);
 					esquinaInicio.insertarCuadra(new DirSur(), nuevaCuadra);
 
-					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento);
+					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento, filaActual, columnaActual);
 					esquinaDestino.insertarCuadra(new DirNorte(), nuevaCuadraDestinoAInicio);
 					agregarCuadra(filaActual,nuevaCuadraDestinoAInicio);
 				}
 
 				if (columnaActual != heigth - 1) {
 					esquinaDestino = this.obtenerEsquina(filaActual, columnaActual + 1);
-					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  evento);
+					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  evento, filaActual, columnaActual);
 					esquinaInicio.insertarCuadra(new DirEste(), nuevaCuadra);
 
 					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento);
@@ -118,6 +122,10 @@ public class Tablero implements Observable {
 
 	public Esquina obtenerEsquina(int fila, int columna) {
 		return ((esquinas.get(fila)).get(columna));
+	}
+
+	public Cuadra obtenerCuadra(int fila, int columna) {
+		return ((cuadras.get(fila)).get(columna));
 	}
 
 	public void agregarEsquina(int fila, Esquina nuevaEsquina) {
