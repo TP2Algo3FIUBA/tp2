@@ -19,8 +19,8 @@ public class EsquinaView implements Observer, Drawable {
 		this.tableroView = tableroView;
 		this.esquina = esquina;
 
-		this.lastXPosition = esquina.getPosition().getFil();
-		this.lastYPosition = esquina.getPosition().getCol();
+		this.lastXPosition = (int) esquina.getPosition().getFil();
+		this.lastYPosition = (int) esquina.getPosition().getCol();
 
 		esquina.addObserver(this);
 
@@ -31,7 +31,7 @@ public class EsquinaView implements Observer, Drawable {
 		esquinaImage.setFitWidth(64);
 
 		esquinaImage.setImage(new Image("esquina.png")); // cambiar por esquina.png
-		tableroView.addViewOnMap(esquinaImage, esquina.getPosition().getCol(), esquina.getPosition().getFil()); // Del reves?
+		tableroView.addViewOnMap(esquinaImage, (int) esquina.getPosition().getCol(), (int) esquina.getPosition().getFil()); // Del reves?
 		System.out.println("Dibujando esquina de Fil:" + esquina.getPosition().getFil() + " Col:" + esquina.getPosition().getCol());
 		draw();
 	}
@@ -51,8 +51,8 @@ public class EsquinaView implements Observer, Drawable {
 	//@Override
 	public void change() {
 		changeEsquinaSkin(esquina.getEsquinaName());
-		int actualCol = esquina.getPosition().getCol();
-		int actualFil = esquina.getPosition().getFil();
+		int actualCol = (int) esquina.getPosition().getCol();
+		int actualFil = (int) esquina.getPosition().getFil();
 		if (lastXPosition > actualCol) {
 			this.esquinaImage.setScaleX( -
 			Math.abs(esquinaImage.getScaleX()));
@@ -62,8 +62,8 @@ public class EsquinaView implements Observer, Drawable {
 			this.esquinaImage.setScaleX(
 			Math.abs(esquinaImage.getScaleX()));
 		}
-		this.lastXPosition = esquina.getPosition().getFil();
-		this.lastYPosition = esquina.getPosition().getCol();
+		this.lastXPosition = (int) esquina.getPosition().getFil();
+		this.lastYPosition = (int) esquina.getPosition().getCol();
 		tableroView.addViewOnMap(this.esquinaImage, actualCol, actualFil);
 	}
 

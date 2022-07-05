@@ -3,6 +3,8 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.evento.EventoVacio;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
+import edu.fiuba.algo3.modelo.obstaculo.Pozo;
+import edu.fiuba.algo3.modelo.sorpresa.SorpresaCambioDeVehiculo;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -13,8 +15,8 @@ public class CuadraView implements Observer, Drawable {
 
 	private Cuadra cuadra;
 
-	private int lastXPosition;
-	private int lastYPosition;
+	private double lastXPosition;
+	private double lastYPosition;
 
 	public CuadraView(TableroView tableroView, Cuadra cuadra) {
 		this.tableroView = tableroView;
@@ -31,12 +33,15 @@ public class CuadraView implements Observer, Drawable {
 		cuadraImage.setFitHeight(64);
 		cuadraImage.setFitWidth(64);
 
-		if (cuadra.getObstaculo() instanceof EventoVacio) {
-			cuadraImage.setImage(new Image("casa.png"));
+		if (cuadra.getObstaculo() instanceof SorpresaCambioDeVehiculo) {
+			cuadraImage.setImage(new Image("meta.png"));
 		}
-		else cuadraImage.setImage(new Image("pozo.png")); // cambiar por cuadra.png
+		else if (cuadra.getObstaculo() instanceof Pozo) {
+			cuadraImage.setImage(new Image("pozo.png"));
+		}
+		else cuadraImage.setImage(new Image("cuadra.png"));
 
-		tableroView.addViewOnMap(cuadraImage, cuadra.getPosition().getCol(), cuadra.getPosition().getFil()); // Del reves?
+		tableroView.addViewOnMap(cuadraImage, (int) cuadra.getPosition().getCol(), (int) cuadra.getPosition().getFil()); // Del reves?
 		System.out.println("Dibujando esquina de Fil:" + cuadra.getPosition().getFil() + " Col:" + cuadra.getPosition().getCol());
 		draw();
 	}
@@ -50,14 +55,14 @@ public class CuadraView implements Observer, Drawable {
 
 	private void changeCuadraSkin(String fileName) {
 		System.out.println(fileName);
-		cuadraImage.setImage(new Image(fileName + ".png"));
+		cuadraImage.setImage(new Image("cuadra.png")); //(fileName + ".png"));
 	}
 
 	//@Override
 	public void change() {
 		changeCuadraSkin(cuadra.getCuadraName());
-		int actualCol = cuadra.getPosition().getCol();
-		int actualFil = cuadra.getPosition().getFil();
+		double actualCol = cuadra.getPosition().getCol();
+		double actualFil = cuadra.getPosition().getFil();
 		if (lastXPosition > actualCol) {
 			this.cuadraImage.setScaleX( -
 			Math.abs(cuadraImage.getScaleX()));
@@ -69,7 +74,7 @@ public class CuadraView implements Observer, Drawable {
 		}
 		this.lastXPosition = cuadra.getPosition().getFil();
 		this.lastYPosition = cuadra.getPosition().getCol();
-		tableroView.addViewOnMap(this.cuadraImage, actualCol, actualFil);
+		tableroView.addViewOnMap(this.cuadraImage, (int) actualCol, (int) actualFil);
 	}
 
 }

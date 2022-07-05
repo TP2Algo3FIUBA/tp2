@@ -17,35 +17,18 @@ public class Cuadra implements Observable {
 
 	// Agregado para la interfaz
 	private ArrayList<Observer> observers;
-	private Position position;
+
 
 	public Cuadra(Esquina unaEsquinaA, Esquina unaEsquinaB, Evento unEvento) {
 		this.esquinaA = unaEsquinaA;
 		this.esquinaB = unaEsquinaB;
 		this.evento = unEvento;
-		this.position = new Position(0, 0);
 		observers = new ArrayList<Observer>();
 	}
 
 	public Cuadra(Esquina unaEsquinaA, Esquina unaEsquinaB) {
 		this.esquinaA = unaEsquinaA;
 		this.esquinaB = unaEsquinaB;
-		this.position = new Position(0, 0);
-		observers = new ArrayList<Observer>();
-	}
-
-	public Cuadra(Esquina unaEsquinaA, Esquina unaEsquinaB, Evento unEvento, int posFil, int posCol) {
-		this.esquinaA = unaEsquinaA;
-		this.esquinaB = unaEsquinaB;
-		this.evento = unEvento;
-		this.position = new Position(posFil, posCol);
-		observers = new ArrayList<Observer>();
-	}
-
-	public Cuadra(Esquina unaEsquinaA, Esquina unaEsquinaB, int posFil, int posCol) {
-		this.esquinaA = unaEsquinaA;
-		this.esquinaB = unaEsquinaB;
-		this.position = new Position(posFil, posCol);
 		observers = new ArrayList<Observer>();
 	}
 
@@ -74,13 +57,12 @@ public class Cuadra implements Observable {
     }
 
 	public Position getPosition() {
-		return this.position;
+		double fil =  ( esquinaA.getPosition().getFil() + esquinaB.getPosition().getFil() ) / 2;
+		double col =  ( esquinaA.getPosition().getCol() + esquinaB.getPosition().getCol() ) / 2;
+		Position position = new Position(fil, col);
+		return position;
 	}
 
-	public void setPosition(Position position) {
-		this.position = position;
-		notifyObservers();
-	}
 
 	public void addObserver(Observer observer) {
 		observers.add(observer);

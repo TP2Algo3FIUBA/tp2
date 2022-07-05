@@ -1,10 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
 public class Position {
-    private int fil;
-    private int col;
+    private double fil;
+    private double col;
 
-    public Position(int fil, int col) {
+    public Position(double fil, double col) {
         this.fil = fil;
         this.col = col;
     }
@@ -14,11 +14,11 @@ public class Position {
         return "("+fil+", "+col+")";
     }
 
-    public int getFil() {
+    public double getFil() {
         return fil;
     }
 
-    public int getCol() {
+    public double getCol() {
         return col;
     }
 }

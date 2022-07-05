@@ -31,8 +31,8 @@ public class App extends Application {
     public void start(Stage escenarioInicial) throws Exception {
         escenarioInicial.setTitle("GPS Challenge");
 
-        Tablero unTablero = tableroTest(); // new Tablero(8, 8); //
-        //unTablero.generarTablero();
+        Tablero unTablero = new Tablero(8, 8); //tableroTest(); //
+        unTablero.generarTablero();
         tableroView = new TableroView(unTablero);
 
         Jugador jugador = new Jugador(new Vehiculo( new EstadoAuto()) );
@@ -66,14 +66,12 @@ public class App extends Application {
         }
     }
 
-    private void agregarViewCuadras(Tablero unTablero) {
-        for (int filaActual = 0; filaActual < unTablero.getHeigth() -1; filaActual++) {
-            for (int columnaActual = 0; columnaActual < unTablero.getWidth() -1; columnaActual++) {
-                new CuadraView(tableroView, unTablero.obtenerCuadra(filaActual, columnaActual));
-            }
+    private void agregarViewCuadras(Tablero tablero) {
+        for (int cuadraActual = 0; cuadraActual < tablero.cantididadCuadras(); cuadraActual++) {
+            new CuadraView(tableroView, tablero.obtenerCuadra(cuadraActual));
         }
-    }
 
+    }
 
     public static void main(String[] args) {
         launch();
@@ -109,52 +107,52 @@ public class App extends Application {
         DirOeste Oeste = new DirOeste();
 
         // conecto 00 con 01
-        Cuadra cuadra00_01 = new Cuadra(esquina00, esquina01, 0, 0);
+        Cuadra cuadra00_01 = new Cuadra(esquina00, esquina01);
         esquina00.insertarCuadra(Este, cuadra00_01);
         esquina01.insertarCuadra(Oeste, cuadra00_01);
 
         // conecto 10 con 11
-        Cuadra cuadra10_11 = new Cuadra(esquina10, esquina11, 1, 0);
+        Cuadra cuadra10_11 = new Cuadra(esquina10, esquina11);
         esquina10.insertarCuadra(Este, cuadra10_11);
         esquina11.insertarCuadra(Oeste, cuadra10_11);
 
         // conecto 00 con 10
-        Cuadra cuadra00_10 = new Cuadra(esquina00, esquina10, new Pozo(), 2, 0);
+        Cuadra cuadra00_10 = new Cuadra(esquina00, esquina10, new Pozo());
         esquina00.insertarCuadra(Sur, cuadra00_10);
         esquina10.insertarCuadra(Norte, cuadra00_10);
 
         // conecto 01 con 11
-        Cuadra cuadra01_11 = new Cuadra(esquina01, esquina11, 2, 1);
+        Cuadra cuadra01_11 = new Cuadra(esquina01, esquina11);
         esquina01.insertarCuadra(Sur, cuadra01_11);
         esquina11.insertarCuadra(Norte, cuadra01_11);
 
         // conecto 01 con 02
-        Cuadra cuadra01_02 = new Cuadra(esquina01, esquina02, new SorpresaCambioDeVehiculo(), 0, 1);
+        Cuadra cuadra01_02 = new Cuadra(esquina01, esquina02, new SorpresaCambioDeVehiculo());
         esquina01.insertarCuadra(Este, cuadra01_02);
         esquina02.insertarCuadra(Oeste, cuadra01_02);
 
         // conecto 11 con 12
-        Cuadra cuadra11_12 = new Cuadra(esquina11, esquina12, 1, 1);
+        Cuadra cuadra11_12 = new Cuadra(esquina11, esquina12);
         esquina11.insertarCuadra(Este, cuadra11_12);
         esquina12.insertarCuadra(Oeste, cuadra11_12);
 
         // conecto 02 con 12
-        Cuadra cuadra02_12 = new Cuadra(esquina02, esquina12,2,2);
+        Cuadra cuadra02_12 = new Cuadra(esquina02, esquina12);
         esquina02.insertarCuadra(Sur, cuadra02_12);
         esquina12.insertarCuadra(Norte, cuadra02_12);
 
         // conecto 02 con 03
-        Cuadra cuadra02_03 = new Cuadra(esquina02, esquina03,0,2);
+        Cuadra cuadra02_03 = new Cuadra(esquina02, esquina03);
         esquina02.insertarCuadra(Este, cuadra02_03);
         esquina03.insertarCuadra(Oeste, cuadra02_03);
 
         // conecto 12 con 13
-        Cuadra cuadra12_13 = new Cuadra(esquina12, esquina13,1,2);
+        Cuadra cuadra12_13 = new Cuadra(esquina12, esquina13);
         esquina12.insertarCuadra(Este, cuadra12_13);
         esquina13.insertarCuadra(Oeste, cuadra12_13);
 
         // conecto 03 con 13
-        Cuadra cuadra03_13 = new Cuadra(esquina03, esquina13,2,3);
+        Cuadra cuadra03_13 = new Cuadra(esquina03, esquina13);
         esquina03.insertarCuadra(Sur, cuadra03_13);
         esquina13.insertarCuadra(Norte, cuadra03_13);
 

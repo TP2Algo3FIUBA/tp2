@@ -19,8 +19,8 @@ public class JugadorView implements Observer, Drawable {
 		this.tableroView = tableroView;
 		this.jugador = jugador;
 
-		this.lastXPosition = jugador.getPosition().getFil();
-		this.lastYPosition = jugador.getPosition().getCol();
+		this.lastXPosition = (int) jugador.getPosition().getFil();
+		this.lastYPosition = (int) jugador.getPosition().getCol();
 
 		jugador.addObserver(this);
 
@@ -31,7 +31,7 @@ public class JugadorView implements Observer, Drawable {
 		playerImage.setFitWidth(64);
 
 		playerImage.setImage(new Image("auto.png"));
-		tableroView.addViewOnMap(playerImage, jugador.getPosition().getFil(), jugador.getPosition().getCol());
+		tableroView.addViewOnMap(playerImage, (int) jugador.getPosition().getFil(), (int) jugador.getPosition().getCol());
 		draw();
 
 	}
@@ -51,8 +51,8 @@ public class JugadorView implements Observer, Drawable {
 	//@Override
 	public void change() {
 		changePlayerSkin(jugador.getVehiculoName());
-		int actualCol = jugador.getPosition().getCol();
-		int actualFil = jugador.getPosition().getFil();
+		double actualCol = jugador.getPosition().getCol();
+		double actualFil = jugador.getPosition().getFil();
 		if (lastXPosition > actualCol) {
 			this.playerImage.setScaleX( - 
 			Math.abs(playerImage.getScaleX()));
@@ -62,9 +62,9 @@ public class JugadorView implements Observer, Drawable {
 			this.playerImage.setScaleX(
 			Math.abs(playerImage.getScaleX()));
 		}
-		this.lastXPosition = jugador.getPosition().getFil();
-		this.lastYPosition = jugador.getPosition().getCol();
-		tableroView.addViewOnMap(this.playerImage, actualCol, actualFil);
+		this.lastXPosition = (int) jugador.getPosition().getFil();
+		this.lastYPosition = (int) jugador.getPosition().getCol();
+		tableroView.addViewOnMap(this.playerImage, (int) actualCol, (int) actualFil);
 	}
 
 }
