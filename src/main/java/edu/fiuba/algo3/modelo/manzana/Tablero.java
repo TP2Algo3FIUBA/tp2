@@ -84,7 +84,7 @@ public class Tablero implements Observable {
 					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio, evento);
 					esquinaDestino.insertarCuadra(new DirSur(), nuevaCuadraDestinoAInicio);
 
-					agregarCuadra(filaActual,nuevaCuadraDestinoAInicio);
+					agregarCuadra(nuevaCuadraDestinoAInicio);
 				}
 
 				if (columnaActual != 0) {
@@ -94,7 +94,7 @@ public class Tablero implements Observable {
 
 					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento);
 					esquinaDestino.insertarCuadra(new DirOeste(), nuevaCuadraDestinoAInicio);
-					agregarCuadra(filaActual,nuevaCuadraDestinoAInicio);
+					agregarCuadra(nuevaCuadraDestinoAInicio);
 				}
 
 				if (filaActual != width - 1) {
@@ -104,7 +104,7 @@ public class Tablero implements Observable {
 
 					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento);
 					esquinaDestino.insertarCuadra(new DirNorte(), nuevaCuadraDestinoAInicio);
-					agregarCuadra(filaActual,nuevaCuadraDestinoAInicio);
+					agregarCuadra(nuevaCuadraDestinoAInicio);
 				}
 
 				if (columnaActual != heigth - 1) {
@@ -114,7 +114,7 @@ public class Tablero implements Observable {
 
 					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento);
 					esquinaDestino.insertarCuadra(new DirOeste(), nuevaCuadraDestinoAInicio);
-					agregarCuadra(filaActual,nuevaCuadraDestinoAInicio);
+					agregarCuadra(nuevaCuadraDestinoAInicio);
 				}
 			}
 		}
@@ -134,7 +134,7 @@ public class Tablero implements Observable {
 
 		esquinas.get(fila).add(nuevaEsquina);
 	}
-	public void agregarCuadra(int fila, Cuadra nuevaCuadra) {
+	public void agregarCuadra(Cuadra nuevaCuadra) {
 		cuadras.add(nuevaCuadra);
 	}
 	public int cantididadCuadras(){

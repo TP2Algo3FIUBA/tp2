@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class CuadraView implements Observer, Drawable {
-	private double esquinaScale = 1;
+	private double esquinaScale = 0.85;
 	private TableroView tableroView;
 	ImageView cuadraImage;
 

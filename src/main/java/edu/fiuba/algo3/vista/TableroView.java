@@ -34,6 +34,13 @@ public class TableroView extends Group {
             }
         }
 
+        Background bi = new Background(new BackgroundImage(new Image("fondo.png"),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                new BackgroundSize(this.width, this.heigth, false, false, false, false)));
+        table.setBackground(bi);
+
         this.addView(table);
     }
 

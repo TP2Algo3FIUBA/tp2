@@ -48,7 +48,7 @@ public class Cuadra implements Observable {
 		Esquina esquinaDestino = evento.afectarJugador(jugador, esquinaInicio, esquinaOpuesta);
 		jugador.setEsquinaActual(esquinaDestino);
 		jugador.setPosition(esquinaDestino.getPosition());
-		System.out.println("Nueva ubicacion del jugador: Fil:" + esquinaDestino.getPosition().getFil() + " Col:" + esquinaDestino.getPosition().getCol());
+		System.out.println("Nueva ubicacion del jugador: Fil:" + (int) esquinaDestino.getPosition().getFil() + " Col:" + (int) esquinaDestino.getPosition().getCol());
 	}
 
     public Evento getObstaculo() {
