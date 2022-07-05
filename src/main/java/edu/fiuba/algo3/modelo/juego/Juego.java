@@ -21,13 +21,6 @@ public class Juego {
 		this.jugador = jugador;
 	}
 
-	/*public Juego(Jugador jugador,Tablero tablero, MapView mapView) {
-		this.tablero = tablero;
-		this.jugador = jugador;
-		this.view = mapView;
-
-		this.tablero.renderObstaculos(mapView);
-	}*/
 
 	public void moverJugadorEnDireccion(Direccion direccion) {
 		try {
@@ -50,14 +43,7 @@ public class Juego {
 	}
 
 	public void correrJuego() {
-		
 		inicializarJuego();
-
-//    while((!jugador.checkearEsquinaEstado().equals(new Meta()))) {
-//    	 //controlador que determina donde mover el jugador.
-//    }
-		
-		//finalizarPartida(); //guarda en un txt o ymal o json el nombre de jugador y su puntaje
 	}
 
 	private void inicializarJuego() {
@@ -69,5 +55,9 @@ public class Juego {
 
 	public Esquina obtenerEsquina(int i, int i1) {
 		return tablero.obtenerEsquina(i,i1);
+	}
+
+	public boolean Ganado() {
+		return jugador.posicionActual().checkearEstado() instanceof Meta;
 	}
 }

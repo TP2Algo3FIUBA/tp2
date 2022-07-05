@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.manzana.Meta;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -30,7 +31,10 @@ public class EsquinaView implements Observer, Drawable {
 		esquinaImage.setFitHeight(64);
 		esquinaImage.setFitWidth(64);
 
-		esquinaImage.setImage(new Image("esquina.png")); // cambiar por esquina.png
+		if (esquina.checkearEstado() instanceof Meta) {
+			esquinaImage.setImage(new Image("meta.png"));
+		}
+		else esquinaImage.setImage(new Image("esquina.png")); // cambiar por esquina.png
 		tableroView.addViewOnMap(esquinaImage, (int) esquina.getPosition().getCol(), (int) esquina.getPosition().getFil()); // Del reves?
 		System.out.println("Dibujando esquina de Fil:" + esquina.getPosition().getFil() + " Col:" + esquina.getPosition().getCol());
 		draw();

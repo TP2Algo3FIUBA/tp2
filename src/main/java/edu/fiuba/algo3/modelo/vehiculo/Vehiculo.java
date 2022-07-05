@@ -7,6 +7,8 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.EsquinaNoValidaException;
 import edu.fiuba.algo3.modelo.manzana.EstadoEsquina;
+import edu.fiuba.algo3.modelo.manzana.Meta;
+import javafx.event.Event;
 
 public class Vehiculo {
 
@@ -19,7 +21,11 @@ public class Vehiculo {
 	}
 
 	public void setEsquinaActual(Esquina esquinaActual) {
-		if(esquinaActual== null){throw new EsquinaNoValidaException();}
+		if(esquinaActual == null){throw new EsquinaNoValidaException();}
+
+		if (esquinaActual.checkearEstado() instanceof Meta) {
+			System.out.println("Ganaste papu");
+		}
 		this.esquinaActual = esquinaActual;
 	}
 

@@ -20,8 +20,7 @@ public class Esquina implements Observable {//Positionable, Observable {
 	public Esquina() {
 		this.cuadras = new HashMap<>();
 		this.estado = new NoMeta();
-		this.position = new Position(0,0);// Este metodo se utiliza solamente en las pruebas si no me equivoco, por lo que la position no seria relevante
-//		jugadorEnLaEsquina = null;
+		this.position = new Position(0,0);
 	}
 
 	public Esquina(EstadoEsquina estado, int posFil, int posCol) {
@@ -29,23 +28,19 @@ public class Esquina implements Observable {//Positionable, Observable {
 		this.estado = estado;
 		this.position = new Position(posFil,posCol);
 		observers = new ArrayList<Observer>();
-//		jugadorEnLaEsquina = null;
 	}
 
 	public Esquina(int posFil, int posCol) {
 		this.cuadras = new HashMap<>();
 		this.position = new Position(posFil,posCol);
 		observers = new ArrayList<Observer>();
-//		jugadorEnLaEsquina = null;
 	}
 
 	public void moverVehiculo(Jugador jugador, Direccion direccion) {
-//		System.out.println(direccion.toString());
 
 		Cuadra cuadraAdirijirse = cuadras.get(direccion.toString());
 		if (cuadraAdirijirse == null) {
 			throw new CuadraInexistenteException();
-//			return;
 		}
 
 		jugador.incrementarMovimientos(1);

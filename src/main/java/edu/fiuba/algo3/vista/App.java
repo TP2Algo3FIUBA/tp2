@@ -10,6 +10,7 @@ import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.manzana.Meta;
 import edu.fiuba.algo3.modelo.manzana.Tablero;
 import edu.fiuba.algo3.modelo.obstaculo.ControlPolicial;
 import edu.fiuba.algo3.modelo.obstaculo.Piquete;
@@ -21,6 +22,7 @@ import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -35,13 +37,12 @@ public class App extends Application {
     public void start(Stage escenarioInicial) throws Exception {
         escenarioInicial.setTitle("GPS Challenge");
 
-        Tablero unTablero = tableroTest(); // new Tablero(8, 8); //
-        //unTablero.generarTablero();
+        Tablero unTablero = new Tablero(12, 12); // tableroTest(); //
+        unTablero.generarTablero();
         tableroView = new TableroView(unTablero);
 
         Jugador jugador = new Jugador(new Vehiculo( new EstadoAuto()) );
         unTablero.addObserver(jugadorView);
-
         jugadorView = new JugadorView(tableroView, jugador);
 
         agregarViewEsquinas(unTablero);
@@ -54,7 +55,7 @@ public class App extends Application {
         vbox.getChildren().add(tableroView);
 
         vbox.getChildren().add(new ContenedorDeBotones(jugador));
-        vbox.setOnKeyPressed(new MainKeyboardController(juego));
+        vbox.setOnKeyPressed(new MainKeyboardController(juego, tableroView, escenarioInicial));
 
         Scene theScene = new Scene(vbox);
         escenarioInicial.setScene(theScene);
@@ -109,7 +110,7 @@ public class App extends Application {
         Esquina esquina21 = new Esquina(2, 1);
         Esquina esquina22 = new Esquina(2, 2);
         Esquina esquina23 = new Esquina(2, 3);
-        Esquina esquina24 = new Esquina(2, 4);
+        Esquina esquina24 = new Esquina(new Meta(),2, 4 );
 
         Tablero tablero = new Tablero(5, 3);
         tablero.agregarEsquina(0, esquina00);

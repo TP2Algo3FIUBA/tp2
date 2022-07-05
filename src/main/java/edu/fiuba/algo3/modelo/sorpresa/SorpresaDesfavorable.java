@@ -16,6 +16,6 @@ public class SorpresaDesfavorable implements Evento{
 
 	@Override
 	public String getName() {
-		return "sorpresadesfavorable";
+		return "sorpresa";//"sorpresadesfavorable";
 	}
 }

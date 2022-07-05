@@ -15,15 +15,13 @@ import edu.fiuba.algo3.modelo.evento.*;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 public class Tablero implements Observable {
-	ArrayList<ArrayList<Esquina>> esquinas = new ArrayList(); // TO DO cambiar nombre a esquinas o algo mejor
+	ArrayList<ArrayList<Esquina>> esquinas = new ArrayList();
 
 	private int heigth;
 	private int width;
 
 	ArrayList<Cuadra> cuadras = new ArrayList();
 	private ArrayList<Observer> observers;
-	private Esquina meta;
-
 
 	public Tablero(int width, int heigth) {
 		super();
@@ -55,6 +53,7 @@ public class Tablero implements Observable {
 					esquina = new Esquina(filaActual, columnaActual);
 				}
 
+				// Genero meta
 				else if(columnaActual == heigth - 1 && filaActual == width - 1) {
 					esquina = new Esquina(new Meta(), filaActual, columnaActual);
 				}
@@ -74,45 +73,25 @@ public class Tablero implements Observable {
 			for (int columnaActual = 0; columnaActual < width; columnaActual++) {
 				Esquina esquinaInicio = this.obtenerEsquina(filaActual, columnaActual);
 				Esquina esquinaDestino;
-				Evento evento = GeneradorEventos.generarEvento(); // new EventoVacio(); //
-
-				if (filaActual != 0) {
-					esquinaDestino = this.obtenerEsquina(filaActual - 1, columnaActual);
-					Cuadra nuevaCuadraInicioADestino = new Cuadra(esquinaInicio, esquinaDestino, evento); // y aca en lugar de un obstaculo le pasas un evento
-					esquinaInicio.insertarCuadra(new DirNorte(), nuevaCuadraInicioADestino);
-
-					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio, evento);
-					esquinaDestino.insertarCuadra(new DirSur(), nuevaCuadraDestinoAInicio);
-
-					agregarCuadra(nuevaCuadraDestinoAInicio);
-				}
-
-				if (columnaActual != 0) {
-					esquinaDestino = this.obtenerEsquina(filaActual, columnaActual - 1);
-					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  evento);
-					esquinaInicio.insertarCuadra(new DirOeste(), nuevaCuadra);
-
-					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento);
-					esquinaDestino.insertarCuadra(new DirOeste(), nuevaCuadraDestinoAInicio);
-					agregarCuadra(nuevaCuadraDestinoAInicio);
-				}
+				Evento evento1 = GeneradorEventos.generarEvento();
+				Evento evento2 = GeneradorEventos.generarEvento();
 
 				if (filaActual != width - 1) {
 					esquinaDestino = this.obtenerEsquina(filaActual + 1, columnaActual);
-					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  evento);
+					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  evento1);
 					esquinaInicio.insertarCuadra(new DirSur(), nuevaCuadra);
 
-					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento);
+					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento1);
 					esquinaDestino.insertarCuadra(new DirNorte(), nuevaCuadraDestinoAInicio);
 					agregarCuadra(nuevaCuadraDestinoAInicio);
 				}
 
 				if (columnaActual != heigth - 1) {
 					esquinaDestino = this.obtenerEsquina(filaActual, columnaActual + 1);
-					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  evento);
+					Cuadra nuevaCuadra = new Cuadra(esquinaInicio, esquinaDestino,  evento2);
 					esquinaInicio.insertarCuadra(new DirEste(), nuevaCuadra);
 
-					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento);
+					Cuadra nuevaCuadraDestinoAInicio = new Cuadra(esquinaDestino, esquinaInicio,  evento2);
 					esquinaDestino.insertarCuadra(new DirOeste(), nuevaCuadraDestinoAInicio);
 					agregarCuadra(nuevaCuadraDestinoAInicio);
 				}
