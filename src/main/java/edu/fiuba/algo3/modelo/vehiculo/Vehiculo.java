@@ -1,16 +1,14 @@
 package edu.fiuba.algo3.modelo.vehiculo;
 
+import edu.fiuba.algo3.modelo.Position;
 import edu.fiuba.algo3.modelo.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 import edu.fiuba.algo3.modelo.manzana.Esquina;
-import edu.fiuba.algo3.modelo.manzana.EsquinaNoValidaException;
 import edu.fiuba.algo3.modelo.manzana.EstadoEsquina;
-import edu.fiuba.algo3.modeloOpcional.Position;
 
 public class Vehiculo {
 
-	//public Jugador conductor;
 	private Esquina esquinaActual;
 	private EstadoVehiculo estadoVehiculo;
 
@@ -20,7 +18,7 @@ public class Vehiculo {
 	}
 
 	public void setEsquinaActual(Esquina esquinaActual) {
-		if(esquinaActual== null){throw new EsquinaNoValidaException();}
+		if(esquinaActual== null){throw new RuntimeException();}//EsquinaNoValidaException();}
 		this.esquinaActual = esquinaActual;
 	}
 
@@ -75,18 +73,5 @@ public class Vehiculo {
 		return String.valueOf(this.estadoVehiculo.getName());
 	}
 
-	/*public void atravezarControlPolicial(Jugador jugador) {
-		estadoVehiculo.atravezarControlPolicial(jugador);
-	}
-
-	public void aplicarSorpresaDesfavorable(Jugador jugador) {
-		//jugador.incrementarMovimientos((jugador.getMovimientos()) * (25 / 100)); // ! viola encapsulamiento
-		jugador.chocarContraSorpresaDesfavofable();
-	}
-
-	public void aplicarSorpresaFavorable(Jugador jugador) {
-		//jugador.incrementarMovimientos((jugador.getMovimientos()) * (20 / 100) * (-1));// ! viola encapsulamiento
-		jugador.chocarContraSorpresaFavorable();
-	}*/
 
 }

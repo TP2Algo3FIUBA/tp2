@@ -1,15 +1,14 @@
 package edu.fiuba.algo3.modelo.manzana;
 
+import edu.fiuba.algo3.modelo.Position;
 import edu.fiuba.algo3.modelo.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modeloOpcional.Observable;
-import edu.fiuba.algo3.modeloOpcional.Observer;
-import edu.fiuba.algo3.modeloOpcional.Position;
-import edu.fiuba.algo3.modeloOpcional.Positionable;
+import edu.fiuba.algo3.modelo.Observable;
+import edu.fiuba.algo3.modelo.Observer;
 
 import java.util.HashMap;
 
-public class Esquina implements Positionable, Observable {
+public class Esquina implements Observable {//Positionable, Observable {
 	private final HashMap<String, Cuadra> cuadras;
 	private EstadoEsquina estado;
 	private Position position;
@@ -26,6 +25,12 @@ public class Esquina implements Positionable, Observable {
 		this.cuadras = new HashMap<>();
 		this.estado = estado;
 		this.position = new Position(2,2);
+//		jugadorEnLaEsquina = null;
+	}
+
+	public Esquina(int posX, int posY) {
+		this.cuadras = new HashMap<>();
+		this.position = new Position(posX,posY);
 //		jugadorEnLaEsquina = null;
 	}
 
@@ -59,9 +64,9 @@ public class Esquina implements Positionable, Observable {
 		this.position = position;
 	}
 
-	private Positionable occupant;
+	//private Positionable occupant;
 
-	public void occupy(Positionable occupant) {
+	/*public void occupy(Positionable occupant) {
 		if (this.occupant != null) {
 			throw new RuntimeException();
 		}
@@ -74,7 +79,7 @@ public class Esquina implements Positionable, Observable {
 
 	public void dropOccupant() {
 		occupant = null;
-	}
+	}*/
 
 	@Override
 	public void addObserver(Observer observer) {

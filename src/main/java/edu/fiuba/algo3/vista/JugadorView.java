@@ -1,27 +1,28 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modeloOpcional.Observer;
-import edu.fiuba.algo3.modeloOpcional.Player;
+import edu.fiuba.algo3.modelo.Observer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-
-public class PlayerView implements Observer, Drawable {
+public class JugadorView implements Observer, Drawable {
 	private double playerScale = 1;
-	private MapView stage;
+	private TableroView tableroView;
 	ImageView playerImage;
 
-	private Jugador player;
+	private Jugador jugador;
 
 	private int lastXPosition;
+	private int lastYPosition;
 
-	public PlayerView(MapView stage, Jugador player) {
-		this.stage = stage;
-		this.player = player;
+	public JugadorView(TableroView tableroView, Jugador jugador) {
+		this.tableroView = tableroView;
+		this.jugador = jugador;
 
-		this.lastXPosition = player.getPosition().getX();
-		player.addObserver(this);
+		this.lastXPosition = jugador.getPosition().getX();
+		this.lastYPosition = jugador.getPosition().getY();
+
+		jugador.addObserver(this);
 
 		playerImage = new ImageView();
 		playerImage.setScaleX(playerScale);
@@ -30,7 +31,7 @@ public class PlayerView implements Observer, Drawable {
 		playerImage.setFitWidth(64);
 
 		playerImage.setImage(new Image("auto.png"));
-		stage.addViewOnMap(playerImage, player.getPosition().getX(), player.getPosition().getY());;
+		tableroView.addViewOnMap(playerImage, jugador.getPosition().getX(), jugador.getPosition().getY());
 		draw();
 
 	}
@@ -39,7 +40,7 @@ public class PlayerView implements Observer, Drawable {
 	public void draw() {
 		playerImage.setTranslateX(-4);
 		playerImage.setTranslateY(15);
-		stage.updateView(playerImage);
+		tableroView.updateView(playerImage);
 	}
 
 	private void changePlayerSkin(String fileName) {
@@ -47,11 +48,11 @@ public class PlayerView implements Observer, Drawable {
 		playerImage.setImage(new Image(fileName + ".png"));
 	}
 
-	@Override
+	//@Override
 	public void change() {
-		changePlayerSkin(player.getVehiculoName());
-		int actualX = player.getPosition().getX();
-		int actualY = player.getPosition().getY();
+		changePlayerSkin(jugador.getVehiculoName());
+		int actualX = jugador.getPosition().getX();
+		int actualY = jugador.getPosition().getY();
 		if (lastXPosition > actualX) {
 			this.playerImage.setScaleX( - 
 			Math.abs(playerImage.getScaleX()));
@@ -61,8 +62,9 @@ public class PlayerView implements Observer, Drawable {
 			this.playerImage.setScaleX(
 			Math.abs(playerImage.getScaleX()));
 		}
-		this.lastXPosition = player.getPosition().getX();
-		stage.addViewOnMap(this.playerImage, actualX, actualY);
+		this.lastXPosition = jugador.getPosition().getX();
+		this.lastYPosition = jugador.getPosition().getY();
+		tableroView.addViewOnMap(this.playerImage, actualX, actualY);
 	}
 
 }

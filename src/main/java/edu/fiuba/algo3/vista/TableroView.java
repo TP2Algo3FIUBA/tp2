@@ -2,13 +2,12 @@ package edu.fiuba.algo3.vista;
 
 
 import edu.fiuba.algo3.modelo.manzana.Tablero;
-import edu.fiuba.algo3.modeloOpcional.Map;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
-public class MapView extends Group {
+public class TableroView extends Group {
 
     public double width;
     public double heigth;
@@ -16,17 +15,17 @@ public class MapView extends Group {
     private double tileHeigth = 64;
 
     private GridPane table;
-
     private Pane[][] panes;
 
-    public MapView(Tablero map){
+
+    public TableroView(Tablero tablero){
         table = new GridPane();
-        width = tileWidth * map.getWidth();
-        heigth = tileHeigth * map.getHeigth();
+        width = tileWidth * tablero.getWidth();
+        heigth = tileHeigth * tablero.getHeigth();
+
         panes = new Pane[ (int)width][(int)heigth];
-        
-        for (int i = 0; i < map.getWidth(); i++) {
-            for (int j = 0; j < map.getHeigth(); j++) {
+        for (int i = 0; i < tablero.getWidth(); i++) {
+            for (int j = 0; j < tablero.getHeigth(); j++) {
                 Pane v = new Pane();
                 v.setMinHeight(this.tileHeigth);
                 v.setMinWidth(this.tileWidth);

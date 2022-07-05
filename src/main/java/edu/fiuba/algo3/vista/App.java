@@ -4,14 +4,9 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.controlador.MainKeyboardController;
 import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.manzana.Esquina;
-import edu.fiuba.algo3.modelo.manzana.Meta;
 import edu.fiuba.algo3.modelo.manzana.Tablero;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
-import edu.fiuba.algo3.modeloOpcional.Map;
-import edu.fiuba.algo3.modeloOpcional.Player;
-import edu.fiuba.algo3.modeloOpcional.Position;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -22,51 +17,32 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
-    public static Stage escenario;
-    boolean imputForm = false;
-
-    private PlayerView player;
-    private MetaView meta;
-    private MapView mapView;
+    private JugadorView jugadorView;
+    private TableroView tableroView;
     @Override
     public void start(Stage escenarioInicial) throws Exception {
-        //Juego juego = new Juego();
-        //juego.correrJuego();
-
-
         escenarioInicial.setTitle("GPS Challenge");
 
-        Tablero map = new Tablero();
-        mapView = new MapView(map);
+        Tablero unTablero = new Tablero();
+        tableroView = new TableroView(unTablero);
 
-        Jugador playerModel = new Jugador(new Vehiculo(new EstadoAuto()));
-        map.positionate(playerModel, new Position(0, 0));
-        map.addObserver(player);
+        Jugador jugador = new Jugador(new Vehiculo( new EstadoAuto()) );
+        unTablero.addObserver(jugadorView);
 
-        player = new PlayerView(mapView, playerModel);
-
-        Esquina metaModel = new Esquina(new Meta());
-        map.positionate(metaModel,new Position(5,5));
-        map.addObserver(meta);
-
-        meta = new MetaView(mapView,metaModel);
-
-        Juego juego = new Juego(playerModel,map,mapView) ;
-
-       // ObstaculosView obstaculosView = new ObstaculosView(mapView, juego.obtenerEsquina(4,4) );
-
-        //map.addObserver(obstaculosView);
-
+        jugadorView = new JugadorView(tableroView, jugador);
         VBox vbox = new VBox();
 
-        vbox.getChildren().add(mapView);
-        vbox.getChildren().add(new GunButtonContainer(playerModel,juego));
-        vbox.setOnKeyPressed(new MainKeyboardController(playerModel,  map,juego));
+        Juego juego = new Juego(jugador, unTablero);
+        jugador.spawnearVehiculoEn(unTablero.obtenerEsquina(0, 0));
+        vbox.getChildren().add(tableroView);
 
+        vbox.getChildren().add(new ContenedorDeBotones(jugador));
+        vbox.setOnKeyPressed(new MainKeyboardController(juego));
 
         Scene theScene = new Scene(vbox);
         escenarioInicial.setScene(theScene);
         escenarioInicial.show();
+
     }
 
     public static void main(String[] args) {

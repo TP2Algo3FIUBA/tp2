@@ -1,20 +1,17 @@
 package edu.fiuba.algo3.modelo.juego;
 
-import edu.fiuba.algo3.modelo.direcciones.DirNorte;
 import edu.fiuba.algo3.modelo.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.manzana.CuadraInexistenteException;
+import edu.fiuba.algo3.modelo.manzana.*;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.GeneradorTablero;
-import edu.fiuba.algo3.modelo.manzana.Meta;
 import edu.fiuba.algo3.modelo.manzana.Tablero;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
-import edu.fiuba.algo3.vista.MapView;
 
 public class Juego {
 
-	private MapView view;
+	//private MapView view;
 	private int tamanioTablero = 3;
 	private Jugador jugador;
 	private Tablero tablero;
@@ -24,13 +21,13 @@ public class Juego {
 		this.jugador = jugador;
 	}
 
-	public Juego(Jugador jugador,Tablero tablero, MapView mapView) {
+	/*public Juego(Jugador jugador,Tablero tablero, MapView mapView) {
 		this.tablero = tablero;
 		this.jugador = jugador;
 		this.view = mapView;
 
 		this.tablero.renderObstaculos(mapView);
-	}
+	}*/
 
 	public void moverJugadorEnDireccion(Direccion direccion) {
 		try {

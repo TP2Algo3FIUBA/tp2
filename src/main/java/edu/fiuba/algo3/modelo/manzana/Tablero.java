@@ -1,46 +1,32 @@
 package edu.fiuba.algo3.modelo.manzana;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
+import edu.fiuba.algo3.modelo.Observable;
+import edu.fiuba.algo3.modelo.Observer;
+import edu.fiuba.algo3.modelo.Position;
 import edu.fiuba.algo3.modelo.direcciones.DirEste;
 import edu.fiuba.algo3.modelo.direcciones.DirNorte;
 import edu.fiuba.algo3.modelo.direcciones.DirOeste;
 import edu.fiuba.algo3.modelo.direcciones.DirSur;
 import edu.fiuba.algo3.modelo.evento.Evento;
-import edu.fiuba.algo3.modelo.evento.EventoVacio;
-import edu.fiuba.algo3.modelo.evento.GeneradorEventos;
+import edu.fiuba.algo3.modelo.evento.*;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.obstaculo.ControlPolicial;
-import edu.fiuba.algo3.modelo.obstaculo.Piquete;
-import edu.fiuba.algo3.modelo.obstaculo.Pozo;
-import edu.fiuba.algo3.modeloOpcional.*;
-import edu.fiuba.algo3.vista.MapView;
-import edu.fiuba.algo3.vista.ObstaculosView;
 
 public class Tablero implements Observable {
 	ArrayList<ArrayList<Esquina>> filas = new ArrayList(); // TO DO cambiar nombre a esquinas o algo mejor
 
 	private static final int heigth = 8;
 	private static final int width = 8;
-	private HashMap<String, Esquina> esquinas;
 
 	ArrayList<ArrayList<Cuadra>> filasCuadras = new ArrayList();
 	private ArrayList<Observer> observers;
 	private Esquina meta;
 
 	public Tablero() {
-		//Para la interfaz
 		super();
 		observers = new ArrayList<Observer>();
-		esquinas = new HashMap<String, Esquina>();
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < width; j++) {
-				esquinas.put(new Position(i, j).toString(), new Esquina());
-			}
 
-		}
-		//Para el modelo
 		generarEsquinas();
 		generarCuadras();
 	}
@@ -65,7 +51,7 @@ public class Tablero implements Observable {
 				}
 
 				else {
-					esquina = new Esquina();
+					esquina = new Esquina(columnaActual, filaActual);// esquina = new Esquina(); va del reves?
 				}
 
 				this.agregarEsquina(filaActual, esquina);
@@ -78,7 +64,7 @@ public class Tablero implements Observable {
 			for (int columnaActual = 0; columnaActual < width; columnaActual++) {
 				Esquina esquinaInicio = this.obtenerEsquina(filaActual, columnaActual);
 				Esquina esquinaDestino;
-				Evento evento = GeneradorEventos.generarEvento();
+				Evento evento = GeneradorEventos.generarEvento(); // new EventoVacio(); //
 
 				if (filaActual != 0) {
 					esquinaDestino = this.obtenerEsquina(filaActual - 1, columnaActual);
@@ -151,21 +137,9 @@ public class Tablero implements Observable {
 	}
 
 
-
 	@Override
 	public void notifyObservers() {
 		observers.stream().forEach(observer -> observer.change());
-	}
-
-	public void positionate(Positionable positionable, Position position) {
-		esquinas.get(position.toString()).occupy(positionable);
-		positionable.setPosition(position);
-	}
-	public void positionate(Jugador positionable, Position position) {
-		Esquina esquina = esquinas.get(position.toString());
-		esquina.occupy(positionable);
-		positionable.setPosition(position);
-		positionable.spawnearVehiculoEn(esquina);
 	}
 
 	public int getHeigth() {
@@ -176,60 +150,4 @@ public class Tablero implements Observable {
 		return width;
 	}
 
-	public void movePositionableToLeft(Jugador positionable) {
-		movePositionableTo(positionable,
-				new Position(positionable.getPosition().getX() - 1, positionable.getPosition().getY()));
-	}
-
-	public void movePositionableToRigth(Jugador positionable) {
-		movePositionableTo(positionable,
-				new Position(positionable.getPosition().getX() + 1, positionable.getPosition().getY()));
-	}
-
-	public void movePositionableToUp(Jugador positionable) {
-		movePositionableTo(positionable,
-				new Position(positionable.getPosition().getX(), positionable.getPosition().getY() - 1));
-
-	}
-
-	public void movePositionableToDown(Jugador positionable) {
-		movePositionableTo(positionable,
-				new Position(positionable.getPosition().getX(), positionable.getPosition().getY() + 1));
-	}
-
-	private void movePositionableTo(Jugador positionable, Position position) {
-		Esquina fromMove = esquinas.get(positionable.getPosition().toString());
-		if (!fromMove.hasOccupant(positionable)) {
-			throw new RuntimeException("There is no target!");
-		}
-		positionate(positionable, position);
-		fromMove.dropOccupant();
-	}
-
-	public void moverPosicionable(Direccion direccion, Jugador jugador) {}
-
-
-	public void renderObstaculos(MapView mapView) {
-
-		for(int i =0 ; i< heigth; i++ ){
-			for (int j =0; j<width;j++){
-				Evento evento;
-				if (!((evento = filasCuadras.get(i).get(j).getObstaculo()) instanceof EventoVacio)){
-					ObstaculosView obs = new ObstaculosView(this,mapView,evento, i,j);
-					if(evento instanceof Piquete){
-						obs.changePlayerSkin("piquete");
-					}
-					if(evento instanceof Pozo){
-						obs.changePlayerSkin("pozo");
-					}
-					if(evento instanceof ControlPolicial){
-						obs.changePlayerSkin("controlpolicial");
-					}
-
-				}
-
-			}
-		}
-
-	}
 }

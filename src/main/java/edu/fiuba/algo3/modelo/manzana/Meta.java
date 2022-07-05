@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.manzana;
 
-import edu.fiuba.algo3.modeloOpcional.Observable;
-import edu.fiuba.algo3.modeloOpcional.Observer;
+import edu.fiuba.algo3.modelo.Observable;
+import edu.fiuba.algo3.modelo.Observer;
 
 public class Meta implements EstadoEsquina, Observable {
 

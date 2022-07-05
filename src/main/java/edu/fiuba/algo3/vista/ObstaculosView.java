@@ -2,8 +2,8 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.evento.Evento;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.manzana.Tablero;
-import edu.fiuba.algo3.modeloOpcional.Observer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -12,7 +12,7 @@ public class ObstaculosView implements Observer, Drawable {
 	private int  y;
 	private  int x;
 	private double metaScale = 1;
-	private MapView stage;
+	private TableroView tableroView;
 
 	ImageView ObstaculoImage;
 
@@ -20,8 +20,8 @@ public class ObstaculosView implements Observer, Drawable {
 	private Evento evento;
 	private int lastXPosition;
 
-	public ObstaculosView(Tablero tablero, MapView stage, Evento evento,int x,int j) {
-		this.stage = stage;
+	public ObstaculosView(Tablero tablero, TableroView tableroView, Evento evento, int x, int j) {
+		this.tableroView = tableroView;
 		this.evento = evento;
 		this.x = x;
 		this.y = j;
@@ -33,7 +33,7 @@ public class ObstaculosView implements Observer, Drawable {
 		ObstaculoImage.setFitWidth(64);
 
 		ObstaculoImage.setImage(new Image("moto.png"));
-		stage.addViewOnMap(ObstaculoImage, 5, 5);
+		tableroView.addViewOnMap(ObstaculoImage, 5, 5);
 		draw();
 		tablero.addObserver(this);
 
@@ -43,7 +43,7 @@ public class ObstaculosView implements Observer, Drawable {
 	public void draw() {
 		ObstaculoImage.setTranslateX(65 * x);
 		ObstaculoImage.setTranslateY(65 * y);
-		stage.updateView(ObstaculoImage);
+		tableroView.updateView(ObstaculoImage);
 	}
 
 	public void changePlayerSkin(String fileName) {
@@ -66,7 +66,7 @@ public class ObstaculosView implements Observer, Drawable {
 			Math.abs(ObstaculoImage.getScaleX()));
 		}
 		this.lastXPosition = player.getPosition().getX();
-		stage.addViewOnMap(this.ObstaculoImage, actualX, actualY);
+		tableroView.addViewOnMap(this.ObstaculoImage, actualX, actualY);
 	}
 
 }
