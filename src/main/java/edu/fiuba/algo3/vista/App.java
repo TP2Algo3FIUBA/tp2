@@ -21,10 +21,17 @@ import edu.fiuba.algo3.modelo.sorpresa.SorpresaFavorable;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import static javafx.scene.paint.Color.*;
 
 /**
  * JavaFX App
@@ -33,13 +40,62 @@ public class App extends Application {
 
     private JugadorView jugadorView;
     private TableroView tableroView;
-    @Override
-    public void start(Stage escenarioInicial) throws Exception {
-        escenarioInicial.setTitle("GPS Challenge");
 
-        Tablero unTablero = new Tablero(12, 12); // tableroTest(); //
+    private Stage ventana;
+    Scene escenaInicio, escenaJuego;
+
+
+    @Override
+    public void start(Stage ventanaInicial) throws Exception {
+        ventanaInicial.setTitle("GPS Challenge");
+        ventana = ventanaInicial;
+        generarEscenarioInicio();
+
+        ventana.setScene(escenaInicio);
+        ventana.show();
+
+    }
+
+    private void generarEscenarioInicio(){
+        VBox layout = new VBox();
+        layout.setPadding(new Insets(40, 20, 20, 20));
+        layout.setSpacing(20);
+        layout.setAlignment(Pos.TOP_CENTER);
+        escenaInicio = new Scene(layout, 400, 300);
+        layout.setStyle("-fx-background-color:#2b2b2b; -fx-font-size: 15");
+
+        // SOLICITAR NOMBRE JUGADOR
+        Label label = new Label("Insertar nombre");
+        label.setTextFill(WHITE);
+        TextField nombreJugador = new TextField();
+        nombreJugador.setAlignment(Pos.CENTER);
+
+        // SOLICITAR TAMANIO MAPA AL JUGADOR
+        Label labelMapa = new Label("Tamaño mapa");
+        labelMapa.setTextFill(WHITE);
+        Slider tamanioMapa = new Slider(4, 16, 2);
+        tamanioMapa.setShowTickMarks(true);
+        tamanioMapa.setShowTickLabels(true);
+        tamanioMapa.setSnapToTicks(true);
+        tamanioMapa.setMajorTickUnit(2);
+        tamanioMapa.setMinorTickCount(0);
+        tamanioMapa.setBlockIncrement(1);
+
+        Button button = new Button("Iniciar Juego");
+        button.setOnAction(e->{
+            if (nombreJugador.getText() != "") { // cambiar por mejor chequeo
+                generarEscenarioJuego(nombreJugador.getText(), tamanioMapa.getValue());
+                ventana.setScene(escenaJuego);
+            }
+        });
+
+        layout.getChildren().addAll(label, nombreJugador, tamanioMapa, button);
+    }
+
+    private void generarEscenarioJuego(String nombreJugador, double tamanioMapa) {
+        Tablero unTablero = new Tablero((int) tamanioMapa, (int) tamanioMapa); // tableroTest(); //
         unTablero.generarTablero();
-        tableroView = new TableroView(unTablero);
+        tableroView = new TableroView(unTablero, nombreJugador);
 
         Jugador jugador = new Jugador(new Vehiculo( new EstadoAuto()) );
         unTablero.addObserver(jugadorView);
@@ -51,16 +107,16 @@ public class App extends Application {
         VBox vbox = new VBox();
 
         Juego juego = new Juego(jugador, unTablero);
+        juego.setNombreJugador(nombreJugador);
+
         jugador.spawnearVehiculoEn(unTablero.obtenerEsquina(0, 0));
         vbox.getChildren().add(tableroView);
+        vbox.setOnKeyPressed(new MainKeyboardController(juego, tableroView, ventana));
 
-        vbox.getChildren().add(new ContenedorDeBotones(jugador));
-        vbox.setOnKeyPressed(new MainKeyboardController(juego, tableroView, escenarioInicial));
+        vbox.getChildren().add(new ContenedorDeBotones(juego, tableroView));
+        vbox.setOnKeyPressed(new MainKeyboardController(juego, tableroView, ventana));
 
-        Scene theScene = new Scene(vbox);
-        escenarioInicial.setScene(theScene);
-        escenarioInicial.show();
-
+        escenaJuego = new Scene(vbox);
     }
 
     private void agregarViewEsquinas(Tablero tablero) {

@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.juego;
 
+import edu.fiuba.algo3.modelo.Position;
+import edu.fiuba.algo3.modelo.direcciones.DirNorte;
 import edu.fiuba.algo3.modelo.direcciones.Direccion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.*;
@@ -15,12 +17,12 @@ public class Juego {
 	private int tamanioTablero = 3;
 	private Jugador jugador;
 	private Tablero tablero;
+	private String nombreJugador;
 
 	public Juego(Jugador jugador,Tablero tablero) {
 		this.tablero = tablero;
 		this.jugador = jugador;
 	}
-
 
 	public void moverJugadorEnDireccion(Direccion direccion) {
 		try {
@@ -60,4 +62,19 @@ public class Juego {
 	public boolean Ganado() {
 		return jugador.posicionActual().checkearEstado() instanceof Meta;
 	}
+
+    public void setNombreJugador(String nombreJugador) {
+		this.nombreJugador = nombreJugador;
+    }
+
+	public String getNombreJugador(){
+		return this.nombreJugador;
+	}
+
+    public void reiniciar() {
+		this.spawnearJugadorEn(0,0);
+		this.jugador.setPosition(new Position(0, 0));
+		this.jugador.resetearMovimientos();
+		this.jugador.notifyObservers();
+    }
 }

@@ -38,19 +38,19 @@ public class MainKeyboardController implements EventHandler<KeyEvent> {
     try {
       if (event.getCode() == KeyCode.W) {
         this.juego.moverJugadorEnDireccion(new DirNorte());
-        System.out.println("Cantinad movimientos jugador: " + juego.cantMovJugador());
+        tableroView.updateMovimientos(juego);
       }
       if (event.getCode() == KeyCode.S) {
         this.juego.moverJugadorEnDireccion(new DirSur());
-        System.out.println("Cantinad movimientos jugador: " + juego.cantMovJugador());
+        tableroView.updateMovimientos(juego);
       }
       if (event.getCode() == KeyCode.D) {
         this.juego.moverJugadorEnDireccion(new DirEste());
-        System.out.println("Cantinad movimientos jugador: " + juego.cantMovJugador());
+        tableroView.updateMovimientos(juego);
       }
       if (event.getCode() == KeyCode.A) {
         this.juego.moverJugadorEnDireccion(new DirOeste());
-        System.out.println("Cantinad movimientos jugador: " + juego.cantMovJugador());
+        tableroView.updateMovimientos(juego);
       }
 
       if (juego.Ganado()) {

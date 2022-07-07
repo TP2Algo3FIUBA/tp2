@@ -101,4 +101,8 @@ public class Jugador implements Observable {
 	public String getVehiculoName() {
 		return this.vehiculo.getEstadoName();
 	}
+
+	public void resetearMovimientos() {
+		this.movimientos = 0;
+	}
 }
