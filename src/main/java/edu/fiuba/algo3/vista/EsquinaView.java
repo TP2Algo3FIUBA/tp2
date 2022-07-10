@@ -49,7 +49,8 @@ public class EsquinaView implements Observer, Drawable {
 
 	private void changeEsquinaSkin(String fileName) {
 		System.out.println(fileName);
-		esquinaImage.setImage(new Image(fileName + ".png"));
+		//esquinaImage.setImage(new Image(fileName + ".png"));
+		esquinaImage.setImage(new Image("oscuridad.png"));
 	}
 
 	//@Override

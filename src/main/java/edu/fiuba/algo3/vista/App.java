@@ -93,7 +93,7 @@ public class App extends Application {
     }
 
     private void generarEscenarioJuego(String nombreJugador, double tamanioMapa) {
-        Tablero unTablero = new Tablero((int) tamanioMapa, (int) tamanioMapa); // tableroTest(); //
+        Tablero unTablero = new Tablero((int) tamanioMapa, (int) tamanioMapa);
         unTablero.generarTablero();
         tableroView = new TableroView(unTablero, nombreJugador);
 
@@ -102,7 +102,7 @@ public class App extends Application {
         jugadorView = new JugadorView(tableroView, jugador);
 
         agregarViewEsquinas(unTablero);
-        agregarViewCuadras(unTablero);
+        agregarViewCuadras(unTablero, jugador);
 
         VBox vbox = new VBox();
 
@@ -127,9 +127,10 @@ public class App extends Application {
         }
     }
 
-    private void agregarViewCuadras(Tablero tablero) {
+    private void agregarViewCuadras(Tablero tablero, Jugador jugador) {
         for (int cuadraActual = 0; cuadraActual < tablero.cantididadCuadras(); cuadraActual++) {
-            new CuadraView(tableroView, tablero.obtenerCuadra(cuadraActual));
+            CuadraView cuadraCreada = new CuadraView(tableroView, tablero.obtenerCuadra(cuadraActual), jugador);
+            tablero.addObserver(cuadraCreada);
         }
 
     }

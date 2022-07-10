@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Observer;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.obstaculo.Pozo;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaCambioDeVehiculo;
@@ -16,15 +17,18 @@ public class CuadraView implements Observer, Drawable {
 
 	private double lastXPosition;
 	private double lastYPosition;
+	private Jugador jugador;
 
-	public CuadraView(TableroView tableroView, Cuadra cuadra) {
+	public CuadraView(TableroView tableroView, Cuadra cuadra, Jugador jugador) {
 		this.tableroView = tableroView;
 		this.cuadra = cuadra;
+		this.jugador = jugador;
 
 		this.lastXPosition = cuadra.getPosition().getFil();
 		this.lastYPosition = cuadra.getPosition().getCol();
 
-		cuadra.addObserver(this);
+		this.cuadra.addObserver(this);
+		this.jugador.addObserver(this); // creo que lo solucione, me voy a mear
 
 		cuadraImage = new ImageView();
 		cuadraImage.setScaleX(esquinaScale);
@@ -34,8 +38,7 @@ public class CuadraView implements Observer, Drawable {
 
 		String fileName = cuadra.getTipoCuadraName();
 		cuadraImage.setImage(new Image( fileName + ".png"));
-		tableroView.addViewOnMap(cuadraImage, (int) cuadra.getPosition().getCol(), (int) cuadra.getPosition().getFil()); // Del reves?
-		System.out.println("Dibujando esquina de Fil:" + cuadra.getPosition().getFil() + " Col:" + cuadra.getPosition().getCol());
+		tableroView.addViewOnMap(cuadraImage, (int) cuadra.getPosition().getCol(), (int) cuadra.getPosition().getFil());
 		draw();
 	}
 
@@ -48,7 +51,8 @@ public class CuadraView implements Observer, Drawable {
 
 	private void changeCuadraSkin(String fileName) {
 		System.out.println(fileName);
-		cuadraImage.setImage(new Image(fileName + ".png"));
+		//cuadraImage.setImage(new Image(fileName + ".png"));
+		cuadraImage.setImage(new Image("oscuridad.png"));
 	}
 
 	//@Override
