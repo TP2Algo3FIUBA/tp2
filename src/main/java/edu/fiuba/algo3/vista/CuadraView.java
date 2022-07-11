@@ -28,7 +28,7 @@ public class CuadraView implements Observer, Drawable {
 		this.lastYPosition = cuadra.getPosition().getCol();
 
 		this.cuadra.addObserver(this);
-		this.jugador.addObserver(this); // creo que lo solucione, me voy a mear
+		this.jugador.addObserver(this);
 
 		cuadraImage = new ImageView();
 		cuadraImage.setScaleX(esquinaScale);
@@ -51,8 +51,8 @@ public class CuadraView implements Observer, Drawable {
 
 	private void changeCuadraSkin(String fileName) {
 		System.out.println(fileName);
-		//cuadraImage.setImage(new Image(fileName + ".png"));
-		cuadraImage.setImage(new Image("oscuridad.png"));
+		cuadraImage.setImage(new Image(fileName + ".png"));
+		//cuadraImage.setImage(new Image("oscuridad.png"));
 	}
 
 	//@Override
@@ -60,18 +60,19 @@ public class CuadraView implements Observer, Drawable {
 		changeCuadraSkin(cuadra.getTipoCuadraName());
 		double actualCol = cuadra.getPosition().getCol();
 		double actualFil = cuadra.getPosition().getFil();
-		if (lastXPosition > actualCol) {
-			this.cuadraImage.setScaleX( -
-			Math.abs(cuadraImage.getScaleX()));
+		/*if (lastXPosition > actualCol) {
+			this.playerImage.setScaleX( -
+					Math.abs(playerImage.getScaleX()));
 		}
 
 		else if (lastXPosition < actualCol) {
-			this.cuadraImage.setScaleX(
-			Math.abs(cuadraImage.getScaleX()));
-		}
-		this.lastXPosition = cuadra.getPosition().getFil();
-		this.lastYPosition = cuadra.getPosition().getCol();
+			this.playerImage.setScaleX(
+					Math.abs(playerImage.getScaleX()));
+		}*/
+		this.lastXPosition = (int) cuadra.getPosition().getFil();
+		this.lastYPosition = (int) cuadra.getPosition().getCol();
 		tableroView.addViewOnMap(this.cuadraImage, (int) actualCol, (int) actualFil);
+
 	}
 
 }
