@@ -71,7 +71,6 @@ public class CambioEscenaController {
         return this.escenaInicio;
     }
 
-
     private void generarEscenarioJuego(String nombreJugador, double tamanioMapa) {
         Tablero unTablero = new Tablero((int) tamanioMapa, (int) tamanioMapa);
         unTablero.generarTablero();

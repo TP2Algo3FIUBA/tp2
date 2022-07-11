@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.direcciones.DirOeste;
 import edu.fiuba.algo3.modelo.direcciones.DirSur;
 import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.vista.TableroView;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -89,6 +90,12 @@ public class MainKeyboardController implements EventHandler<KeyEvent> {
     Label labelMovimientos = new Label("Movimientos: " + juego.cantMovJugador());
     labelMovimientos.setTextFill(WHITE);
 
-    layout.getChildren().addAll(labelVictoria, labelJugador, labelMovimientos);
+    // BOTON SALIR
+    Button botonSalir = new Button("Salir");
+    botonSalir.setOnAction(e->{
+      Platform.exit();
+    });
+
+    layout.getChildren().addAll(labelVictoria, labelJugador, labelMovimientos, botonSalir);
   }
 }
