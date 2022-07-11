@@ -14,4 +14,9 @@ public class ControlPolicialMockeado implements Evento {
         return esquinaDestino;
     }
 
+    @Override
+    public String getName() {
+        return "controlpolicial";
+    }
+
 }
