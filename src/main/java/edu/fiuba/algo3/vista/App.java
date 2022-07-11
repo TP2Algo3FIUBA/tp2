@@ -88,7 +88,7 @@ public class App extends Application {
             }
         });
 
-        layout.getChildren().addAll(label, nombreJugador, tamanioMapa, button);
+        layout.getChildren().addAll(label, nombreJugador, labelMapa, tamanioMapa, button);
     }
 
     private void generarEscenarioJuego(String nombreJugador, double tamanioMapa) {
