@@ -87,7 +87,7 @@ public class TableroView extends Group {
                 try {
                     panes[i][j].getChildren().remove(view);
                 } catch (Exception e) {
-                    //TODO: handle exception
+                    //TODO: handle exception //
                 }
             }
         }
