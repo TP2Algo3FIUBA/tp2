@@ -2,20 +2,35 @@
 title: unAutoAtraviesaCiudadYSeEncuentraConUnPiqueteYNoEsPenalizada
 
 Actor test
-test -> ":Juego" : moverJugadorEnDireccion("Norte")
-":Juego" -> ":Jugador": moverEnDireccion("Norte")
-":Jugador" -> ":Auto" : moverseAEsquina(this, "Norte")
-":Auto"  -> "esquinaActual: Esquina" : moverVehiculo(jugador, "Norte")
-"esquinaActual: Esquina" -> cuadras : get("Norte")
-"esquinaActual: Esquina" <-- cuadras : cuadraAdirijirse = Cuadra
+test -> ":Juego" : moverJugadorEnDireccion(Este)
+":Juego" -> ":Jugador"  : moverEnDireccion(Este)
+":Jugador"  -> ":Vehiculo" : moverseAEsquina(this, Este)
+":Vehiculo" -> "esquinaActual: Esquina" : moverVehiculo(jugador, Este)
+"esquinaActual: Esquina" -> "esquinaActual: Esquina" : getCuadra(Este)
 "esquinaActual: Esquina" -> ":Jugador" : incrementarMovimientos(1)
-"esquinaActual: Esquina" -> "cuadraAdirijirse:Cuadra" : moverVehiculo(jugador, this)
-"cuadraAdirijirse:Cuadra" -> ":Piquete"  : afectarJugador(jugador)
-":Piquete" -> ":Jugador" : getVehiculo
-":Piquete"  <-- ":Jugador" : vehiculo = Auto
-":Piquete"  -> ":Auto"  : chocarContraPiquete(jugador)
-":Piquete"  <-- ":Auto"  : puedeAvanzar = false
-"cuadraAdirijirse:Cuadra" <-- ":Piquete" : puedeAvanzar = false
+return
 
-test <-- "cuadraAdirijirse:Cuadra"
+"esquinaActual: Esquina" -> "cuadraAdirijirse: Cuadra" : moverVehiculo(jugador, this)
+"cuadraAdirijirse: Cuadra" -> "cuadraAdirijirse: Cuadra" : obtenerEsquinaOpuesta(esquinaInicio)
+"cuadraAdirijirse: Cuadra" -> ":Piquete" : afectarJugador(jugador, esquinaInicio, esquinaOpuesta)
+
+":Piquete" -> ":Jugador" : getVehiculo()
+return vehiculo
+":Piquete" -> ":Vehiculo" : chocarContraPiquete(jugador, esquinaInicio, esquinaDestino)
+":Vehiculo" -> ":EstadoAuto" : chocarContraPiquete(jugador, esquinaInicio, esquinaDestino)
+":EstadoAuto" --> ":Vehiculo" : esquinaInicio
+":Vehiculo" --> ":Piquete" : esquinaInicio
+
+":Piquete" --> "cuadraAdirijirse: Cuadra" : esquinaDestino = esquinaInicio
+"cuadraAdirijirse: Cuadra" -> ":Jugador" : setEsquinaActual(esquinaDestino)
+":Jugador" -> ":Vehiculo" : setEsquinaActual(esquinaDestino)
+
+return
+":Jugador" --> "cuadraAdirijirse: Cuadra"
+"cuadraAdirijirse: Cuadra" --> "esquinaActual: Esquina"
+"esquinaActual: Esquina" --> ":Vehiculo"
+":Vehiculo" --> ":Jugador"
+":Jugador" --> ":Juego"
+":Juego" --> test
+
 @enduml

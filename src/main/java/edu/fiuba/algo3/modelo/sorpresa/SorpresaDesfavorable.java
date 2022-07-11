@@ -1,15 +1,21 @@
 package edu.fiuba.algo3.modelo.sorpresa;
 import edu.fiuba.algo3.modelo.evento.Evento;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.manzana.Esquina;
 
 public class SorpresaDesfavorable implements Evento{
     public SorpresaDesfavorable() {
 
     }
 
-		@Override
-		public boolean afectarJugador(Jugador jugador) {
-			jugador.sorpresaDesfavorable();
-			return true;
-		}
+	@Override
+	public Esquina afectarJugador(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino) {
+		jugador.sorpresaDesfavorable();
+		return esquinaDestino;
+	}
+
+	@Override
+	public String getName() {
+		return "sorpresa";//"sorpresadesfavorable";
+	}
 }

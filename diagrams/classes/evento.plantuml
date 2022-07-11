@@ -1,34 +1,32 @@
 @startuml
 
     interface Evento {
-        - esquinaActual : Esquina
-
-        + {abstract} afectarJugador(Jugador jugador): boolean
+        + {abstract} afectarJugador(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino): Esquina
         }
 
     class EventoVacio {
-        + afectarJugador(Jugador jugador): boolean
+        + afectarJugador(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino): Esquina
         }
 
     class Pozos {
-        + afectarJugador(Jugador jugador): boolean
+        + afectarJugador(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino): Esquina
         }
 
     class Piquete {
-        + afectarJugador(Jugador jugador): boolean
+        + afectarJugador(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino): Esquina
          }
 
     class ControlPolicial {
-         + afectarJugador(Jugador jugador): boolean
+         + afectarJugador(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino): Esquina
         }
     class SorpresaFavorable {
-             + afectarJugador(Jugador jugador): boolean
+             + afectarJugador(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino): Esquina
             }
     class SorpresaDesfavorable {
-             + afectarJugador(Jugador jugador): boolean
+             + afectarJugador(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino): Esquina
             }
     class SorpresaCambioDeVehiculo {
-             + afectarJugador(Jugador jugador): boolean
+             + afectarJugador(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino): Esquina
             }
 
 

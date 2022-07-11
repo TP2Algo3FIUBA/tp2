@@ -1,36 +1,35 @@
 package edu.fiuba.algo3.modelo.vehiculo;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.manzana.Esquina;
 
-public class CuatroPorCuatro extends Vehiculo {
+public class EstadoCuatroPorCuatro implements EstadoVehiculo {
 
 	private int pozosAtravezados;
 
-	public CuatroPorCuatro() {
-		super();
+	public EstadoCuatroPorCuatro() {
 		this.pozosAtravezados = 0;
 	}
 
 	@Override
-	public boolean chocarContraPozo(Jugador jugador) {
+	public void chocarContraPozo(Jugador jugador) {
 		this.pozosAtravezados++;
 		if (this.pozosAtravezados == 3) {
 			jugador.incrementarMovimientos(2);
 			this.pozosAtravezados = 0;
 		}
 		jugador.incrementarMovimientos(0);
-		return true;
 	}
 
 	@Override
-	public boolean chocarContraPiquete(Jugador jugador) {
+	public Esquina chocarContraPiquete(Jugador jugador, Esquina esquinaInicio, Esquina esquinaDestino){
+		return esquinaInicio;
 		// throw new HayUnPiqueteException();
-		return false;
 	}
 
 	@Override
-	public Vehiculo aplicarSorpresaCambioVehiculo() {
-		return (new Moto());
+	public EstadoVehiculo aplicarSorpresaCambioVehiculo() {
+		return (new EstadoMoto());
 	}
 
 	@Override
@@ -40,6 +39,16 @@ public class CuatroPorCuatro extends Vehiculo {
 			jugador.incrementarMovimientos(3);
 		}
 
+	}
+
+	@Override
+	public void atravezarControlPolicialMockeado(Jugador jugador) {
+		jugador.incrementarMovimientos(3);
+	}
+
+	@Override
+	public String getName() {
+		return "4x4";
 	}
 
 }

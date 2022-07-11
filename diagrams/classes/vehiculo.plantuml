@@ -1,41 +1,48 @@
 @startuml
 
-    abstract class Vehiculo {
+   interface EstadoVehiculo {
+        + {abstract} aplicarSorpresaCambioVehiculo() : EstadoVehiculo
+        + {abstract} chocarContraPozo(jugador: Jugador)
+        + {abstract} chocarContraPiquete(jugador: Jugador, esquinaInicio: Esquina, esquinaDestino: Esquina) : Esquina
+        + {abstract} atravezarControlPolicial(jugador: Jugador)
+    }
+
+    class EstadoAuto {
+        + aplicarSorpresaCambioVehiculo() : EstadoVehiculo
+        + chocarContraPozo(jugador: Jugador)
+        + chocarContraPiquete(jugador: Jugador, esquinaInicio: Esquina, esquinaDestino: Esquina) : Esquina
+        + atravezarControlPolicial(jugador: Jugador)
+    }
+
+    class EstadoMoto {
+        + aplicarSorpresaCambioVehiculo() : EstadoVehiculo
+        + chocarContraPozo(jugador: Jugador)
+        + chocarContraPiquete(jugador: Jugador, esquinaInicio: Esquina, esquinaDestino: Esquina) : Esquina
+        + atravezarControlPolicial(jugador: Jugador)
+    }
+
+    class EstadoCuatroPorCuatro {
+        + aplicarSorpresaCambioVehiculo() : EstadoVehiculo
+        + chocarContraPozo(jugador: Jugador)
+        + chocarContraPiquete(jugador: Jugador, esquinaInicio: Esquina, esquinaDestino: Esquina) : Esquina
+        + atravezarControlPolicial(jugador: Jugador)
+    }
+
+    class Vehiculo {
         - esquinaActual : Esquina
-
-        + {abstract} chocarContraPozo(unJugador: Jugador): boolean
-        + {abstract} chocarContraPiquete(unJugador: Jugador): boolean
-        + {abstract} aplicarSorpresaCambioVehiculo(unJugador: Jugador) : Vehiculo
-        + setEsquinaActual(setEsquinaActual: Esquina): void
-        + moverseAEsquina(jugador: Jugador, direccion: String); void
+        + setEsquinaActual(esquinaActual: Esquina)
+        + moverseAEsquina(jugador: Jugador, direccion: Direccion)
+        + getEsquinaActual() : Esquina
+        + chocarContraPozo(jugador: Jugador)
+        + chocarContraPiquete(jugador: Jugador, esquina: InicioEsquina, esquinaDestino: Esquina)
+        + aplicarSorpresaCambioVehiculo()
+        + chocharControlPolicial(jugador: Jugador)
+        + getEstadoVehiculo() : EstadoVehiculo
     }
 
-    class Auto {
-        + chocarContraPozo(jugador: Jugador): boolean
-        + chocarContraPiquete(jugador: Jugador): boolean
-        + aplicarSorpresaCambioVehiculo(): Vehiculo
-        + atravezarControlPolicial(jugador: Jugador): boolean
-    }
-
-    class Moto {
-        + chocarContraPozo(jugador: Jugador): boolean
-        + chocarContraPiquete(jugador: Jugador): boolean
-        + aplicarSorpresaCambioVehiculo(): Vehiculo
-        + atravezarControlPolicial(jugador: Jugador): boolean
-    }
-
-
-
-    class CuatroPorCuatro {
-        - pozosAtravezados : Int
-        + chocarContraPozo(jugador: Jugador): boolean
-        + chocarContraPiquete(jugador: Jugador): boolean
-        + aplicarSorpresaCambioVehiculo(): Vehiculo
-        + atravezarControlPolicial(jugador: Jugador): boolean
-    }
-
-   Vehiculo <|-- Auto
-   Vehiculo <|-- Moto
-   Vehiculo <|-- CuatroPorCuatro
+   Vehiculo --> EstadoVehiculo
+   EstadoVehiculo <|.. EstadoAuto
+   EstadoVehiculo <|.. EstadoMoto
+   EstadoVehiculo <|.. EstadoCuatroPorCuatro
 
 @enduml

@@ -12,43 +12,31 @@ public class GeneradorEventos {
 	}
 
 	public static Evento generarEvento() {
-		int tipoEvento = (int) (Math.random() * 3) + 1;
-		int SubTipoEvento = (int) (Math.random() * 3) + 1;
+		int tipoEvento = (int) (Math.random() * 10) + 1;
+		int SubTipoEvento = (int) (Math.random() * 10) + 1;
 
 		Evento eventoGenerado = null;
-		switch (tipoEvento) {
-		case 1:
-			switch (SubTipoEvento) {
-			case 1:
-				eventoGenerado = (Evento) new SorpresaFavorable();
-				break;
-			case 2:
-				eventoGenerado = (Evento) new SorpresaDesfavorable();
-				break;
-			case 3:
-				eventoGenerado = (Evento) new SorpresaCambioDeVehiculo();
-				break;
-			}
-			break;
-			
-		case 2:
-			switch (SubTipoEvento) {
-			case 1:
-				eventoGenerado = (Evento) new Pozo();
-			case 2:
-				eventoGenerado = (Evento) new Piquete();
-				break;
-			case 3:
-				eventoGenerado = (Evento) new ControlPolicial();
-				break;
-			}
-			break;
-			
-		case 3:
+		if ( tipoEvento < 7 ) {
 			eventoGenerado = new EventoVacio();
-			break;
 		}
-
+		else if ( tipoEvento < 8 ) {
+			if (SubTipoEvento < 5) {
+				eventoGenerado = (Evento) new SorpresaFavorable();
+			}
+			else if (SubTipoEvento < 8) {
+				eventoGenerado = (Evento) new SorpresaDesfavorable();
+			}
+			else eventoGenerado = (Evento) new SorpresaCambioDeVehiculo();
+		}
+		else {
+			if (SubTipoEvento < 5) {
+				eventoGenerado = (Evento) new Pozo();
+			}
+			else if (SubTipoEvento < 8) {
+				eventoGenerado = (Evento) new ControlPolicial();
+			}
+			else eventoGenerado = (Evento) new Piquete();
+		}
 		return eventoGenerado;
 	}
 }

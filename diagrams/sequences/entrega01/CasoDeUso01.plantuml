@@ -2,27 +2,38 @@
 
 title: unaMotoAtraviesaCiudadYSeEncuentraConUnPozoYEsPenalizadaTresMovimientos
 
-
 Actor test
-test -> ":Juego" : moverJugadorEnDireccion("Este")
-":Juego" -> ":Jugador"  : moverEnDireccion("Este")
-":Jugador"  -> ":Moto" : moverseAEsquina(this, "Este")
-":Moto"  -> "esquinaActual: Esquina" : moverVehiculo(jugador, "Este")
-"esquinaActual: Esquina" -> cuadras : get("Este")
-"esquinaActual: Esquina" <-- cuadras : cuadraAdirijirse = Cuadra
-"esquinaActual: Esquina" -> ":Jugador"  : incrementarMovimientos(1)
-"esquinaActual: Esquina" -> "cuadraAdirijirse:Cuadra" : moverVehiculo(jugador, this)
-"cuadraAdirijirse:Cuadra" -> ":Pozo" : afectarJugador(jugador)
-":Pozo" -> ":Jugador"  : getVehiculo
-":Pozo" <-- ":Jugador"  : vehiculo = Moto
-":Pozo" -> ":Moto"  : chocarContraPozo(jugador)
-":Moto"  -> ":Jugador"  : incrementarMovimientos(3)
-":Pozo" <-- ":Moto"  : puedeAvanzar = true
-"cuadraAdirijirse:Cuadra" <-- ":Pozo" : puedeAvanzar = true
-"cuadraAdirijirse:Cuadra" <- "cuadraAdirijirse:Cuadra" : obtenerEsquinaOpuesta(esquinaInicio)
-"cuadraAdirijirse:Cuadra" -> ":Jugador"  : getVehiculo
-"cuadraAdirijirse:Cuadra" <-- ":Jugador"  : vehiculo = Moto
-"cuadraAdirijirse:Cuadra" -> ":Moto"  : setEsquinaActual(esquinaDestino)
-test <-- "cuadraAdirijirse:Cuadra"
+test -> ":Juego" : moverJugadorEnDireccion(Este)
+":Juego" -> ":Jugador"  : moverEnDireccion(Este)
+":Jugador"  -> ":Vehiculo" : moverseAEsquina(this, Este)
+":Vehiculo" -> "esquinaActual: Esquina" : moverVehiculo(jugador, Este)
+"esquinaActual: Esquina" -> "esquinaActual: Esquina" : getCuadra(Este)
+"esquinaActual: Esquina" -> ":Jugador" : incrementarMovimientos(1)
+return
+
+"esquinaActual: Esquina" -> "cuadraAdirijirse: Cuadra" : moverVehiculo(jugador, this)
+"cuadraAdirijirse: Cuadra" -> "cuadraAdirijirse: Cuadra" : obtenerEsquinaOpuesta(esquinaInicio)
+"cuadraAdirijirse: Cuadra" -> ":Pozo" : afectarJugador(jugador, esquinaInicio, esquinaOpuesta)
+
+":Pozo" -> ":Jugador" : getVehiculo()
+return vehiculo
+":Pozo" -> ":Vehiculo" : chocarContraPozo(jugador)
+":Vehiculo" -> ":EstadoMoto" : chocarContraPozo(jugador)
+":EstadoMoto" -> ":Jugador" : incrementarMovimientos(3)
+":Jugador" --> ":EstadoMoto"
+":EstadoMoto" --> ":Vehiculo"
+":Vehiculo" --> ":Pozo"
+
+":Pozo" --> "cuadraAdirijirse: Cuadra" : esquinaDestino = esquinaOpuesta
+"cuadraAdirijirse: Cuadra" -> ":Jugador" : setEsquinaActual(esquinaDestino)
+":Jugador" -> ":Vehiculo" : setEsquinaActual(esquinaDestino)
+
+return
+":Jugador" --> "cuadraAdirijirse: Cuadra"
+"cuadraAdirijirse: Cuadra" --> "esquinaActual: Esquina"
+"esquinaActual: Esquina" --> ":Vehiculo"
+":Vehiculo" --> ":Jugador"
+":Jugador" --> ":Juego"
+":Juego" --> test
 
 @enduml
