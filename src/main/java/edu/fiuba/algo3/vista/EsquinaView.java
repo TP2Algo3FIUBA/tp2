@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Observer;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.Meta;
 import javafx.scene.image.Image;
@@ -12,18 +13,15 @@ public class EsquinaView implements Observer, Drawable {
 	ImageView esquinaImage;
 
 	private Esquina esquina;
+	private Jugador jugador;
 
-	private int lastXPosition;
-	private int lastYPosition;
-
-	public EsquinaView(TableroView tableroView, Esquina esquina) {
+	public EsquinaView(TableroView tableroView, Esquina esquina, Jugador jugador) {
 		this.tableroView = tableroView;
 		this.esquina = esquina;
+		this.jugador = jugador;
 
-		this.lastXPosition = (int) esquina.getPosition().getFil();
-		this.lastYPosition = (int) esquina.getPosition().getCol();
-
-		esquina.addObserver(this);
+		this.esquina.addObserver(this);
+		this.jugador.addObserver(this);
 
 		esquinaImage = new ImageView();
 		esquinaImage.setScaleX(esquinaScale);
@@ -36,7 +34,7 @@ public class EsquinaView implements Observer, Drawable {
 		}
 		else esquinaImage.setImage(new Image("esquina.png")); // cambiar por esquina.png
 		tableroView.addViewOnMap(esquinaImage, (int) esquina.getPosition().getCol(), (int) esquina.getPosition().getFil()); // Del reves?
-		System.out.println("Dibujando esquina de Fil:" + esquina.getPosition().getFil() + " Col:" + esquina.getPosition().getCol());
+		change();
 		draw();
 	}
 
@@ -47,29 +45,21 @@ public class EsquinaView implements Observer, Drawable {
 		tableroView.updateView(esquinaImage);
 	}
 
-	private void changeEsquinaSkin(String fileName) {
-		System.out.println(fileName);
-		//esquinaImage.setImage(new Image(fileName + ".png"));
-		esquinaImage.setImage(new Image("oscuridad.png"));
-	}
-
-	//@Override
+	@Override
 	public void change() {
-		changeEsquinaSkin(esquina.getEsquinaName());
-		int actualCol = (int) esquina.getPosition().getCol();
-		int actualFil = (int) esquina.getPosition().getFil();
-		if (lastXPosition > actualCol) {
-			this.esquinaImage.setScaleX( -
-			Math.abs(esquinaImage.getScaleX()));
-		}
+		esquinaImage.setOpacity(100);
+		if (!(esquina.checkearEstado() instanceof Meta)) {
+			int actualCol = (int) esquina.getPosition().getCol();
+			if (Math.abs(jugador.getPosition().getCol() - actualCol) > 1) {
+				esquinaImage.setOpacity(0);
+			}
 
-		else if (lastXPosition < actualCol) {
-			this.esquinaImage.setScaleX(
-			Math.abs(esquinaImage.getScaleX()));
+			int actualFil = (int) esquina.getPosition().getFil();
+			if (Math.abs(jugador.getPosition().getFil() - actualFil) > 1) {
+				esquinaImage.setOpacity(0);
+			}
 		}
-		this.lastXPosition = (int) esquina.getPosition().getFil();
-		this.lastYPosition = (int) esquina.getPosition().getCol();
-		tableroView.addViewOnMap(this.esquinaImage, actualCol, actualFil);
+		draw();
 	}
 
 }

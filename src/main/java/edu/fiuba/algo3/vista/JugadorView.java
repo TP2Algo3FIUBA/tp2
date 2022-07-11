@@ -12,15 +12,10 @@ public class JugadorView implements Observer, Drawable {
 
 	private Jugador jugador;
 
-	private int lastXPosition;
-	private int lastYPosition;
 
 	public JugadorView(TableroView tableroView, Jugador jugador) {
 		this.tableroView = tableroView;
 		this.jugador = jugador;
-
-		this.lastXPosition = (int) jugador.getPosition().getFil();
-		this.lastYPosition = (int) jugador.getPosition().getCol();
 
 		jugador.addObserver(this);
 
@@ -48,22 +43,12 @@ public class JugadorView implements Observer, Drawable {
 		playerImage.setImage(new Image(fileName + ".png"));
 	}
 
-	//@Override
+	@Override
 	public void change() {
 		changePlayerSkin(jugador.getVehiculoName());
 		double actualCol = jugador.getPosition().getCol();
 		double actualFil = jugador.getPosition().getFil();
-		if (lastXPosition > actualCol) {
-			this.playerImage.setScaleX( - 
-			Math.abs(playerImage.getScaleX()));
-		}
 
-		else if (lastXPosition < actualCol) {
-			this.playerImage.setScaleX(
-			Math.abs(playerImage.getScaleX()));
-		}
-		this.lastXPosition = (int) jugador.getPosition().getFil();
-		this.lastYPosition = (int) jugador.getPosition().getCol();
 		tableroView.addViewOnMap(this.playerImage, (int) actualCol, (int) actualFil);
 	}
 

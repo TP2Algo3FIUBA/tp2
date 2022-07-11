@@ -9,23 +9,22 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class CuadraView implements Observer, Drawable {
-	private double esquinaScale = 0.85;
+	private double esquinaScale = 0.6;
 	private TableroView tableroView;
 	ImageView cuadraImage;
 
 	private Cuadra cuadra;
+	private double col;
+	private double fil;
 
-	private double lastXPosition;
-	private double lastYPosition;
 	private Jugador jugador;
 
 	public CuadraView(TableroView tableroView, Cuadra cuadra, Jugador jugador) {
 		this.tableroView = tableroView;
 		this.cuadra = cuadra;
+		this.col = cuadra.getPosition().getCol();
+		this.fil = cuadra.getPosition().getFil();
 		this.jugador = jugador;
-
-		this.lastXPosition = cuadra.getPosition().getFil();
-		this.lastYPosition = cuadra.getPosition().getCol();
 
 		this.cuadra.addObserver(this);
 		this.jugador.addObserver(this);
@@ -39,6 +38,7 @@ public class CuadraView implements Observer, Drawable {
 		String fileName = cuadra.getTipoCuadraName();
 		cuadraImage.setImage(new Image( fileName + ".png"));
 		tableroView.addViewOnMap(cuadraImage, (int) cuadra.getPosition().getCol(), (int) cuadra.getPosition().getFil());
+		change();
 		draw();
 	}
 
@@ -49,30 +49,19 @@ public class CuadraView implements Observer, Drawable {
 		tableroView.updateView(cuadraImage);
 	}
 
-	private void changeCuadraSkin(String fileName) {
-		System.out.println(fileName);
-		cuadraImage.setImage(new Image(fileName + ".png"));
-		//cuadraImage.setImage(new Image("oscuridad.png"));
-	}
-
-	//@Override
+	@Override
 	public void change() {
-		changeCuadraSkin(cuadra.getTipoCuadraName());
-		double actualCol = cuadra.getPosition().getCol();
-		double actualFil = cuadra.getPosition().getFil();
-		/*if (lastXPosition > actualCol) {
-			this.playerImage.setScaleX( -
-					Math.abs(playerImage.getScaleX()));
+
+		cuadraImage.setOpacity(100);
+		if ( Math.abs(jugador.getPosition().getCol() - this.col) > 1 ) {
+			cuadraImage.setOpacity(0);
 		}
 
-		else if (lastXPosition < actualCol) {
-			this.playerImage.setScaleX(
-					Math.abs(playerImage.getScaleX()));
-		}*/
-		this.lastXPosition = (int) cuadra.getPosition().getFil();
-		this.lastYPosition = (int) cuadra.getPosition().getCol();
-		tableroView.addViewOnMap(this.cuadraImage, (int) actualCol, (int) actualFil);
+		if ( Math.abs(jugador.getPosition().getFil() - this.fil) > 1 ) {
+			cuadraImage.setOpacity(0);
+		}
 
+		draw();
 	}
 
 }
