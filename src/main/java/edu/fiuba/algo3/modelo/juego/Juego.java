@@ -64,6 +64,7 @@ public class Juego {
 
 	private void finalizarPartida() {
 		Map<String, Object> dataJugador = new HashMap<>();
+		dataJugador.put("Jugador", this.nombreJugador);
 		dataJugador.put("Puntaje", this.jugador.getMovimientos());
 		PrintWriter writer;
 		Yaml yaml = new Yaml();
