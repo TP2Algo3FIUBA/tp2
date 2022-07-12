@@ -59,6 +59,7 @@ public class MainKeyboardController implements EventHandler<KeyEvent> {
       }
 
       if (juego.Ganado()) {
+      	juego.finalizarPartida();
         generarEscenarioVictoria();
         ventana.setScene(escenaVictoria);
 

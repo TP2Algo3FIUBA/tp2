@@ -62,7 +62,8 @@ public class Juego {
 		spawnearJugadorEn(0, 0);
 	}
 
-	private void finalizarPartida() {
+	public void finalizarPartida() {
+		System.out.println("Guardando puntajes");
 		Map<String, Object> dataJugador = new HashMap<>();
 		dataJugador.put("Jugador", this.nombreJugador);
 		dataJugador.put("Puntaje", this.jugador.getMovimientos());
