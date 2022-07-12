@@ -67,10 +67,17 @@ public class Juego {
 	public void finalizarPartida() {
 		System.out.println("Guardando puntajes");
 		Map<String, Object> dataJugador = new HashMap<>();
-		dataJugador.put("Jugador", this.nombreJugador);
-		dataJugador.put("Puntaje", this.jugador.getMovimientos());
+		Map<String, Object> dataMovimientos = new HashMap<>();
+		
+		dataMovimientos.put("Puntaje", this.jugador.getMovimientos());
+		dataJugador.put(this.nombreJugador, dataMovimientos);
 		PrintWriter writer;
-		Yaml yaml = new Yaml();
+		
+		DumperOptions options = new DumperOptions();
+    options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+    options.setPrettyFlow(true);
+    Yaml yaml = new Yaml(options);
+
 
 		try {
 			writer = new PrintWriter(new File("resources/puntajes.yml").getAbsolutePath());
