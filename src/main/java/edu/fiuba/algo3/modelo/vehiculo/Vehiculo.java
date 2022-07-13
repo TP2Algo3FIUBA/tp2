@@ -60,10 +60,6 @@ public class Vehiculo {
 	}
 
 
-	public void chocharControlPolicialMockeado(Jugador jugador) {
-		estadoVehiculo.atravezarControlPolicialMockeado(jugador);
-	}
-
 	public EstadoEsquina checkearEsquinaEstado() {
 		return this.esquinaActual.checkearEstado();
 	}

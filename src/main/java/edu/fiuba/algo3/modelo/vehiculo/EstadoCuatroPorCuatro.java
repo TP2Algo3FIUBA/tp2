@@ -42,11 +42,6 @@ public class EstadoCuatroPorCuatro implements EstadoVehiculo {
 	}
 
 	@Override
-	public void atravezarControlPolicialMockeado(Jugador jugador) {
-		jugador.incrementarMovimientos(3);
-	}
-
-	@Override
 	public String getName() {
 		return "4x4";
 	}

@@ -119,16 +119,11 @@ public class Tablero implements Observable {
 	public int cantididadCuadras(){
 		return cuadras.size();
 	}
-	
-	public void spawnearJugador(Jugador jugador) {
-		jugador.spawnearVehiculoEn(this.obtenerEsquina(0, 0));
-	}
 
 	@Override
 	public void addObserver(Observer observer) {
 		observers.add(observer);
 	}
-
 
 	@Override
 	public void notifyObservers() {

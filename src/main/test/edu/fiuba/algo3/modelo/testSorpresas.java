@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.direcciones.DirOeste;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
+import edu.fiuba.algo3.modelo.obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaCambioDeVehiculo;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaDesfavorable;
 import edu.fiuba.algo3.modelo.sorpresa.SorpresaFavorable;
@@ -216,6 +217,29 @@ public class testSorpresas {
         jugador.moverEnDireccion(Oeste);
         assertEquals(2,jugador.getMovimientos());
     }
+    @Test
+    public void testSorpresaFav(){
+        SorpresaFavorable sorpresaFavorable = new SorpresaFavorable();
+        Jugador jugador = new Jugador(new Vehiculo(new EstadoCuatroPorCuatro()));
+        sorpresaFavorable.afectarJugador(jugador,new Esquina(), new Esquina());
 
+        assertEquals(sorpresaFavorable.getName(), "sorpresa");
+    }
+    @Test
+    public void testSorDes(){
+        SorpresaDesfavorable sorpresaDesfavorable = new SorpresaDesfavorable();
+        Jugador jugador = new Jugador(new Vehiculo(new EstadoCuatroPorCuatro()));
+        sorpresaDesfavorable.afectarJugador(jugador,new Esquina(), new Esquina());
+
+        assertEquals(sorpresaDesfavorable.getName(), "sorpresa");
+    }
+    @Test
+    public void testCamb(){
+        SorpresaCambioDeVehiculo sorpresaCambioDeVehiculo = new SorpresaCambioDeVehiculo();
+        Jugador jugador = new Jugador(new Vehiculo(new EstadoCuatroPorCuatro()));
+        sorpresaCambioDeVehiculo.afectarJugador(jugador,new Esquina(), new Esquina());
+
+        assertEquals(sorpresaCambioDeVehiculo.getName(), "sorpresa");
+    }
 
 }

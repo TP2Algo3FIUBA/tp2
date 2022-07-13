@@ -21,6 +21,7 @@ public class Esquina implements Observable {//Positionable, Observable {
 		this.cuadras = new HashMap<>();
 		this.estado = new NoMeta();
 		this.position = new Position(0,0);
+		observers = new ArrayList<Observer>();
 	}
 
 	public Esquina(EstadoEsquina estado, int posFil, int posCol) {
@@ -73,7 +74,4 @@ public class Esquina implements Observable {//Positionable, Observable {
 		observers.stream().forEach(observer -> observer.change());
 	}
 
-	public String getEsquinaName() {
-		return "esquina";
-	}
 }

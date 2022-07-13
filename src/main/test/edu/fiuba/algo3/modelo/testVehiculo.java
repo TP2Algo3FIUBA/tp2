@@ -6,6 +6,8 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
 import edu.fiuba.algo3.modelo.manzana.EsquinaNoValidaException;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
+import edu.fiuba.algo3.modelo.vehiculo.EstadoCuatroPorCuatro;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoMoto;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import org.junit.jupiter.api.Test;
@@ -53,5 +55,19 @@ class testVehiculo {
 		assertEquals(jugador.getMovimientos(), 1);
 	}
 
-
+	@Test
+	public void testName4x4(){
+		Vehiculo vehiculo = new Vehiculo(new EstadoCuatroPorCuatro());
+		assertEquals(vehiculo.getEstadoName(), "4x4");
+	}
+	@Test
+	public void testNamemoto(){
+		Vehiculo vehiculo = new Vehiculo(new EstadoMoto());
+		assertEquals(vehiculo.getEstadoName(), "moto");
+	}
+	@Test
+	public void testNameauto(){
+		Vehiculo vehiculo = new Vehiculo(new EstadoAuto());
+		assertEquals(vehiculo.getEstadoName(), "auto");
+	}
 }

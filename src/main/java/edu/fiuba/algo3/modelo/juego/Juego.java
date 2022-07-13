@@ -25,8 +25,6 @@ import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class Juego {
 
-	// private MapView view;
-	private int tamanioTablero = 3;
 	private Jugador jugador;
 	private Tablero tablero;
 	private String nombreJugador;
@@ -54,17 +52,6 @@ public class Juego {
 
 	public int cantMovJugador() {
 		return this.jugador.getMovimientos();
-	}
-
-	public void correrJuego() {
-		inicializarJuego();
-	}
-
-	private void inicializarJuego() {
-		this.jugador = new Jugador(new Vehiculo(new EstadoAuto()));
-		this.tablero = GeneradorTablero.generarTablero(tamanioTablero);
-//		this.tablero.spawnearJugador(jugador);
-		spawnearJugadorEn(0, 0);
 	}
 	
 	public void obtenerHighScores() {
@@ -108,10 +95,6 @@ public class Juego {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public Esquina obtenerEsquina(int i, int i1) {
-		return tablero.obtenerEsquina(i, i1);
 	}
 
 	public boolean Ganado() {
