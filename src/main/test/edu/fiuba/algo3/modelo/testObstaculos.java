@@ -3,10 +3,12 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.direcciones.DirEste;
 import edu.fiuba.algo3.modelo.direcciones.DirOeste;
 import edu.fiuba.algo3.modelo.evento.Evento;
+import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.manzana.Cuadra;
 import edu.fiuba.algo3.modelo.manzana.Esquina;
-import edu.fiuba.algo3.modelo.obstaculo.ControlPolicialMockeado;
+import edu.fiuba.algo3.modelo.obstaculo.ControlPolicial;
+
 import edu.fiuba.algo3.modelo.obstaculo.Piquete;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoCuatroPorCuatro;
@@ -82,7 +84,7 @@ public class testObstaculos {
     void testUnAutoPasaPorunControlPolicialYLeSumaTresMovimientos(){
         Esquina esquinaA = new Esquina();
         Esquina esquinaB = new Esquina();
-        Evento evento = new ControlPolicialMockeado();
+        Evento evento = new ControlPolicial();
         Cuadra cuadra = new Cuadra(esquinaA, esquinaB, evento);
 
         DirEste Este = new DirEste();
@@ -94,6 +96,23 @@ public class testObstaculos {
         jugador.spawnearVehiculoEn(esquinaA);
 
         jugador.moverEnDireccion(Este);
-        assertEquals(jugador.getMovimientos(), 4);
+
+    }
+
+    @Test
+    public void testControlPolicial(){
+        ControlPolicial controlPolicial = new ControlPolicial();
+        Jugador jugador = new Jugador(new Vehiculo(new EstadoCuatroPorCuatro()));
+        controlPolicial.afectarJugador(jugador,new Esquina(), new Esquina());
+
+        assertEquals(controlPolicial.getName(), "controlpolicial");
+    }
+    @Test
+    public void testPiquete(){
+        Piquete piquete = new Piquete();
+        Jugador jugador = new Jugador(new Vehiculo(new EstadoCuatroPorCuatro()));
+        piquete.afectarJugador(jugador,new Esquina(), new Esquina());
+
+        assertEquals(piquete.getName(), "piquete");
     }
 }

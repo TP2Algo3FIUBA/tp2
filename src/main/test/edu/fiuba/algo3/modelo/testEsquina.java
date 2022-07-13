@@ -100,4 +100,15 @@ class testEsquina {
 
 	}
 
+	@Test
+	public void positionEsquina(){
+		Esquina esquina = new Esquina();
+		Position pos = new Position(0,0);
+		Position pos2 = new Position(1,0);
+
+		assertEquals(esquina.getPosition().getCol(),pos.getCol());
+		esquina.setPosition(pos2);
+		assertEquals(esquina.getPosition().getFil(),pos2.getFil());
+	}
+
 }

@@ -4,14 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import edu.fiuba.algo3.modelo.direcciones.DirEste;
 import edu.fiuba.algo3.modelo.juego.Juego;
+import edu.fiuba.algo3.modelo.manzana.*;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoAuto;
 import edu.fiuba.algo3.modelo.vehiculo.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.manzana.Esquina;
-import edu.fiuba.algo3.modelo.manzana.GeneradorTablero;
-import edu.fiuba.algo3.modelo.manzana.Tablero;
 import edu.fiuba.algo3.modelo.vehiculo.EstadoMoto;
 
 class testTablero {
@@ -24,6 +22,25 @@ class testTablero {
 		tableroTest.agregarEsquina(0, esquinaTest);
 
 		assertEquals(tableroTest.obtenerEsquina(0, 0), esquinaTest);
+	}
+	@Test
+	void testAgregarUnaEsquinas2() {
+		Tablero tableroTest = new Tablero(2,2);
+		Esquina esquinaTest = new Esquina();
+
+		tableroTest.agregarEsquina(0, esquinaTest);
+		tableroTest.generarTablero();
+		assertEquals(tableroTest.obtenerEsquina(0, 0), esquinaTest);
+
+		assertTrue(tableroTest.obtenerCuadra(2) instanceof Cuadra);
+
+		tableroTest.agregarEsquina(2,new Esquina(new NoMeta(),3,3));
+		tableroTest.agregarCuadra(new Cuadra(new Esquina(),new Esquina()));
+
+		assertEquals(tableroTest.cantididadCuadras(),5);
+
+		assertEquals(tableroTest.getHeigth(),2);
+		assertEquals(tableroTest.getWidth(),2);
 	}
 
 	@Test

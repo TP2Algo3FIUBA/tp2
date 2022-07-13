@@ -6,8 +6,10 @@ import edu.fiuba.algo3.modelo.direcciones.DirOeste;
 import edu.fiuba.algo3.modelo.direcciones.DirSur;
 import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.vista.TableroView;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,16 +22,19 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import static javafx.scene.paint.Color.WHITE;
+
 public class MainKeyboardController implements EventHandler<KeyEvent> {
 
   private final Juego juego;
   private final TableroView tableroView;
-  private final Stage stage;
+  private final Stage ventana;
+  private Scene escenaVictoria;
 
-  public MainKeyboardController(Juego juego, TableroView tableroView, Stage stage) {
+  public MainKeyboardController(Juego juego, TableroView tableroView, Stage ventana) {
     this.juego = juego;
     this.tableroView = tableroView;
-    this.stage = stage;
+    this.ventana = ventana;
   }
 
   public void handle(KeyEvent event) {
@@ -54,20 +59,9 @@ public class MainKeyboardController implements EventHandler<KeyEvent> {
       }
 
       if (juego.Ganado()) {
-        System.out.println("Victoria");
-        Stage primaryStage = new Stage();
-
-        primaryStage.setTitle("VICTORIA");
-
-        Label cantidadMovimientosLabel = new Label();
-        int valCantMov = juego.cantMovJugador();
-        String strCantMov = Integer.toString(valCantMov);
-        cantidadMovimientosLabel.setText("Puntuacion: " + strCantMov);
-
-        StackPane root = new StackPane();
-        root.getChildren().add(cantidadMovimientosLabel);
-        primaryStage.setScene(new Scene(root, 300, 50));
-        primaryStage.show();
+      	juego.finalizarPartida();
+        generarEscenarioVictoria();
+        ventana.setScene(escenaVictoria);
 
       }
       event.consume();      
@@ -77,4 +71,32 @@ public class MainKeyboardController implements EventHandler<KeyEvent> {
 
   }
 
+  private void generarEscenarioVictoria(){
+    VBox layout = new VBox();
+    layout.setPadding(new Insets(40, 20, 20, 20));
+    layout.setSpacing(20);
+    layout.setAlignment(Pos.TOP_CENTER);
+    escenaVictoria = new Scene(layout, 400, 300);
+    layout.setStyle("-fx-background-color:#2b2b2b; -fx-font-size: 15");
+
+    // VICTORIA
+    Label labelVictoria = new Label("Victoria!");
+    labelVictoria.setTextFill(WHITE);
+
+    // JUGADOR
+    Label labelJugador = new Label("Jugador: " + juego.getNombreJugador());
+    labelJugador.setTextFill(WHITE);
+
+    // PUNTAJE
+    Label labelMovimientos = new Label("Movimientos: " + juego.cantMovJugador());
+    labelMovimientos.setTextFill(WHITE);
+
+    // BOTON SALIR
+    Button botonSalir = new Button("Salir");
+    botonSalir.setOnAction(e->{
+      Platform.exit();
+    });
+
+    layout.getChildren().addAll(labelVictoria, labelJugador, labelMovimientos, botonSalir);
+  }
 }

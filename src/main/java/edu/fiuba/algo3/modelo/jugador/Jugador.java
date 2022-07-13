@@ -77,9 +77,6 @@ public class Jugador implements Observable {
 		this.vehiculo.chocharControlPolicial(jugador);
 	}
 
-	public void atravezarControlPolicialMockeado(Jugador jugador) {
-		this.vehiculo.chocharControlPolicialMockeado(jugador);
-	}
 
     public Position getPosition() {
         return this.position;

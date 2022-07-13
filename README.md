@@ -14,6 +14,8 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 Corrector: **Jose Pablo Suarez**
 
+[Informe](https://github.com/TP2Algo3FIUBA/tp2/blob/e5f4f60064a80fba948dae1b8faf2c00e35de9a7/docs/Informe%20TP2.pdf)
+
 ## Aplicación
 
 La versión más reciente de la aplicación puede encontrarse en la pestaña [releases](https://github.com/TP2Algo3FIUBA/tp2/releases/latest) y ejecutarse en Linux, Windows o Mac de esta forma:

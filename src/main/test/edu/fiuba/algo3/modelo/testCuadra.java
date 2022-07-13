@@ -52,5 +52,17 @@ public class testCuadra {
 
         cuadra.moverVehiculo(jugador, esquinaA);
         assertTrue(jugador.getEstadoVehiculo() instanceof EstadoCuatroPorCuatro);
+
+        assertTrue( cuadra.getObstaculo() instanceof SorpresaCambioDeVehiculo);
+    }
+    @Test
+    public void getEventoPozo(){
+        Esquina esquinaA = new Esquina();
+        Esquina esquinaB = new Esquina();
+        Cuadra cuadra = new Cuadra(esquinaA, esquinaB, new Pozo());
+
+        assertTrue( cuadra.getObstaculo() instanceof Pozo);
+        assertEquals(cuadra.getTipoCuadraName(),"pozo");
+        assertTrue( cuadra.getPosition() instanceof Position);
     }
 }
